@@ -1,26 +1,136 @@
 @import "tailwindcss";
 
+/* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors */
+  --color-bg:       #FFFFFF;
+  --color-ink:      #0A0A0A;
+  --color-accent:   #4169E1;
+  --color-muted:    #6E6E6E;
+  --color-surface:  #F2F2F2;
+  --color-border:   #D4D4D4;
+
+  /* Type scale */
+  --text-hero:    clamp(72px, 10vw, 120px);
+  --text-section: clamp(36px, 5vw, 64px);
+  --text-heading: 28px;
+  --text-body:    16px;
+  --text-label:   12px;
+
+  /* Spacing */
+  --section-gap: clamp(80px, 12vw, 140px);
 }
 
+/* ─── Tailwind theme extension ──────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg:      #FFFFFF;
+  --color-ink:     #0A0A0A;
+  --color-accent:  #4169E1;
+  --color-muted:   #6E6E6E;
+  --color-surface: #F2F2F2;
+  --color-border:  #D4D4D4;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23E8E8F0' stroke-width='1'%3E%3Cpath d='M40 0L0 0 0 40'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  color: var(--color-ink);
+  font-size: var(--text-body);
+  line-height: 1.7;
+}
+
+/* ─── Typography helpers ────────────────────────────────────── */
+.text-hero {
+  font-size: var(--text-hero);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.text-section {
+  font-size: var(--text-section);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.text-heading {
+  font-size: var(--text-heading);
+  font-weight: 700;
+}
+
+.text-label {
+  font-size: var(--text-label);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─── LinkedIn icon hover ───────────────────────────────────── */
+.linkedin-icon {
+  color: var(--color-ink);
+  transition: color 150ms ease;
+}
+
+.linkedin-icon:hover {
+  color: var(--color-accent);
+}
+
+/* ─── Link reset ────────────────────────────────────────────── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── Animated underline for links ─────────────────────────── */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transition: width 150ms ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ─── Hard shadow card (brutalist lift on hover) ────────────── */
+.card-lift {
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.card-lift:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0px var(--color-ink);
+}
+
+/* ─── Grain overlay ─────────────────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
 }
