@@ -30,66 +30,103 @@ const articles = [
 export default function WorthReading() {
   return (
     <section
-      className="py-16 md:py-24 px-6 md:px-12 lg:px-20"
-      style={{ borderBottom: "1px solid var(--color-border)" }}
+      className="px-6 md:px-12 lg:px-20"
+      style={{
+        borderBottom: "1px solid rgba(255,255,255,0.08)",
+        paddingTop: "var(--section-gap)",
+        paddingBottom: "var(--section-gap)",
+      }}
     >
       <div className="max-w-6xl mx-auto">
+
+        {/* Section header */}
         <ScrollReveal>
-          <span
-            className="block mb-10"
-            style={{ fontSize: "11px", fontWeight: 400, letterSpacing: "0.1em", color: "var(--color-muted)", textTransform: "uppercase" }}
-          >
-            Worth Reading
-          </span>
+          <div className="mb-14">
+            <div
+              className="mb-4"
+              style={{ borderTop: "1px solid rgba(255,255,255,0.15)", paddingTop: "1rem" }}
+            >
+              <span className="text-label" style={{ color: "var(--color-muted)" }}>
+                The Reading List
+              </span>
+            </div>
+            <h2 className="text-section" style={{ color: "var(--color-ink)" }}>
+              Worth your time.
+            </h2>
+          </div>
         </ScrollReveal>
 
-        <div className="space-y-8">
+        {/* Articles */}
+        <div>
           {articles.map(({ title, author, source, href, blurb }, i) => (
-            <ScrollReveal key={title} delay={i * 0.08}>
+            <ScrollReveal key={title} delay={i * 0.07}>
               <Link
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block"
+                className="group block py-8"
+                style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
               >
-                <div
-                  className="p-6 rounded-none"
-                  style={{
-                    borderLeft: "2px solid var(--color-border)",
-                    transition: "border-color 150ms ease",
-                  }}
-                  onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.borderColor = "var(--color-accent)")}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.borderColor = "var(--color-border)")}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <p style={{ fontSize: "16px", fontWeight: 700, color: "var(--color-ink)", lineHeight: 1.3 }}>
-                        {title}
-                      </p>
-                      <p style={{ fontSize: "12px", color: "var(--color-muted)", marginTop: "4px", letterSpacing: "0.05em" }}>
-                        {author} · {source}
-                      </p>
-                    </div>
-                    <span
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
+
+                  {/* Number */}
+                  <span
+                    className="text-label md:col-span-1"
+                    style={{ color: "var(--color-accent)", paddingTop: "3px" }}
+                  >
+                    0{i + 1}
+                  </span>
+
+                  {/* Title + author */}
+                  <div className="md:col-span-4">
+                    <h3
                       style={{
-                        fontSize: "18px",
-                        color: "var(--color-accent)",
-                        flexShrink: 0,
-                        transition: "transform 150ms ease",
+                        fontFamily: "var(--font-serif)",
+                        fontStyle: "italic",
+                        fontSize: "clamp(18px, 1.8vw, 22px)",
+                        fontWeight: 700,
+                        color: "var(--color-ink)",
+                        lineHeight: 1.3,
+                        transition: "color 150ms ease",
                       }}
-                      className="group-hover:translate-x-1 inline-block"
+                      className="group-hover:text-[#C8F135]"
                     >
-                      →
-                    </span>
+                      {title}
+                    </h3>
+                    <p
+                      className="text-label mt-2"
+                      style={{ color: "var(--color-muted)" }}
+                    >
+                      {author} · {source}
+                    </p>
                   </div>
-                  <p style={{ fontSize: "14px", color: "var(--color-muted)", marginTop: "8px", lineHeight: 1.6 }}>
+
+                  {/* Blurb */}
+                  <p
+                    className="md:col-span-6 md:col-start-7"
+                    style={{
+                      fontSize: "15px",
+                      color: "var(--color-muted)",
+                      lineHeight: 1.7,
+                    }}
+                  >
                     {blurb}
                   </p>
+
+                  {/* Arrow */}
+                  <span
+                    className="hidden md:block md:col-span-1 text-right group-hover:translate-x-1 transition-transform"
+                    style={{ color: "var(--color-accent)", fontSize: "20px" }}
+                  >
+                    →
+                  </span>
                 </div>
               </Link>
             </ScrollReveal>
           ))}
+          <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }} />
         </div>
+
       </div>
     </section>
   );
