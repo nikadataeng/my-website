@@ -88,8 +88,8 @@ export async function GET() {
       });
       if (dayName === 'Sat' || dayName === 'Sun') continue;
 
-      // 9 AM – 5 PM PT, 30-min slots
-      for (let hour = 9; hour < 17; hour++) {
+      // 9 AM – 7 PM PT, 30-min slots
+      for (let hour = 9; hour < 19; hour++) {
         for (let minute = 0; minute < 60; minute += 30) {
           const slotStart = ptToUTC(ptDateStr, hour, minute);
           const slotEnd = new Date(slotStart.getTime() + 30 * 60 * 1000);

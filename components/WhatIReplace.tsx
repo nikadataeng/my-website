@@ -32,7 +32,7 @@ export default function WhatIReplace() {
                 <span style={{ fontSize: "var(--text-body)", color: "var(--color-muted)" }}>
                   {before}
                 </span>
-                <span style={{ fontSize: "var(--text-body)", color: "var(--color-accent)", fontWeight: 700 }}>
+                <span style={{ fontSize: "var(--text-body)", color: "var(--color-green)", fontWeight: 700 }}>
                   →
                 </span>
                 <span style={{ fontSize: "var(--text-body)", color: "var(--color-ink)", fontWeight: 700 }}>

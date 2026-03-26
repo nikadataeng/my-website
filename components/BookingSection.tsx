@@ -97,7 +97,12 @@ export default function BookingSection() {
     fetch("/api/availability")
       .then((r) => r.json())
       .then((data) => {
-        const fetchedSlots: Slot[] = data.slots ?? [];
+        if (data.error || !data.slots) {
+          setFetchError(true);
+          setLoading(false);
+          return;
+        }
+        const fetchedSlots: Slot[] = data.slots;
         setSlots(fetchedSlots);
         const grouped = groupByDate(fetchedSlots);
         const firstDate = Object.keys(grouped).sort()[0] ?? null;

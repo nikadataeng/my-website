@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 /* Rotating text circle ─────────────────────────────────────── */
 function RotatingCircle() {
-  const text = "BUILDING · VANTAGE · AT · SIGMA · COMPUTING · ";
+  const text = "Taking out SAAS everyday · Taking out SAAS everyday · ";
 
   return (
     <motion.div

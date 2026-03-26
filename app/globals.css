@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
-/* ─── Design Tokens ─────────────────────────────────────────── */
+/* ─── Design Tokens ───────────────────────────────────────────── */
 :root {
-  /* Colors */
-  --color-bg:       #FFFFFF;
-  --color-ink:      #0A0A0A;
-  --color-accent:   #4169E1;
-  --color-muted:    #6E6E6E;
-  --color-surface:  #F2F2F2;
-  --color-border:   #D4D4D4;
+  --color-bg:       #0A1A5C;
+  --color-ink:      #FFFFFF;
+  --color-accent:   #C8F135;
+  --color-muted:    rgba(255, 255, 255, 0.55);
+  --color-surface:  rgba(255, 255, 255, 0.07);
+  --color-border:   rgba(200, 241, 53, 0.25);
 
   /* Type scale */
   --text-hero:    clamp(72px, 10vw, 120px);
@@ -19,16 +18,20 @@
 
   /* Spacing */
   --section-gap: clamp(80px, 12vw, 140px);
+
+  /* Fonts */
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans:  var(--font-inter), Inter, sans-serif;
 }
 
 /* ─── Tailwind theme extension ──────────────────────────────── */
 @theme inline {
-  --color-bg:      #FFFFFF;
-  --color-ink:     #0A0A0A;
-  --color-accent:  #4169E1;
-  --color-muted:   #6E6E6E;
-  --color-surface: #F2F2F2;
-  --color-border:  #D4D4D4;
+  --color-bg:      #0A1A5C;
+  --color-ink:     #FFFFFF;
+  --color-accent:  #C8F135;
+  --color-muted:   rgba(255, 255, 255, 0.55);
+  --color-surface: rgba(255, 255, 255, 0.07);
+  --color-border:  rgba(200, 241, 53, 0.25);
 }
 
 /* ─── Base ──────────────────────────────────────────────────── */
@@ -42,27 +45,32 @@ html {
 }
 
 body {
-  background-color: var(--color-bg);
-  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23E8E8F0' stroke-width='1'%3E%3Cpath d='M40 0L0 0 0 40'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: 40px 40px;
+  background-color: #060E3A;
+  background-image: radial-gradient(ellipse at 50% 40%, #0D2070 0%, #0A1A5C 45%, #060E3A 100%);
+  background-attachment: fixed;
   color: var(--color-ink);
+  font-family: var(--font-sans);
   font-size: var(--text-body);
   line-height: 1.7;
 }
 
 /* ─── Typography helpers ────────────────────────────────────── */
 .text-hero {
+  font-family: var(--font-serif);
+  font-style: italic;
   font-size: var(--text-hero);
   font-weight: 900;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   line-height: 0.95;
 }
 
 .text-section {
+  font-family: var(--font-serif);
+  font-style: italic;
   font-size: var(--text-section);
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
 }
 
 .text-heading {
@@ -71,20 +79,11 @@ body {
 }
 
 .text-label {
+  font-family: var(--font-sans);
   font-size: var(--text-label);
   font-weight: 300;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-
-/* ─── LinkedIn icon hover ───────────────────────────────────── */
-.linkedin-icon {
-  color: var(--color-ink);
-  transition: color 150ms ease;
-}
-
-.linkedin-icon:hover {
-  color: var(--color-accent);
 }
 
 /* ─── Link reset ────────────────────────────────────────────── */
@@ -113,14 +112,24 @@ a {
   width: 100%;
 }
 
-/* ─── Hard shadow card (brutalist lift on hover) ────────────── */
+/* ─── LinkedIn icon hover ───────────────────────────────────── */
+.linkedin-icon {
+  color: var(--color-ink);
+  transition: color 150ms ease;
+}
+
+.linkedin-icon:hover {
+  color: var(--color-accent);
+}
+
+/* ─── Hard shadow card ──────────────────────────────────────── */
 .card-lift {
   transition: transform 150ms ease, box-shadow 150ms ease;
 }
 
 .card-lift:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 3px 3px 0px var(--color-ink);
+  box-shadow: 3px 3px 0px var(--color-accent);
 }
 
 /* ─── Grain overlay ─────────────────────────────────────────── */
@@ -130,7 +139,7 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.035;
+  opacity: 0.04;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-size: 128px 128px;
 }
