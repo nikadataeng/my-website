@@ -25,16 +25,27 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   PERSONAL THEME — Fashion Magazine
-   Pure black, white ink, #C8F135 acid-green accent
+   PERSONAL THEME — Vanity Fair Editorial
+   Near-white background, deep ink, burgundy accent, serif-forward
 ───────────────────────────────────────────────────────────── */
 [data-view="personal"] {
-  --color-bg:      #000000;
-  --color-ink:     #FFFFFF;
-  --color-accent:  #C8F135;
-  --color-muted:   rgba(255, 255, 255, 0.45);
-  --color-surface: rgba(255, 255, 255, 0.05);
-  --color-border:  rgba(255, 255, 255, 0.12);
+  --color-bg:      #FFFFFF;
+  --color-ink:     #0D0D0D;
+  --color-accent:  #9FB8C8;
+  --color-muted:   #6B6B6B;
+  --color-surface: #F7F5F0;
+  --color-border:  #E0DDD7;
+  --color-caption: #9A9490;
+
+  /* Monet Water Lilies accent palette */
+  --monet-lily-green: #89A89E;
+  --monet-mauve:      #B5B0C5;
+  --monet-blush:      #CCB8C2;
+  --monet-sage:       #9FAE98;
+  --monet-wheat:      #EAD992;
+  --monet-sky:        #9FB8C8;
+
+  --section-gap:   clamp(80px, 10vw, 120px);
 }
 
 /* ─── Tailwind extension (career defaults) ──────────────────── */
@@ -61,9 +72,9 @@ html {
   background-image: none;
 }
 
-/* ── Personal body: pure black ── */
+/* ── Personal body: pure white canvas (Vanity Fair) ── */
 [data-view="personal"] body {
-  background-color: #000000;
+  background-color: #FFFFFF;
   background-image: none;
 }
 
@@ -109,35 +120,67 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   TYPOGRAPHY — Personal (Fashion Magazine)
-   Everything is bigger, bolder, more dramatic
+   TYPOGRAPHY — Personal (Vanity Fair Editorial)
+   Serif display, editorial hierarchy, restrained luxury
 ───────────────────────────────────────────────────────────── */
 [data-view="personal"] .text-hero {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(72px, 12vw, 160px);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 0.88;
+  font-size: clamp(56px, 9vw, 130px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  color: var(--color-ink);
 }
 
 [data-view="personal"] .text-section {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(48px, 7vw, 96px);
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 0.95;
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.0;
   text-transform: none;
+  color: var(--color-ink);
 }
 
 [data-view="personal"] .text-label {
   font-family: var(--font-sans);
   font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.18em;
+  font-weight: 500;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-muted);
+}
+
+/* ── Editorial pullquote ── */
+[data-view="personal"] .text-pullquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-ink);
+}
+
+/* ── Pull quote block — thin rules top/bottom, VF style ── */
+[data-view="personal"] .pullquote-block {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.5rem 0;
+  margin: 2rem 0;
+}
+
+/* ── Drop cap — red, signature VF treatment ── */
+[data-view="personal"] .drop-cap::first-letter {
+  font-family: var(--font-serif);
+  font-size: clamp(56px, 6vw, 80px);
+  font-weight: 900;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.12em;
+  margin-top: 0.08em;
+  color: var(--color-accent);
 }
 
 /* ─── Shared heading + body helpers ─────────────────────────── */
@@ -191,8 +234,8 @@ a {
 }
 
 [data-view="personal"] .card-lift:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 3px 3px 0px var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -206,17 +249,7 @@ a {
 }
 
 [data-view="personal"] .editorial-rule {
-  border-top-color: var(--color-accent);
+  border-top-color: var(--color-ink);
 }
 
-/* ─── Grain overlay (personal only) ────────────────────────── */
-[data-view="personal"] body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 128px 128px;
-}
+/* ─── No grain overlay for editorial personal view ─────────── */

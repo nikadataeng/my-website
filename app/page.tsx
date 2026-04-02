@@ -15,9 +15,9 @@ import Footer from "@/components/Footer";
 
 // Personal view
 import PersonalHero from "@/components/personal/PersonalHero";
-import WorldMap from "@/components/personal/WorldMap";
+import EditorialFeature from "@/components/personal/EditorialFeature";
+import BookOfTheMonth from "@/components/personal/BookOfTheMonth";
 import Hobbies from "@/components/personal/Hobbies";
-import CurrentlyLearning from "@/components/personal/CurrentlyLearning";
 import WorthReading from "@/components/personal/WorthReading";
 
 export default function Home() {
@@ -52,9 +52,9 @@ export default function Home() {
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
           <PersonalHero />
-          <WorldMap />
+          <EditorialFeature />
+          <BookOfTheMonth />
           <Hobbies />
-          <CurrentlyLearning />
           <WorthReading />
           <Footer />
         </motion.div>

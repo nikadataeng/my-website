@@ -3,7 +3,8 @@
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import ScrollReveal from "../ScrollReveal";
 
-const GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
+const GEO_URL =
+  "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
 const VISITED_CODES = new Set([
   "840", // USA
@@ -16,6 +17,16 @@ const VISITED_CODES = new Set([
   "704", // Vietnam
   "484", // Mexico
   "826", // UK
+  "116", // Cambodia
+  "104", // Myanmar
+  "418", // Laos
+  "144", // Sri Lanka
+  "608", // Philippines
+  "360", // Indonesia
+  "524", // Nepal
+  "064", // Bhutan
+  "458", // Malaysia
+  "344", // Hong Kong
 ]);
 
 const COUNTRY_COUNT = VISITED_CODES.size;
@@ -23,44 +34,57 @@ const COUNTRY_COUNT = VISITED_CODES.size;
 export default function WorldMap() {
   return (
     <section
-      className="px-6 md:px-12 lg:px-20"
       style={{
-        borderBottom: "1px solid rgba(255,255,255,0.08)",
-        paddingTop: "var(--section-gap)",
-        paddingBottom: "var(--section-gap)",
+        background: "var(--color-surface)",
+        borderBottom: "1px solid var(--color-border)",
+        paddingTop: "var(--section-gap, 100px)",
+        paddingBottom: "var(--section-gap, 100px)",
       }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
 
-        {/* Section header */}
+        {/* ── Section kicker ── */}
         <ScrollReveal>
-          <div className="mb-12">
-            <div
-              className="mb-4"
-              style={{ borderTop: "1px solid rgba(255,255,255,0.15)", paddingTop: "1rem" }}
+          <div
+            style={{
+              borderTop: "3px solid var(--color-ink)",
+              paddingTop: "1rem",
+              marginBottom: "3rem",
+              display: "flex",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "0.5rem",
+            }}
+          >
+            <span className="text-label" style={{ color: "var(--color-accent)" }}>
+              Travel: World Map
+            </span>
+            <span className="text-label" style={{ color: "var(--color-muted)" }}>
+              Passport Stamps
+            </span>
+          </div>
+        </ScrollReveal>
+
+        {/* Header */}
+        <ScrollReveal>
+          <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
+            <h2 className="text-section">
+              The world,<br />so far.
+            </h2>
+            <p
+              style={{
+                fontFamily: "var(--font-serif)",
+                fontStyle: "italic",
+                fontSize: "clamp(48px, 6vw, 72px)",
+                fontWeight: 700,
+                color: "var(--color-accent)",
+                lineHeight: 1,
+                letterSpacing: "-0.02em",
+              }}
             >
-              <span className="text-label" style={{ color: "var(--color-muted)" }}>
-                Passport Stamps
-              </span>
-            </div>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <h2 className="text-section" style={{ color: "var(--color-ink)" }}>
-                The world,<br />so far.
-              </h2>
-              <p
-                style={{
-                  fontFamily: "var(--font-serif)",
-                  fontStyle: "italic",
-                  fontSize: "clamp(48px, 6vw, 72px)",
-                  fontWeight: 900,
-                  color: "var(--color-accent)",
-                  lineHeight: 1,
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                {COUNTRY_COUNT}
-              </p>
-            </div>
+              {COUNTRY_COUNT}
+            </p>
           </div>
         </ScrollReveal>
 
@@ -74,20 +98,22 @@ export default function WorldMap() {
               <Geographies geography={GEO_URL}>
                 {({ geographies }) =>
                   geographies.map((geo) => {
-                    const id: string = String(geo.id ?? geo.properties?.["numeric"] ?? "");
+                    const id: string = String(
+                      geo.id ?? geo.properties?.["numeric"] ?? ""
+                    );
                     const visited = VISITED_CODES.has(id);
                     return (
                       <Geography
                         key={geo.rsmKey}
                         geography={geo}
-                        fill={visited ? "#C8F135" : "rgba(255,255,255,0.06)"}
-                        stroke="rgba(255,255,255,0.08)"
+                        fill={visited ? "#7B1C2E" : "#D8D3CC"}
+                        stroke="#FAFAF8"
                         strokeWidth={0.5}
                         style={{
                           default: { outline: "none" },
                           hover: {
                             outline: "none",
-                            fill: visited ? "#D9FF50" : "rgba(255,255,255,0.12)",
+                            fill: visited ? "#A02540" : "#C0BAAF",
                           },
                           pressed: { outline: "none" },
                         }}
@@ -106,7 +132,13 @@ export default function WorldMap() {
             className="mt-6 text-label"
             style={{ color: "var(--color-muted)" }}
           >
-            USA · India · Japan · China · South Korea · Thailand · Singapore · Vietnam · Mexico · UK
+            USA &nbsp;·&nbsp; India &nbsp;·&nbsp; Japan &nbsp;·&nbsp; China
+            &nbsp;·&nbsp; South Korea &nbsp;·&nbsp; Thailand &nbsp;·&nbsp;
+            Singapore &nbsp;·&nbsp; Vietnam &nbsp;·&nbsp; Mexico &nbsp;·&nbsp;
+            UK &nbsp;·&nbsp; Cambodia &nbsp;·&nbsp; Myanmar &nbsp;·&nbsp;
+            Laos &nbsp;·&nbsp; Sri Lanka &nbsp;·&nbsp; Philippines &nbsp;·&nbsp;
+            Indonesia &nbsp;·&nbsp; Nepal &nbsp;·&nbsp; Bhutan &nbsp;·&nbsp;
+            Malaysia &nbsp;·&nbsp; Hong Kong
           </p>
         </ScrollReveal>
 

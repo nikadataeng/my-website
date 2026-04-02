@@ -17,7 +17,7 @@ export default function Nav() {
   const { view } = useView();
   const isPersonal = view === "personal";
 
-  const navBg = isPersonal ? "rgba(0,0,0,0.92)" : "rgba(247,244,238,0.93)";
+  const navBg = isPersonal ? "rgba(250,250,248,0.93)" : "rgba(247,244,238,0.93)";
   const borderColor = isPersonal ? "rgba(255,255,255,0.10)" : "var(--color-border)";
 
   return (
@@ -33,7 +33,7 @@ export default function Nav() {
             className="font-bold text-sm tracking-tight"
             style={{ color: "var(--color-ink)" }}
           >
-            ayonika
+            Ayonika Bose
           </Link>
 
           {/* Desktop nav */}

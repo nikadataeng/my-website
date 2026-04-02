@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#D6CFC4"/>
+  <rect x="0" y="0" width="1200" height="800" fill="url(#grain)" opacity="0.3"/>
+  <defs>
+    <filter id="grain-filter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <pattern id="grain" width="200" height="200" patternUnits="userSpaceOnUse">
+      <rect width="200" height="200" filter="url(#grain-filter)" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <text x="600" y="390" font-family="Georgia, serif" font-size="18" fill="#8B8075" text-anchor="middle" letter-spacing="4">EDITORIAL PHOTOGRAPH</text>
+  <text x="600" y="420" font-family="Georgia, serif" font-size="13" fill="#A09890" text-anchor="middle" letter-spacing="2">Add your photo here</text>
+  <line x1="480" y1="405" x2="560" y2="405" stroke="#A09890" stroke-width="0.5"/>
+  <line x1="640" y1="405" x2="720" y2="405" stroke="#A09890" stroke-width="0.5"/>
+</svg>
