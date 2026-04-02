@@ -14,24 +14,29 @@ const ViewContext = createContext<ViewContextValue>({
   setView: () => {},
 });
 
+function viewFromPath(pathname: string): View {
+  if (pathname === "/personal") return "personal";
+  return "career";
+}
+
 export function ViewProvider({ children }: { children: React.ReactNode }) {
   const [view, setViewState] = useState<View>("career");
 
-  // Read from localStorage on mount
+  // Read from URL path on mount
   useEffect(() => {
-    const stored = localStorage.getItem("site-view") as View | null;
-    if (stored === "career" || stored === "personal") {
-      setViewState(stored);
-    }
+    setViewState(viewFromPath(window.location.pathname));
   }, []);
 
-  // Apply data-view attribute + persist on change
+  // Apply data-view attribute on change
   useEffect(() => {
     document.documentElement.setAttribute("data-view", view);
-    localStorage.setItem("site-view", view);
   }, [view]);
 
-  const setView = (v: View) => setViewState(v);
+  const setView = (v: View) => {
+    setViewState(v);
+    const path = v === "personal" ? "/personal" : "/";
+    window.history.pushState(null, "", path);
+  };
 
   return (
     <ViewContext.Provider value={{ view, setView }}>
