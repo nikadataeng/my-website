@@ -13,7 +13,7 @@
   --color-surface: #EDEAE2;
   --color-border:  #D8D3C8;
 
-  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-serif: "Playfair Display", Georgia, serif;
   --font-sans:  var(--font-inter), Inter, sans-serif;
 
   --text-hero:    clamp(64px, 9vw, 112px);
