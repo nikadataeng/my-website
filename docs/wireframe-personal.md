@@ -3,7 +3,8 @@
 **Theme:** Vanity Fair Editorial — pure white canvas, Playfair Display serif-forward, Monet sky-blue accent (#9FB8C8)  
 **Audience:** Friends, collaborators, curious visitors — the human behind the engineer  
 **Tone:** Witty, warm, opinionated. Magazine feature, not resume.  
-**URL state:** Activated when `view === "personal"` in ViewContext
+**URL state:** Activated when `view === "personal"` in ViewContext  
+**Direct URL:** `/personal` (shareable link via Next.js rewrite)
 
 ---
 
@@ -37,7 +38,7 @@ This section documents gaps between what the wireframe currently specifies and w
 
 ### 0.2 Monet Accent Palette
 
-**Current wireframe:** Only `--color-accent: #C8102E` (burgundy-red) is specified.
+**Current wireframe:** `--color-accent: #9FB8C8` (Monet sky-blue) is the primary accent.
 
 **Canonical spec:** The personal view uses the full **Monet Accent Palette** drawn from *Water Lilies*. No more than 2–3 Monet accents should appear per view simultaneously.
 
@@ -58,11 +59,9 @@ This section documents gaps between what the wireframe currently specifies and w
 | Editorial header accent line (under/beside title) | `--monet-lily-green` or `--monet-mauve`, 1px |
 | Card hover glow ring | `--monet-lily-green` at 15% opacity (see § 0.3) |
 | Hero gradient wash background | Impressionist gradient (see § 0.8) |
-| World Map — visited country fill | Keep existing dark burgundy `#7B1C2E` (matches `--color-accent`) |
-| World Map — unvisited country fill | `--monet-sky` (`#9FB8C8`) or current beige — both are acceptable |
-| Stat numbers / accent numbers | `--color-accent` (#C8102E) — keep as-is, this is intentional editorial red |
+| Stat numbers / accent numbers | `--color-accent` (#9FB8C8) — Monet sky-blue |
 
-The burgundy `--color-accent` is intentional for editorial drop caps, stat numbers, and the world map. The Monet palette supplements it for softer UI moments; they are not interchangeable.
+The Monet sky-blue `--color-accent` is the primary highlight for drop caps, stat numbers, section tags, and accent lines. The Monet palette supplements it for softer UI moments.
 
 ---
 
@@ -355,7 +354,6 @@ Special accent used only in Nav/Toggle:
 | Card lift | 200ms | ease | `translateY(-2px)` + `box-shadow: 0 6px 24px rgba(0,0,0,0.08)` |
 | Page cross-fade | 0.3s | `easeOut` | View switch (AnimatePresence) |
 | Toggle pill spring | stiffness 500, damping 40 | spring | ViewToggle → Monet lily-green pill |
-| Map hover | — | — | Country highlight on WorldMap |
 
 **Design Language Note — canonical easing alignment:** See § 0.6 for the full canonical easing token table and a mapping of each pattern above to its canonical equivalent. Key changes: ScrollReveal should use `--ease-out` (cubic-bezier(0.0, 0.0, 0.2, 1)) at `--duration-reveal` (600ms); card lift should use `--ease-out` at `--duration-base` (220ms); page cross-fade should use `--ease-out` at `--duration-slow` (350ms). The canonical fade-up translate distance is **12px**, not 20px — prefer 12px for new components.
 
@@ -406,64 +404,52 @@ Same as career — scales from left. Used as section dividers throughout persona
 ║  ┌─────────────────────────────┬──────────────────────────────┐  ║
 ║  │ THE LIFE OF NIKA            │                              │  ║
 ║  │ Vol. I · Spring 2026        │   ┌────────────────────┐     │  ║
-║  │ Bay Area, CA                │   │                    │     │  ║
-║  │                             │   │   [cover photo]    │     │  ║
+║  │ SF · NYC                    │   │                    │     │  ║
+║  │                             │   │ [hero photo.jpeg]  │     │  ║
 ║  │ Ayonika                     │   │   4:5 ratio        │     │  ║
 ║  │ ("Nika")                    │   │                    │     │  ║
 ║  │                             │   └────────────────────┘     │  ║
-║  │ Applied AI engineer. Space nerd...  │   Ayonika Bose · Bay Area     │  ║
+║  │ Applied AI engineer. Space nerd...  │   Ayonika Bose · SF · NYC     │  ║
 ║  │                             │                              │  ║
 ║  │ In this issue ──────────    │                              │  ║
 ║  │ TRAVEL · CULTURE            │                              │  ║
-║  │ LIFE · DISPATCH             │                              │  ║
+║  │ LIFE · READING              │                              │  ║
 ║  │                             │                              │  ║
 ║  │ ┌──────┬──────┬──────────┐  │                              │  ║
-║  │ │  19  │  2   │    ∞     │  │                              │  ║
+║  │ │  20  │  2   │    ∞     │  │                              │  ║
 ║  │ │Cntry │ Cats │ Tabs open│  │                              │  ║
 ║  │ └──────┴──────┴──────────┘  │                              │  ║
 ║  └─────────────────────────────┴──────────────────────────────┘  ║
 ║                                                                  ║
 ╠══════════════════════════════════════════════════════════════════╣
 ║                                                                  ║
-║  EDITORIAL FEATURE — Travel                                      ║
+║  EDITORIAL FEATURE: Travel                                       ║
 ║  ┌──────────────────────────────────────────────────────────┐    ║
-║  │ Feature — Travel, Passport Stamps                        │    ║
-║  │ ┌──────────────────────┐  Nineteen countries, one passport.   │    ║
-║  │ │  [travel image 3:2]  │                                 │    ║
-║  │ └──────────────────────┘  ── pullquote ──                │    ║
-║  │                            body text (drop cap)          │    ║
-║  │  Country list (2-col):                                   │    ║
+║  │ Feature: Travel, Passport Stamps                         │    ║
+║  │ ┌──────────────────────┐  Twenty countries, one passport.│    ║
+║  │ │ [mom and me in nyc]  │                                 │    ║
+║  │ │      3:4 ratio       │  ── pullquote ──                │    ║
+║  │ └──────────────────────┘  body text (drop cap)           │    ║
+║  │  Country list (2-col, 20 countries):                     │    ║
 ║  │  Japan · India · Thailand · South Korea · Singapore      │    ║
-║  │  Vietnam · UK · Mexico · China · USA                     │    ║
-║  └──────────────────────────────────────────────────────────┘    ║
-║                                                                  ║
-╠══════════════════════════════════════════════════════════════════╣
-║                                                                  ║
-║  WORLD MAP                                                       ║
-║  ┌──────────────────────────────────────────────────────────┐    ║
-║  │ Travel — World Map                             19        │    ║
-║  │ The world, so far.                                       │    ║
-║  │                                                          │    ║
-║  │         [interactive react-simple-maps SVG]              │    ║
-║  │         visited = dark burgundy / unvisited = beige      │    ║
-║  │                                                          │    ║
-║  │ USA · India · Japan · China · South Korea ·              │    ║
-║  │ Thailand · Singapore · Vietnam · Mexico · UK             │    ║
+║  │  Vietnam · UK · Mexico · China · Cambodia · Myanmar      │    ║
+║  │  Laos · Sri Lanka · Philippines · Indonesia · Nepal      │    ║
+║  │  Bhutan · Malaysia · Hong Kong · USA                     │    ║
 ║  └──────────────────────────────────────────────────────────┘    ║
 ║                                                                  ║
 ╠══════════════════════════════════════════════════════════════════╣
 ║                                                                  ║
 ║  BOOK OF THE MONTH                                               ║
 ║  ┌──────────────────────────────────────────────────────────┐    ║
-║  │ Culture — Books, March 2026                              │    ║
+║  │ Culture: Books, April 2026                               │    ║
 ║  │                                                          │    ║
-║  │  ┌────────┐  The Remains of the Day                      │    ║
-║  │  │ [book  │  Kazuo Ishiguro · 1989                       │    ║
-║  │  │ cover  │  ★★★★★  Finished                             │    ║
+║  │  ┌────────┐  Project Hail Mary                           │    ║
+║  │  │ [book  │  Andy Weir · 2021                            │    ║
+║  │  │ cover  │  ★★★★★  Currently Reading                    │    ║
 ║  │  │  2:3   │                                              │    ║
 ║  │  └────────┘  ── pullquote ──                             │    ║
 ║  │              review text                                 │    ║
-║  │              By NIKA · March 2026                        │    ║
+║  │              By NIKA · April 2026                        │    ║
 ║  └──────────────────────────────────────────────────────────┘    ║
 ║                                                                  ║
 ╠══════════════════════════════════════════════════════════════════╣
@@ -473,26 +459,14 @@ Same as career — scales from left. Used as section dividers throughout persona
 ║  │ Life & Obsessions, Currently Obsessing Over              │    ║
 ║  │                                                          │    ║
 ║  │ ┌──────────────────────┬──────────────────────────────┐  │    ║
-║  │ │  [Labubu image]      │ COLLECTIBLES                 │  │    ║
-║  │ │                      │ Labubu                       │  │    ║
-║  │ │                      │ "The blind box addiction..." │  │    ║
+║  │ │  [Space image]       │ THE UNIVERSE                 │  │    ║
+║  │ │                      │ Space.                       │  │    ║
+║  │ │                      │ "Orbital mechanics..."       │  │    ║
 ║  │ └──────────────────────┴──────────────────────────────┘  │    ║
 ║  │                                                          │    ║
 ║  │ ┌──────────┬──────────┬──────────┬──────────┬─────────┐  │    ║
-║  │ │  Space   │The Girls │Ceramics  │  Table   │Internet │  │    ║
-║  │ │          │          │& Ikebana │  Tennis  │         │  │    ║
-║  └──────────────────────────────────────────────────────────┘    ║
-║                                                                  ║
-╠══════════════════════════════════════════════════════════════════╣
-║                                                                  ║
-║  CURRENTLY LEARNING                                              ║
-║  ┌──────────────────────────────────────────────────────────┐    ║
-║  │ Dispatch — Tech, Brain Rot, Productive Edition           │    ║
-║  │ Deep in it.                                              │    ║
-║  │                                                          │    ║
-║  │  01  MCPs                                                │    ║
-║  │  02  Subagents                                           │    ║
-║  │  03  Skills                                              │    ║
+║  │ │The Girls │Ceramics  │ Ikebana  │  Table   │Internet │  │    ║
+║  │ │          │          │          │  Tennis  │         │  │    ║
 ║  └──────────────────────────────────────────────────────────┘    ║
 ║                                                                  ║
 ╠══════════════════════════════════════════════════════════════════╣
@@ -525,25 +499,25 @@ Same as career — scales from left. Used as section dividers throughout persona
 **Left Column — Masthead:**
 ```
 Kicker:    THE LIFE OF NIKA
-           Vol. I · Spring 2026 · Bay Area, CA
+           Vol. I · Spring 2026 · SF · NYC
 
-Name:      Ayonika          ← large serif italic, .text-hero
+Name:      Ayonika          ← large serif italic, .text-hero (margin-bottom: 1.5rem)
            ("Nika")         ← muted gray, smaller
 
 Byline:    Applied AI engineer. Space nerd. Chronically online. Cat mom ×2.
-           Nineteen countries and counting.
+           Twenty countries and counting.
 
-Cover lines (IN THIS ISSUE):
+Cover lines (IN THIS ISSUE) — each is a clickable anchor link:
   ─────────────────────────────
-  TRAVEL   Nineteen countries, one passport
-  CULTURE  The book that broke me (in a good way)
-  LIFE     Labubu, ceramics, and other obsessions
-  DISPATCH Currently deep in: MCPs, subagents, skills
+  TRAVEL   Twenty Countries, One Passport        → #travel
+  CULTURE  What She's Reading This Month          → #culture
+  LIFE     What Nika Found Chic This Month        → #life
+  READING  Worth Your Time                        → #reading
   ─────────────────────────────
 
 Stats grid:
   ┌──────────┬──────────┬──────────────┐
-  │    19    │    2     │      ∞       │
+  │    20    │    2     │      ∞       │
   │ Countries│  Cats in │  Tabs open   │
   │          │  charge  │              │
   └──────────┴──────────┴──────────────┘
@@ -552,8 +526,8 @@ Stats grid:
 
 **Right Column — Cover Image:**
 ```
-Placeholder: 4:5 aspect ratio image container
-Caption:     "Ayonika Bose · Bay Area"  (--color-caption, 11px)
+Image:       hero photo.jpeg (4:5 aspect ratio)
+Caption:     "Ayonika Bose · SF · NYC"  (--color-caption, 11px)
 ```
 
 **Design:**
@@ -577,10 +551,10 @@ Caption:     "Ayonika Bose · Bay Area"  (--color-caption, 11px)
 - Masthead lines: staggered fade-in (scroll reveal on load)
 - Stats grid: slight stagger between cells
 
-**TODO:**
-- Replace placeholder with actual photo (4:5 portrait)
-- "In this issue" cover lines should link to their respective sections (smooth scroll)
-- Stats could eventually be dynamic (travel count updates with new countries)
+**DONE:**
+- ✓ Hero photo added (hero photo.jpeg)
+- ✓ Cover lines are clickable anchor links with smooth scroll
+- ✓ Name spacing fixed (1.5rem margin between Ayonika and "Nika")
 
 ---
 
@@ -590,22 +564,23 @@ Caption:     "Ayonika Bose · Bay Area"  (--color-caption, 11px)
 
 **Content:**
 ```
-Section tag:  Feature — Travel, Passport Stamps
+Section tag:  Feature: Travel, Passport Stamps
 
-Image:        3:2 aspect ratio placeholder
-Caption:      "Nineteen countries across three continents"
+Image:        mom and me in nyc.jpg (3:4 portrait ratio)
+Caption:      "Twenty countries across four continents"
 
-Headline:     Nineteen countries, one passport.
+Headline:     Twenty countries, one passport.
 
-Pullquote:    "Every airport is a new sentence. Every city, a new paragraph."
+Pullquote:    "I still have all of my boarding passes from each flight to a new country."
               (thin border-top + border-bottom, centered, italic)
 
 Body copy (with drop cap on first paragraph):
-  "I travel the way I code: ship fast, break things, iterate. 
-   [remaining travel philosophy paragraph]"
-  [second paragraph about travel experience]
+  "My first flights were long ones. I was the kid in the middle seat
+   with an activity book and a juice box while my parents crossed oceans
+   to build a new life for our family..."
+  [second paragraph: "Every trip since has been a quiet thank-you..."]
 
-Country list (2 columns):
+Country list (2 columns, 20 countries):
   Japan         Cherry blossoms & vending machine everything
   India         Where the chaos is the point
   Thailand      Best pad thai, no debate
@@ -615,6 +590,16 @@ Country list (2 columns):
   UK            London fog and the Tate Modern
   Mexico        Tacos and cenotes
   China         The Great Wall at dusk
+  Cambodia      Angkor Wat at dawn
+  Myanmar       Temples as far as the eye can see
+  Laos          The slow life on the Mekong
+  Sri Lanka     Tea country and train rides
+  Philippines   Island-hopping paradise
+  Indonesia     Bali sunsets and temple mornings
+  Nepal         The Himalayas up close
+  Bhutan        Happiness is a national policy
+  Malaysia      Street food capital of the world
+  Hong Kong     Neon skyline meets dim sum
   USA           Home base, Bay Area edition
 ```
 
@@ -638,71 +623,18 @@ Country list (2 columns):
 - Body paragraphs: staggered ScrollReveal
 - Country list rows: stagger 0.06s × index
 
-**TODO:**
-- Replace image placeholder with actual travel photo
-- Country descriptions could link to travel notes/blog posts
-- Could add a "next destination" teaser at the bottom
+**DONE:**
+- ✓ Travel photo added (mom and me in nyc.jpg, 3:4 portrait)
+- ✓ Body copy rewritten for gratitude tone
+- ✓ Pullquote updated
+- ✓ Country list expanded to 20
+- ✓ Em dashes replaced with colons throughout
 
 ---
 
-### WORLD MAP — `components/personal/WorldMap.tsx`
+### ~~WORLD MAP~~ — REMOVED
 
-**Layout:** Full-width section. Large number accent top-right. Map SVG below. Country list below map.
-
-**Content:**
-```
-Section tag:  Travel — World Map, Passport Stamps
-Headline:     The world, so far.
-Accent number: 10  (large, --color-accent)
-
-Map:          Interactive SVG world map via react-simple-maps
-              Visited countries: dark burgundy (#7B1C2E)
-              Unvisited countries: light beige (#F0EDE6 or similar)
-              Hover: slight brightness change
-
-Country list (single row, spaced):
-  USA · India · Japan · China · South Korea ·
-  Thailand · Singapore · Vietnam · Mexico · UK
-```
-
-**Visited country codes (numeric):**
-```
-840  (USA)
-356  (India)
-392  (Japan)
-156  (China)
-410  (South Korea)
-764  (Thailand)
-702  (Singapore)
-704  (Vietnam)
-484  (Mexico)
-826  (United Kingdom)
-```
-
-**Dependencies:** `react-simple-maps` v3, types in `types/react-simple-maps.d.ts`
-
-**Design:**
-- Section tag: `.text-label`
-- Headline: `.text-section`, Playfair italic
-- `10` accent number: ~80–100px, weight 900, `--color-accent`, right-aligned or inline
-- Map: full container width, responsive height (~450–500px desktop)
-- Country list: Inter, 13–14px, `--color-muted`, dot separators
-
-**Design Language Note — section tag:** Use Monet-wash badge (§ 0.7) for "Travel — World Map" kicker.
-
-**Design Language Note — headline font:** `.text-section` → Cormorant Garamond weight 300–400 (§ 0.1). Add thin 1px `--monet-lily-green` accent line beside/below headline per Editorial Header pattern.
-
-**Design Language Note — map colors:** Canonical suggests `--monet-sky` (#9FB8C8) as an alternative to the current beige for unvisited countries. The existing dark burgundy (#7B1C2E) for visited countries is editorially appropriate and compatible with `--color-accent`.
-
-**Animations:**
-- Section enters via ScrollReveal
-- Map fades in after section enters
-- No per-country animation currently
-
-**TODO:**
-- Tooltip on country hover showing country name + visit note
-- Click on country → expand a brief trip note or photo
-- Mobile: map can feel small — consider a simplified mobile treatment
+**Status:** Removed from personal view. Countries are already listed in the Editorial Feature section, making the map redundant. The `react-simple-maps` dependency was also incompatible with React 19 and has been uninstalled. Component file (`WorldMap.tsx`) still exists but is not imported.
 
 ---
 
@@ -712,24 +644,23 @@ Country list (single row, spaced):
 
 **Content:**
 ```
-Section tag:   Culture — Books, March 2026
+Section tag:   Culture: Books, April 2026
 
 Book cover:    2:3 aspect ratio placeholder image
 Rating:        ★★★★★ (5 stars)
-Status badge:  "Finished"
+Status badge:  "Currently Reading"
 
-Title:         The Remains of the Day
-Author:        Kazuo Ishiguro
-Year / Genre:  1989 · Literary Fiction
+Title:         Project Hail Mary
+Author:        Andy Weir
+Year / Genre:  2021 · Science Fiction
 
-Pullquote:     "It is, I believe, a matter of crucial importance that one 
-               does not embarrass one's employer."
+Pullquote:     "I'm pretty sure this is a one-way trip. But if I can save Earth, it's worth it."
 
 Review body:
-  [Analysis of Ishiguro's unreliable narrator, Stevens' suppression of 
-  emotion, reading experience, why it resonated — ~2–3 paragraphs]
+  [Andy Weir at interstellar scale, lone astronaut, friendship at
+  the heart of sci-fi, perfect for the space nerd in me]
 
-Byline:        By NIKA · March 2026
+Byline:        By NIKA · April 2026
 ```
 
 **Design:**
@@ -768,31 +699,31 @@ Byline:        By NIKA · March 2026
 
 **Content:**
 
-**Featured card — Labubu:**
+**Featured card — Space:**
 ```
-Tag:         COLLECTIBLES
-Title:       Labubu
-Image:       Left column, square or 4:5 ratio placeholder
-Description: "The blind box addiction is real. PopMart has my wallet held 
-             hostage and I am not even remotely sorry about it."
+Tag:         THE UNIVERSE
+Title:       Space.
+Image:       Left column, 4:3 ratio
+Description: "Orbital mechanics. James Webb images. The cosmos is the 
+             original algorithm and I am obsessed."
 ```
 
 **Grid of 5 secondary obsessions:**
 ```
-1. Space
-   Tag:  THE UNIVERSE
-   Body: "Orbital mechanics. James Webb images. The cosmos is the original 
-         algorithm and I am obsessed."
-
-2. The Girls
+1. The Girls
    Tag:  HOME BASE
    Body: "Two cats. Zero respect for my sleep schedule. Absolute rulers of 
          the apartment."
 
-3. Ceramics & Ikebana
+2. Ceramics
    Tag:  SLOW CRAFT
    Body: "Making things with my hands while my brain runs inference. Clay 
          therapy, essentially."
+
+3. Ikebana
+   Tag:  ARRANGEMENT
+   Body: "The Japanese art of flower arrangement. Minimalism, intention, 
+         and knowing when to stop."
 
 4. Table Tennis
    Tag:  IRL SPORT
@@ -839,52 +770,9 @@ Description: "The blind box addiction is real. PopMart has my wallet held
 
 ---
 
-### CURRENTLY LEARNING — `components/personal/CurrentlyLearning.tsx`
+### ~~CURRENTLY LEARNING~~ — REMOVED
 
-**Layout:** Single column, numbered list. Clean, minimal. Left-aligned.
-
-**Content:**
-```
-Section tag:  Dispatch — Tech, Brain Rot, Productive Edition
-Headline:     Deep in it.
-
-01  MCPs — Model Context Protocol
-    "Anthropic's standard for connecting AI models to tools and data 
-    sources. The plumbing that makes agents actually useful."
-
-02  Subagents
-    "Orchestrating fleets of specialized AI agents for complex multi-step 
-    workflows. Delegation, but make it artificial."
-
-03  Skills
-    "Building reusable, composable AI capabilities that can be invoked 
-    like functions. Modular intelligence."
-```
-
-**Design:**
-- Section tag: `.text-label`
-- Headline: `.text-section`, Playfair italic
-- Item number: large, `--color-accent`, weight 900, ~48–64px — decorative, left-aligned
-- Item title: Inter, bold, 20–24px, `--color-ink`
-- Item description: Inter, 15–17px, `--color-muted`, max-width ~prose
-- Thin `--color-border` rule between items
-- No cards — open list treatment
-
-**Design Language Note — section tag:** Use Monet-wash badge (§ 0.7) for "Dispatch — Tech" kicker.
-
-**Design Language Note — headline font:** `.text-section` → Cormorant Garamond weight 300–400 (§ 0.1). Thin 1px accent line below headline.
-
-**Design Language Note — divider:** The `--color-border` rule between items should be `border-top: 1px solid var(--color-border)` with `margin: 32px 0` (`--space-8`). No `<hr>` element.
-
-**Design Language Note — item description prose:** Max-width 680px per § 0.10. The current "~prose" notation maps to exactly 680px canonically.
-
-**Animations:**
-- Items stagger on scroll: 0.08s × index via ScrollReveal
-
-**TODO:**
-- This should update as learning focus changes — consider making data-driven
-- Could link to relevant resources, projects, or notes per item
-- Add a "completed / graduated from" section below (things mastered)
+**Status:** Removed from personal view. This content belongs on the career view. Component file (`CurrentlyLearning.tsx`) still exists but is not imported in the personal page layout.
 
 ---
 
@@ -954,47 +842,44 @@ Headline:     Worth your time.
 
 | Section | Item | Content |
 |---|---|---|
-| Hero | Kicker | "THE LIFE OF NIKA · Vol. I · Spring 2026 · Bay Area, CA" |
-| Hero | Name | "Ayonika" |
+| Hero | Kicker | "THE LIFE OF NIKA · Vol. I · Spring 2026 · SF · NYC" |
+| Hero | Name | "Ayonika" (margin-bottom: 1.5rem to clear descenders) |
 | Hero | Subtitle | `("Nika")` |
-| Hero | Byline | "Applied AI engineer. Space nerd. Chronically online. Cat mom ×2. Nineteen countries and counting." |
-| Hero | Cover lines | TRAVEL, CULTURE, LIFE, DISPATCH (4 items) |
-| Hero | Stat 1 | 10 Countries |
+| Hero | Byline | "Applied AI engineer. Space nerd. Chronically online. Cat mom ×2. Twenty countries and counting." |
+| Hero | Cover lines | TRAVEL, CULTURE, LIFE, READING (4 clickable anchor links) |
+| Hero | Stat 1 | 20 Countries |
 | Hero | Stat 2 | 2 Cats in charge |
 | Hero | Stat 3 | ∞ Tabs open |
-| Editorial Feature | Headline | "Nineteen countries, one passport." |
-| Editorial Feature | Pullquote | "Every airport is a new sentence. Every city, a new paragraph." |
-| Editorial Feature | Body | travel philosophy copy (drop cap paragraph + following) |
-| Editorial Feature | Countries | 19 countries with descriptions (see section above) |
-| World Map | Headline | "The world, so far." |
-| World Map | Country list | USA · India · Japan · China · South Korea · Thailand · Singapore · Vietnam · Mexico · UK |
-| Book of Month | Book | "The Remains of the Day" by Kazuo Ishiguro, 1989, Literary Fiction |
-| Book of Month | Pullquote | "It is, I believe, a matter of crucial importance..." |
-| Book of Month | Byline | "By NIKA · March 2026" |
-| Hobbies | Featured | Labubu — COLLECTIBLES |
-| Hobbies | Grid 1 | Space — THE UNIVERSE |
-| Hobbies | Grid 2 | The Girls — HOME BASE |
-| Hobbies | Grid 3 | Ceramics & Ikebana — SLOW CRAFT |
-| Hobbies | Grid 4 | Table Tennis — IRL SPORT |
-| Hobbies | Grid 5 | The Internet — ALWAYS LOGGED ON |
-| Currently Learning | Headline | "Deep in it." |
-| Currently Learning | Item 1 | MCPs — Model Context Protocol |
-| Currently Learning | Item 2 | Subagents |
-| Currently Learning | Item 3 | Skills |
+| Hero | Photo | hero photo.jpeg (real image) |
+| Hero | Caption | "Ayonika Bose · SF · NYC" |
+| Editorial Feature | Headline | "Twenty countries, one passport." |
+| Editorial Feature | Pullquote | "I still have all of my boarding passes from each flight to a new country." |
+| Editorial Feature | Body | Gratitude-toned travel story (kid on plane → 20 countries) |
+| Editorial Feature | Image | mom and me in nyc.jpg (3:4 portrait) |
+| Editorial Feature | Countries | 20 countries with descriptions |
+| Book of Month | Book | "Project Hail Mary" by Andy Weir, 2021, Science Fiction |
+| Book of Month | Status | Currently Reading |
+| Book of Month | Byline | "By NIKA · April 2026" |
+| Hobbies | Featured | Space: THE UNIVERSE (with image) |
+| Hobbies | Grid 1 | The Girls: HOME BASE |
+| Hobbies | Grid 2 | Ceramics: SLOW CRAFT |
+| Hobbies | Grid 3 | Ikebana: ARRANGEMENT |
+| Hobbies | Grid 4 | Table Tennis: IRL SPORT |
+| Hobbies | Grid 5 | The Internet: ALWAYS LOGGED ON |
 | Worth Reading | Headline | "Worth your time." |
-| Worth Reading | Article 1 | "The Most Important Thing..." — George Mack |
-| Worth Reading | Article 2 | "The Bitter Lesson" — Rich Sutton |
-| Worth Reading | Article 3 | "You and Your Research" — Richard Hamming |
+| Worth Reading | Article 1 | "The Most Important Thing..." by George Mack |
+| Worth Reading | Article 2 | "The Bitter Lesson" by Rich Sutton |
+| Worth Reading | Article 3 | "You and Your Research" by Richard Hamming |
 
-### Images — All Currently Placeholder
+### Images
 
-| Section | Placeholder | Intended replacement |
+| Section | File | Status |
 |---|---|---|
-| Hero | 4:5 container | Portrait photo of Nika, Bay Area |
-| Editorial Feature | 3:2 container | Travel photo — landscape/destination |
-| Book of Month | 2:3 container | Actual book cover art |
-| Hobbies (Labubu) | square/4:5 | Photo of Labubu collection |
-| Hobbies (grid cells) | none currently | Optional per-card images |
+| Hero | `/images/hero photo.jpeg` (4:5) | ✓ Real photo |
+| Editorial Feature | `/images/mom and me in nyc.jpg` (3:4) | ✓ Real photo |
+| Book of Month | `/images/book-cover.svg` (2:3) | Placeholder — replace with actual cover |
+| Hobbies (Space) | `/images/hobby-featured.svg` (4:3) | Placeholder — replace with space image |
+| Hobbies (grid cells) | none | Optional per-card images |
 
 ### External Links
 
