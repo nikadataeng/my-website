@@ -230,9 +230,9 @@ export default function Hero() {
         {/* "I turn" */}
         <motion.h1
           className="text-hero"
-          style={{ lineHeight: 1.2, margin: 0 }}
-          initial={{ clipPath: "inset(0 100% 0 0)" }}
-          animate={{ clipPath: "inset(0 0% 0 0)" }}
+          style={{ margin: 0 }}
+          initial={{ clipPath: "inset(-10% 100% -10% 0)" }}
+          animate={{ clipPath: "inset(-10% 0% -10% 0)" }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
         >
           I turn
@@ -246,9 +246,9 @@ export default function Hero() {
         {/* "into systems" */}
         <motion.h1
           className="text-hero"
-          style={{ lineHeight: 1.2, margin: 0 }}
-          initial={{ clipPath: "inset(0 100% 0 0)" }}
-          animate={{ clipPath: "inset(0 0% 0 0)" }}
+          style={{ margin: 0 }}
+          initial={{ clipPath: "inset(-10% 100% -10% 0)" }}
+          animate={{ clipPath: "inset(-10% 0% -10% 0)" }}
           transition={{ duration: 0.6, ease: "easeInOut", delay: 0.08 }}
         >
           into systems
@@ -257,9 +257,9 @@ export default function Hero() {
         {/* "people use every day." */}
         <motion.h1
           className="text-hero"
-          style={{ lineHeight: 1.2, marginTop: "0.3em", marginBottom: 0 }}
-          initial={{ clipPath: "inset(0 100% 0 0)" }}
-          animate={{ clipPath: "inset(0 0% 0 0)" }}
+          style={{ marginTop: "0.15em", marginBottom: 0 }}
+          initial={{ clipPath: "inset(-10% 100% -10% 0)" }}
+          animate={{ clipPath: "inset(-10% 0% -10% 0)" }}
           transition={{ duration: 0.6, ease: "easeInOut", delay: 0.14 }}
         >
           <span style={{ color: "#4A4440" }}>people use every day</span>

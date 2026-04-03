@@ -80,7 +80,7 @@ export default function IdentityBlock() {
               className="mt-6 font-bold"
               style={{ color: "var(--color-ink)", fontSize: "var(--text-body)" }}
             >
-              I don&apos;t build demos.
+              I build systems that ship.
             </p>
           </ScrollReveal>
 
