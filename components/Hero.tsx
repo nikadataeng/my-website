@@ -9,7 +9,7 @@ const REACTIONS = [
   { emoji: "💯", count: 6 },
   { emoji: "🙌", count: 5 },
   { emoji: "👆", count: 4 },
-  { emoji: "🧠", count: 3 },
+  { emoji: "🐸", count: 3 },
 ];
 
 /**
@@ -39,11 +39,11 @@ function SlackMessage() {
       <span
         style={{
           display: "flex",
-          gap: 10,
+          gap: 12,
           background: "#FFFFFF",
           border: "1px solid rgba(29,28,29,0.13)",
           borderRadius: 10,
-          padding: "14px 18px 12px",
+          padding: "16px 20px 14px",
           boxShadow: "0 2px 8px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.04)",
           /* Reset the hero text styles so they don't bleed in */
           fontFamily: slackFont,
@@ -62,13 +62,13 @@ function SlackMessage() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            width: 42,
-            height: 42,
-            minWidth: 42,
-            borderRadius: 5,
+            width: 46,
+            height: 46,
+            minWidth: 46,
+            borderRadius: 6,
             background: "#2B4D8C",
             color: "#FFFFFF",
-            fontSize: 18,
+            fontSize: 20,
             fontWeight: 700,
             fontFamily: slackFont,
             lineHeight: 1,
@@ -85,7 +85,7 @@ function SlackMessage() {
             <span
               style={{
                 fontFamily: slackFont,
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: 900,
                 color: "#1d1c1d",
                 lineHeight: 1.46668,
@@ -97,7 +97,7 @@ function SlackMessage() {
             <span
               style={{
                 fontFamily: slackFont,
-                fontSize: 13,
+                fontSize: 14,
                 fontWeight: 400,
                 color: "#616061",
                 lineHeight: 1.46668,
@@ -112,18 +112,18 @@ function SlackMessage() {
           <span
             style={{
               fontFamily: slackFont,
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: 400,
               color: "#1d1c1d",
               lineHeight: 1.46668,
-              marginTop: 1,
+              marginTop: 2,
             }}
           >
             we should use AI
           </span>
 
           {/* Emoji reactions */}
-          <span style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 7 }}>
+          <span style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 8 }}>
             {REACTIONS.map((r, i) => (
               <motion.span
                 key={r.emoji}
@@ -137,20 +137,20 @@ function SlackMessage() {
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: 4,
+                  gap: 5,
                   background: "rgba(29,28,29,0.04)",
                   border: "1px solid rgba(29,28,29,0.13)",
                   borderRadius: 24,
-                  padding: "1px 9px",
-                  height: 26,
+                  padding: "2px 10px",
+                  height: 28,
                   cursor: "default",
                 }}
               >
-                <span style={{ fontSize: 15, lineHeight: 1 }}>{r.emoji}</span>
+                <span style={{ fontSize: 16, lineHeight: 1 }}>{r.emoji}</span>
                 <span
                   style={{
                     fontFamily: slackFont,
-                    fontSize: 13,
+                    fontSize: 13.5,
                     fontWeight: 400,
                     color: "#616061",
                     lineHeight: 1,
@@ -207,10 +207,26 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-[calc(100vh-56px)] flex flex-col justify-center px-6 md:px-12 lg:px-20"
-      style={{ borderBottom: "1px solid var(--color-border)" }}
+      className="relative px-6 md:px-12 lg:px-20"
+      style={{ borderBottom: "1px solid var(--color-border)", paddingTop: "clamp(48px, 8vh, 100px)", paddingBottom: "clamp(48px, 8vh, 100px)" }}
     >
       <div className="max-w-6xl w-full mx-auto">
+        {/* Name + role intro */}
+        <motion.p
+          style={{
+            fontFamily: "var(--font-sans)",
+            fontSize: 15,
+            fontWeight: 500,
+            color: "var(--color-muted)",
+            margin: "0 0 clamp(24px, 4vh, 48px)",
+          }}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: springEase }}
+        >
+          Ayonika Bose — AI Applications Engineer
+        </motion.p>
+
         {/* "I turn" */}
         <motion.h1
           className="text-hero"
@@ -241,7 +257,7 @@ export default function Hero() {
         {/* "people use every day." */}
         <motion.h1
           className="text-hero"
-          style={{ lineHeight: 1.2, margin: "0.05em 0 0" }}
+          style={{ lineHeight: 1.2, marginTop: "0.3em", marginBottom: 0 }}
           initial={{ clipPath: "inset(0 100% 0 0)" }}
           animate={{ clipPath: "inset(0 0% 0 0)" }}
           transition={{ duration: 0.6, ease: "easeInOut", delay: 0.14 }}
@@ -252,8 +268,8 @@ export default function Hero() {
 
         {/* Subline 1 */}
         <motion.p
-          className="mt-8 text-label"
-          style={{ color: "var(--color-muted)" }}
+          className="text-label"
+          style={{ color: "var(--color-muted)", marginTop: "clamp(24px, 4vh, 40px)" }}
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: springEase, delay: 0.5 }}
