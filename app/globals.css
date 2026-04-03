@@ -1,22 +1,23 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────────────────────
-   CAREER THEME — The Atlantic
-   Warm cream, deep ink, burgundy-red accent, Playfair + Inter
+   CAREER THEME — Nika Design Language
+   Warm white, heritage palette, Cormorant Garamond + Inter
 ───────────────────────────────────────────────────────────── */
 :root,
 [data-view="career"] {
-  --color-bg:      #F7F4EE;
-  --color-ink:     #1A1A1A;
-  --color-accent:  #C41230;
-  --color-muted:   #7A7468;
-  --color-surface: #EDEAE2;
-  --color-border:  #D8D3C8;
+  --color-bg:      #FAF9F7;
+  --color-ink:     #1A1917;
+  --color-accent:  #944D5E;
+  --color-muted:   #6B6862;
+  --color-surface: #FFFFFF;
+  --color-border:  #EEECE8;
 
+  --font-display: var(--font-noto-display), "Noto Sans Display", sans-serif;
   --font-serif: "Playfair Display", Georgia, serif;
   --font-sans:  var(--font-inter), Inter, sans-serif;
 
-  --text-hero:    clamp(64px, 9vw, 112px);
+  --text-hero:    clamp(40px, 5.5vw, 68px);
   --text-section: clamp(32px, 4.5vw, 58px);
   --text-heading: 26px;
   --text-body:    17px;
@@ -50,12 +51,12 @@
 
 /* ─── Tailwind extension (career defaults) ──────────────────── */
 @theme inline {
-  --color-bg:      #F7F4EE;
-  --color-ink:     #1A1A1A;
-  --color-accent:  #C41230;
-  --color-muted:   #7A7468;
-  --color-surface: #EDEAE2;
-  --color-border:  #D8D3C8;
+  --color-bg:      #FAF9F7;
+  --color-ink:     #1A1917;
+  --color-accent:  #944D5E;
+  --color-muted:   #6B6862;
+  --color-surface: #FFFFFF;
+  --color-border:  #EEECE8;
 }
 
 /* ─── Base ──────────────────────────────────────────────────── */
@@ -88,25 +89,25 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   TYPOGRAPHY — Career (The Atlantic)
-   Playfair italic for display, Inter for body
+   TYPOGRAPHY — Career
+   Cormorant Garamond for display, Inter for body
 ───────────────────────────────────────────────────────────── */
 [data-view="career"] .text-hero {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-display);
+  font-style: normal;
   font-size: var(--text-hero);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.025em;
-  line-height: 0.95;
+  line-height: 1.05;
 }
 
 [data-view="career"] .text-section {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-display);
+  font-style: normal;
   font-size: var(--text-section);
-  font-weight: 700;
-  letter-spacing: -0.015em;
-  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
   text-transform: none;
 }
 
@@ -187,7 +188,7 @@ body {
 .text-heading {
   font-size: var(--text-heading);
   font-weight: 700;
-  font-family: var(--font-serif);
+  font-family: var(--font-display, var(--font-serif));
 }
 
 /* ─── Link reset ────────────────────────────────────────────── */
@@ -229,8 +230,8 @@ a {
 }
 
 [data-view="career"] .card-lift:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 3px 3px 0px var(--color-ink);
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 3px rgba(148, 77, 94, 0.10), 0 8px 24px rgba(0,0,0,0.06);
 }
 
 [data-view="personal"] .card-lift:hover {

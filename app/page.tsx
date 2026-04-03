@@ -11,6 +11,7 @@ import IdentityBlock from "@/components/IdentityBlock";
 import Projects from "@/components/Projects";
 import POV from "@/components/POV";
 import MiscGrid from "@/components/MiscGrid";
+import { CareerMountain } from "@/components/CareerMountain";
 import Footer from "@/components/Footer";
 
 // Personal view
@@ -37,6 +38,7 @@ export default function Home() {
             <Hero />
             <WhatIReplace />
             <IdentityBlock />
+            <CareerMountain />
             <Projects />
             <POV />
             <MiscGrid />
