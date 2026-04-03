@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, Noto_Sans_Display } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import Nav from "@/components/Nav";
 import { ViewProvider } from "@/context/ViewContext";
 
@@ -53,6 +54,7 @@ export default function RootLayout({
           <Nav />
           <main className="flex-1 pt-14">{children}</main>
         </ViewProvider>
+        <Analytics />
       </body>
     </html>
   );
