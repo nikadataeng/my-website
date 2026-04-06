@@ -5,6 +5,7 @@ export interface Milestone {
   company: string;
   description: string;
   skills: string[];
+  highlights: string[];
 }
 
 export const milestones: Milestone[] = [
@@ -15,6 +16,7 @@ export const milestones: Milestone[] = [
     company: "Ovative Group",
     description: "Where it started.",
     skills: ["SQL", "BigQuery", "Tableau", "Marketing Analytics"],
+    highlights: ["First job out of college", "Built predictive ROAS models"],
   },
   {
     id: 2,
@@ -23,6 +25,7 @@ export const milestones: Milestone[] = [
     company: "WITHIN Co",
     description: "Found the product instinct.",
     skills: ["dbt", "BigQuery", "Marketing Analytics"],
+    highlights: ["Moved to NYC", "Pitched Estée Lauder — $2M contract"],
   },
   {
     id: 3,
@@ -31,6 +34,7 @@ export const milestones: Milestone[] = [
     company: "Sigma Computing",
     description: "Joined Sigma. Built the foundation.",
     skills: ["dbt", "Snowflake", "AI", "GTM", "Finance", "Customer Success"],
+    highlights: ["Worked with the exec team", "Sigma hackathon winner"],
   },
   {
     id: 4,
@@ -39,5 +43,6 @@ export const milestones: Milestone[] = [
     company: "Sigma Computing",
     description: "Created the role from scratch.",
     skills: ["Agentic AI", "AI Workflows", "LLMs", "Apps"],
+    highlights: ["Built CRM replacement from scratch", "Reports to CMO, COO & CEO"],
   },
 ];

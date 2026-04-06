@@ -8,6 +8,7 @@ import ScrollReveal from "../ScrollReveal";
 import AnimatedRule from "../AnimatedRule";
 import MilestoneCard from "./MilestoneCard";
 import { milestones } from "./milestones";
+import { GraduationCap, TrendingUp, MapPin, HandCoins, Users, Trophy, Wrench, Briefcase } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -228,6 +229,30 @@ export default function CareerMountain() {
         );
       });
 
+      /* Highlight bubbles — all milestones, same pattern as cards */
+      THRESHOLDS.forEach((threshold, i) => {
+        [0, 1].forEach((j) => {
+          const el = containerRef.current!.querySelector(`.cm-hl-${i}-${j}`);
+          if (!el) return;
+          gsap.fromTo(
+            el,
+            { opacity: 0, scale: 0.85, y: 10 },
+            {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              duration: 0.5,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: sectionRef.current!,
+                start: () => `top+=${(threshold + 0.02 + j * 0.015) * 100}% top`,
+                toggleActions: "play none none reverse",
+              },
+            },
+          );
+        });
+      });
+
       /* Scroll hint — fade out */
       const hint = containerRef.current!.querySelector(".cm-scroll-hint");
       if (hint) {
@@ -417,6 +442,61 @@ export default function CareerMountain() {
               />
             );
           })}
+        </div>
+
+        {/* Highlight bubbles — all milestones */}
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }} className="hidden md:block">
+          {(() => {
+            const hl = (cls: string, peakIdx: number, ml: number, mt: number, rot: number, icon: React.ReactNode, text: string) => (
+              <div
+                key={cls}
+                className={cls}
+                style={{
+                  position: "absolute",
+                  left: `${(PEAKS[peakIdx].x / VB_W) * 100}%`,
+                  top: `${(PEAKS[peakIdx].y / VB_H) * 100}%`,
+                  marginLeft: ml,
+                  marginTop: mt,
+                  opacity: 0,
+                  transform: `translate(-50%, 0) rotate(${rot}deg)`,
+                  maxWidth: 190,
+                  padding: "6px 11px",
+                  background: "rgba(255, 255, 255, 0.6)",
+                  backdropFilter: "blur(12px) saturate(160%)",
+                  WebkitBackdropFilter: "blur(12px) saturate(160%)",
+                  border: "1px solid rgba(255, 255, 255, 0.45)",
+                  borderRadius: 10,
+                  boxShadow: "0 4px 16px rgba(0,0,0,0.04)",
+                  zIndex: 18,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 6,
+                }}
+              >
+                <span style={{ flexShrink: 0, color: "var(--color-muted)", opacity: 0.7 }}>{icon}</span>
+                <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 11.5, fontWeight: 500, color: "var(--color-ink)", lineHeight: 1.35 }}>{text}</span>
+              </div>
+            );
+            return (
+              <>
+                {/* Ovative (peak 0, card: above) */}
+                {hl("cm-hl-0-0", 0, -140, -165, -2, <GraduationCap size={13} />, "First job out of college")}
+                {hl("cm-hl-0-1", 0, 120, -120, 1.5, <TrendingUp size={13} />, "Built predictive ROAS models")}
+
+                {/* WITHIN (peak 1, card: below) */}
+                {hl("cm-hl-1-0", 1, -140, 140, 1.8, <MapPin size={13} />, "Moved to NYC")}
+                {hl("cm-hl-1-1", 1, 110, 195, -1.5, <HandCoins size={13} />, "Pitched Estée Lauder — $2M contract")}
+
+                {/* Sigma AE (peak 2, card: above) */}
+                {hl("cm-hl-2-0", 2, -130, -145, -1.5, <Users size={13} />, "Worked with the exec team")}
+                {hl("cm-hl-2-1", 2, 125, -120, 2, <Trophy size={13} />, "Sigma hackathon winner")}
+
+                {/* Sigma AI (peak 3, card: above) */}
+                {hl("cm-hl-3-0", 3, -140, -165, 1.5, <Wrench size={13} />, "Built CRM replacement from scratch")}
+                {hl("cm-hl-3-1", 3, 110, -120, -2, <Briefcase size={13} />, "Reports to CMO, COO & CEO")}
+              </>
+            );
+          })()}
         </div>
 
         {/* Progress indicator */}
