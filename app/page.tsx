@@ -8,6 +8,7 @@ import PageTransition from "@/components/PageTransition";
 import Hero from "@/components/Hero";
 import IdentityBlock from "@/components/IdentityBlock";
 import { CareerMountain } from "@/components/CareerMountain";
+import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import Projects from "@/components/Projects";
 import POV from "@/components/POV";
 import Footer from "@/components/Footer";
@@ -36,6 +37,7 @@ export default function Home() {
             <Hero />
             <IdentityBlock />
             <CareerMountain />
+            <ArchitectureDiagram />
             <Projects />
             <POV />
             <Footer />

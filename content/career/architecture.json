@@ -1,0 +1,159 @@
+{
+  "layers": [
+    { "id": "data", "label": "Data Layer" },
+    { "id": "intelligence", "label": "Intelligence" },
+    { "id": "application", "label": "Applications" },
+    { "id": "junction", "label": "" },
+    { "id": "framework", "label": "AI Engineering Framework" }
+  ],
+  "nodes": [
+    {
+      "id": "snowflake",
+      "label": "Snowflake",
+      "sublabel": "Data warehouse",
+      "logo": "/images/logos/snowflake.svg",
+      "zone": "production",
+      "col": 0,
+      "row": 0
+    },
+    {
+      "id": "python",
+      "label": "Python + SQL",
+      "sublabel": "Orchestration, ETL",
+      "logo": "/images/logos/python.svg",
+      "zone": "production",
+      "col": 0,
+      "row": 1
+    },
+    {
+      "id": "cortex",
+      "label": "Snowflake Cortex",
+      "sublabel": "Warehouse-native ML",
+      "logo": "/images/logos/snowflake.svg",
+      "zone": "production",
+      "col": 1,
+      "row": 0
+    },
+    {
+      "id": "llm",
+      "label": "LLM APIs",
+      "sublabel": "OpenAI, Anthropic",
+      "logo": "/images/logos/openai.svg",
+      "zone": "production",
+      "col": 1,
+      "row": 1
+    },
+    {
+      "id": "crm",
+      "label": "AI CRM",
+      "sublabel": "Deal Slack Ops",
+      "icon": "Users",
+      "zone": "production",
+      "col": 2,
+      "row": 0
+    },
+    {
+      "id": "sigma",
+      "label": "Sigma Apps",
+      "sublabel": "App platform",
+      "logo": "/images/logos/sigma.svg",
+      "zone": "production",
+      "col": 2,
+      "row": 1
+    },
+    {
+      "id": "slack",
+      "label": "Slack Agents",
+      "sublabel": "Workflow automation",
+      "logo": "/images/logos/slack.svg",
+      "zone": "production",
+      "col": 3,
+      "row": 0.5
+    },
+    {
+      "id": "claude-code",
+      "label": "Claude Code",
+      "sublabel": "AI development environment",
+      "logo": "/images/logos/claude.svg",
+      "zone": "junction",
+      "col": 1.5,
+      "row": 2.2
+    },
+    {
+      "id": "skills",
+      "label": "Skills",
+      "sublabel": "Prompt engineering at scale",
+      "icon": "BookOpen",
+      "zone": "framework",
+      "col": 0.5,
+      "row": 3.2
+    },
+    {
+      "id": "subagents",
+      "label": "Subagents",
+      "sublabel": "Specialist AI reviewers",
+      "icon": "GitBranch",
+      "zone": "framework",
+      "col": 2.5,
+      "row": 3.2
+    },
+    {
+      "id": "managed-agents",
+      "label": "Managed Agents",
+      "sublabel": "Production AI infra",
+      "icon": "Server",
+      "zone": "framework",
+      "col": 0.5,
+      "row": 4.2
+    },
+    {
+      "id": "agent-teams",
+      "label": "Agent Teams",
+      "sublabel": "Multi-agent orchestration",
+      "icon": "UsersRound",
+      "zone": "framework",
+      "col": 2.5,
+      "row": 4.2
+    },
+    {
+      "id": "hooks",
+      "label": "Hooks",
+      "sublabel": "Deterministic safety",
+      "icon": "Shield",
+      "zone": "framework",
+      "col": 1.5,
+      "row": 5
+    },
+    {
+      "id": "rules",
+      "label": "Rules",
+      "sublabel": "Architecture constraints",
+      "icon": "ScrollText",
+      "zone": "framework",
+      "col": 1.5,
+      "row": 5.8
+    }
+  ],
+  "connections": [
+    { "from": "snowflake", "to": "cortex", "zone": "production" },
+    { "from": "snowflake", "to": "llm", "zone": "production" },
+    { "from": "python", "to": "cortex", "zone": "production" },
+    { "from": "python", "to": "llm", "zone": "production" },
+    { "from": "cortex", "to": "crm", "zone": "production" },
+    { "from": "llm", "to": "crm", "zone": "production" },
+    { "from": "llm", "to": "sigma", "zone": "production" },
+    { "from": "cortex", "to": "sigma", "zone": "production" },
+    { "from": "crm", "to": "slack", "zone": "production" },
+    { "from": "sigma", "to": "slack", "zone": "production" },
+    { "from": "cortex", "to": "claude-code", "zone": "junction" },
+    { "from": "llm", "to": "claude-code", "zone": "junction" },
+    { "from": "claude-code", "to": "skills", "zone": "framework" },
+    { "from": "claude-code", "to": "subagents", "zone": "framework" },
+    { "from": "skills", "to": "managed-agents", "zone": "framework" },
+    { "from": "subagents", "to": "agent-teams", "zone": "framework" },
+    { "from": "hooks", "to": "managed-agents", "zone": "framework" },
+    { "from": "hooks", "to": "agent-teams", "zone": "framework" },
+    { "from": "rules", "to": "hooks", "zone": "framework" },
+    { "from": "agent-teams", "to": "crm", "zone": "crossdomain", "dashed": true }
+  ]
+}
