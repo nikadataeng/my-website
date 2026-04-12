@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "compiled": "2026-03-26",
+    "sources": [
+      "vanityfair.com (archived pages, design analyses)",
+      "vogue.com (design analyses, CNI Design Taiwan)",
+      "harpersbazaar.com (Fonts in Use, STUDIO 191 redesign docs)",
+      "Commercial Type, Terminal Design, Swiss Typefaces foundry pages",
+      "Brad Frost Conde Nast Style Guide",
+      "claudiastrong.com Publication Design analyses",
+      "typography.com (Hoefler & Co)"
+    ]
+  },
+  "colors": {
+    "background": "#FFFFFF",
+    "ink": "#0D0D0D",
+    "accent": "#C8102E",
+    "muted": "#6B6B6B",
+    "surface": "#F7F5F0",
+    "border": "#E0DDD7",
+    "notes": {
+      "accent": "Vanity Fair's signature red — drop caps, kicker labels, active links, hover states",
+      "surface": "Vanity Fair cream/parchment for feature well backgrounds — the 'magazine paper' digital analogue",
+      "border": "Thin 1px warm-gray rules — section separators, column dividers"
+    }
+  },
+  "typography": {
+    "masthead": {
+      "typeface": "VF Didot (custom, Commercial Type 2013)",
+      "publicApproximation": "Le Jeune (Commercial Type) or Cormorant Garamond",
+      "classification": "Didone serif, high contrast, vertically stretched"
+    },
+    "headline": {
+      "typeface": "VF Didot display optical size",
+      "size": "48px–96px on desktop feature heroes",
+      "weight": "Bold",
+      "tracking": "-0.02em to -0.04em",
+      "leading": "1.05–1.1",
+      "case": "Title case for features; ALL CAPS for department headers"
+    },
+    "deck": {
+      "typeface": "VF Didot Italic or VF Sans",
+      "size": "20–24px",
+      "maxWidth": "600px (~60 chars per line)"
+    },
+    "body": {
+      "typeface": "HTF Didot (long-form) or VF Sans (short pieces)",
+      "size": "17–18px",
+      "lineHeight": "1.7–1.75",
+      "measure": "60–70 characters per line (50–65ch CSS)",
+      "weight": 400,
+      "maxWidth": "660px"
+    },
+    "caption": {
+      "typeface": "VF Sans",
+      "size": "11–13px",
+      "color": "#6B6B6B",
+      "maxLength": "2–7 words"
+    },
+    "pullquote": {
+      "typeface": "VF Didot Italic",
+      "size": "24–32px",
+      "border": "Thin 1px horizontal rules above and below — NO left border",
+      "attribution": "Author name in VF Sans, small caps, below quote"
+    },
+    "byline": {
+      "format": "'By' in italic serif + AUTHOR NAME in bold all-caps sans-serif",
+      "size": "12–14px",
+      "color": "#6B6B6B"
+    },
+    "sectionKicker": {
+      "typeface": "VF Sans, all-caps",
+      "size": "11px",
+      "letterSpacing": "0.15–0.2em",
+      "color": "#C8102E"
+    }
+  },
+  "layout": {
+    "heroPattern": "Full-width image, headline BELOW on white — not overlaid. Strong 3:2 or 4:5 image ratio. Headline drops beneath image on clean white.",
+    "featureSpread": "Image left 60% + text right 40%, or alternating. Drop cap opens first paragraph. Byline above lead image.",
+    "imageRatio": {
+      "hero": "3:2 landscape or 4:5 portrait",
+      "inline": "16:9 standard inline",
+      "portrait": "2:3 or 4:5 fashion/celebrity portraits"
+    },
+    "columnGrid": "12-col, 24px gutters. Article body 6–8 cols. Max-width 1280–1440px. Body text capped at ~660px.",
+    "spacing": "80–120px between major sections"
+  },
+  "components": [
+    "Red all-caps kicker label above every headline (11px, 0.15em tracking)",
+    "Red drop cap opening feature articles (4–5 lines tall, Didone serif)",
+    "Pull quote flanked by thin 1px horizontal rules — no box border",
+    "Byline: italic 'By' + bold all-caps author name in sans",
+    "Section divider: single 1px warm-gray horizontal rule",
+    "Photo caption: 2–7 words max, muted gray, applied selectively",
+    "Featured story module: large image + stacked headline/deck/byline",
+    "Folio/issue label: small sans-serif in outer margin"
+  ]
+}

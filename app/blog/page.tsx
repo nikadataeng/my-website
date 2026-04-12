@@ -7,6 +7,8 @@ import AnimatedRule from "@/components/AnimatedRule";
 
 const springEase = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
+import postsData from "@/content/blog/posts.json";
+
 interface BlogPost {
   title: string;
   description: string;
@@ -17,18 +19,7 @@ interface BlogPost {
   source: string;
 }
 
-const posts: BlogPost[] = [
-  {
-    title: "How Snowflake's Connector for Google Analytics Centralizes Marketing Data",
-    description:
-      "How Snowflake's connector for Google Analytics raw data solved the challenge of migrating from Universal Analytics to GA4 — addressing data sampling limitations with a unified approach to granular marketing data.",
-    date: "Feb 8, 2024",
-    author: "Ayonika Bose",
-    url: "https://www.sigmacomputing.com/blog/how-snowflakes-connector-for-google-analytics-got-sigma-all-our-raw-data",
-    image: "https://cdn.prod.website-files.com/666bbba4ff7240a20f4cccf8/67042b77b3d8d057467bb6b6_666bbba4ff7240a20f4ce9dd_image2.avif",
-    source: "Sigma Computing Blog",
-  },
-];
+const posts: BlogPost[] = postsData;
 
 export default function BlogPage() {
   return (

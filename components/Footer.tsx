@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CalendlyButton from "./CalendlyButton";
 
 const navLinks = [
   { href: "/#work",  label: "work"  },
@@ -10,21 +11,63 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="px-6 md:px-12 lg:px-20 py-8">
+    <footer className="px-6 md:px-12 lg:px-20">
+      {/* Contact section */}
       <div
-        className="max-w-6xl mx-auto"
-        style={{ borderTop: "1px solid var(--color-border)", paddingTop: "2rem" }}
+        className="max-w-6xl mx-auto py-24 md:py-32"
+        style={{ borderTop: "1px solid var(--color-border)" }}
       >
-        <div className="flex flex-wrap items-center justify-between gap-6">
-          {/* Name + year */}
-          <span
-            className="text-label"
-            style={{ color: "var(--color-muted)" }}
+        <h2
+          style={{
+            fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif",
+            fontSize: "clamp(36px, 6vw, 72px)",
+            fontWeight: 400,
+            color: "var(--color-ink)",
+            lineHeight: 1.1,
+            letterSpacing: "-0.02em",
+            marginBottom: "1.5rem",
+          }}
+        >
+          Say hello.
+        </h2>
+        <div className="flex flex-wrap items-center gap-6">
+          <Link
+            href="mailto:ayonikabose99@gmail.com"
+            className="link-underline"
+            style={{
+              fontSize: "clamp(16px, 1.5vw, 20px)",
+              fontWeight: 500,
+              color: "var(--color-accent)",
+            }}
           >
+            ayonikabose99@gmail.com →
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/ayonikabose/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-underline"
+            style={{
+              fontSize: "clamp(16px, 1.5vw, 20px)",
+              fontWeight: 500,
+              color: "var(--color-muted)",
+            }}
+          >
+            LinkedIn
+          </Link>
+          <CalendlyButton />
+        </div>
+      </div>
+
+      {/* Minimal footer line */}
+      <div
+        className="max-w-6xl mx-auto pb-8"
+        style={{ borderTop: "1px solid var(--color-border)", paddingTop: "1.5rem" }}
+      >
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <span className="text-label" style={{ color: "var(--color-muted)" }}>
             ayonika · {year}
           </span>
-
-          {/* Nav links */}
           <nav className="flex items-center gap-6">
             {navLinks.map((l) => (
               <Link
@@ -37,30 +80,6 @@ export default function Footer() {
               </Link>
             ))}
           </nav>
-
-          {/* LinkedIn + CTA */}
-          <div className="flex items-center gap-4">
-            <Link
-              href="https://www.linkedin.com/in/ayonikabose/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="linkedin-icon"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                <rect x="2" y="9" width="4" height="12"/>
-                <circle cx="4" cy="4" r="2"/>
-              </svg>
-            </Link>
-            <Link
-              href="mailto:hello@ayonika.dev"
-              className="text-label font-bold"
-              style={{ color: "var(--color-accent)" }}
-            >
-              say hello →
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

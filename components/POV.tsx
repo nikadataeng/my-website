@@ -1,43 +1,16 @@
 "use client";
 
 import ScrollReveal from "./ScrollReveal";
-import AnimatedRule from "./AnimatedRule";
 
 export default function POV() {
   return (
     <section
-      className="py-32 md:py-48 px-6 md:px-12 lg:px-20 relative overflow-hidden"
+      className="py-32 md:py-48 px-6 md:px-12 lg:px-20"
       style={{ borderBottom: "1px solid var(--color-border)" }}
     >
-      {/* Decorative number */}
-      <div
-        aria-hidden="true"
-        className="absolute top-8 left-4 select-none pointer-events-none"
-        style={{
-          fontSize: "240px",
-          fontWeight: 900,
-          color: "var(--color-ink)",
-          opacity: 0.04,
-          lineHeight: 1,
-        }}
-      >
-        03
-      </div>
-
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section label */}
+        {/* Pull quote — no label, no rule, just the statement */}
         <ScrollReveal>
-          <span className="text-label" style={{ color: "var(--color-muted)" }}>
-            03 —
-          </span>
-        </ScrollReveal>
-
-        <div className="mt-4 mb-16 md:mb-24">
-          <AnimatedRule />
-        </div>
-
-        {/* Pull quote */}
-        <ScrollReveal delay={0.1}>
           <blockquote
             style={{
               fontSize: "clamp(28px, 4.5vw, 52px)",

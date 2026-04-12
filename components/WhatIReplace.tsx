@@ -3,8 +3,8 @@
 import ScrollReveal from "./ScrollReveal";
 
 const replacements = [
-  { before: "Salesforce", after: "Internal AI CRM" },
-  { before: "Rattle · Clari (pipeline intelligence)", after: "Snowflake-native forecasting" },
+  { before: "Legacy CRM platforms", after: "Internal AI CRM" },
+  { before: "Pipeline intelligence tools", after: "Snowflake-native forecasting" },
   { before: "FinOps SaaS", after: "Warehouse-native reporting" },
   { before: "RevOps platforms", after: "LLM-powered workflow automation" },
 ];

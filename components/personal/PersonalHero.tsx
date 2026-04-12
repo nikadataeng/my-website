@@ -167,7 +167,7 @@ export default function PersonalHero() {
                       fontFamily: "var(--font-serif)",
                       fontStyle: "italic",
                       fontSize: "clamp(28px, 3.5vw, 48px)",
-                      fontWeight: 700,
+                      fontWeight: 300,
                       color: "var(--color-accent)",
                       lineHeight: 1,
                     }}
@@ -233,31 +233,11 @@ export default function PersonalHero() {
             </p>
 
             {[
-              {
-                tag: "TRAVEL",
-                href: "#travel",
-                title: "Twenty Countries, One Passport",
-                desc: "From Mexico to Bangkok: the stamps that shaped her.",
-              },
-              {
-                tag: "CULTURE",
-                href: "#culture",
-                title: "What She's Reading This Month",
-                desc: "One book. One obsession. No spoilers.",
-              },
-              {
-                tag: "LIFE",
-                href: "#life",
-                title: "What Nika Found Chic This Month",
-                desc: "Her obsessions, curated.",
-              },
-              {
-                tag: "READING",
-                href: "#reading",
-                title: "Worth Your Time",
-                desc: "The articles and essays she keeps coming back to.",
-              },
-            ].map(({ tag, href, title, desc }) => (
+              { tag: "TRAVEL", href: "#travel", title: "Twenty Countries, One Passport" },
+              { tag: "CULTURE", href: "#culture", title: "What She's Reading This Month" },
+              { tag: "LIFE", href: "#life", title: "Currently Obsessing Over" },
+              { tag: "READING", href: "#reading", title: "Worth Your Time" },
+            ].map(({ tag, href, title }) => (
               <a
                 key={tag}
                 href={href}
@@ -265,17 +245,20 @@ export default function PersonalHero() {
                   e.preventDefault();
                   document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
                 }}
+                className="group"
                 style={{
                   borderBottom: "1px solid var(--color-border)",
-                  paddingBottom: "1rem",
-                  display: "block",
+                  paddingBottom: "0.75rem",
+                  display: "flex",
+                  alignItems: "baseline",
+                  gap: "1rem",
                   textDecoration: "none",
                   cursor: "pointer",
                 }}
               >
                 <span
                   className="text-label"
-                  style={{ color: "var(--color-accent)", display: "block", marginBottom: "0.3rem" }}
+                  style={{ color: "var(--color-accent)", flexShrink: 0 }}
                 >
                   {tag}
                 </span>
@@ -283,23 +266,15 @@ export default function PersonalHero() {
                   style={{
                     fontFamily: "var(--font-serif)",
                     fontStyle: "italic",
-                    fontSize: "clamp(14px, 1.2vw, 16px)",
-                    fontWeight: 700,
+                    fontSize: "clamp(14px, 1.2vw, 17px)",
+                    fontWeight: 400,
                     color: "var(--color-ink)",
                     lineHeight: 1.3,
-                    marginBottom: "0.3rem",
+                    transition: "color 150ms ease",
                   }}
+                  className="group-hover:opacity-60"
                 >
                   {title}
-                </p>
-                <p
-                  style={{
-                    fontSize: "12px",
-                    color: "var(--color-muted)",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {desc}
                 </p>
               </a>
             ))}

@@ -1,0 +1,31 @@
+[
+  {
+    "replaced": "REPLACED: Legacy CRM (deal management)",
+    "name": "Internal AI CRM \u2014 Deal Slack Ops",
+    "period": "2024\u2013Present",
+    "org": "Sigma Computing",
+    "tag": "ONGOING",
+    "description": "The legacy CRM is a $200B industry. We're building the replacement internally. This is Sigma's AI-native CRM suite \u2014 Deal Slack Ops is the first shipped app: Slack channels auto-created per opportunity, linked to account and deal context at creation.",
+    "stack": ["Snowflake", "Sigma", "Slack API", "LLM APIs"]
+  },
+  {
+    "replaced": "REPLACED: Pipeline intelligence + conversation analytics tools",
+    "name": "GTM AI Stack $100K SaaS Replacement",
+    "period": "2023",
+    "org": "Sigma Computing",
+    "tag": "PRODUCTION",
+    "description": "Replaced external GTM SaaS platforms with warehouse-native AI systems built on Snowflake Cortex and LLM APIs. Outcome: $100K+ annual cost savings. Pipeline intelligence, forecasting narratives, lead enrichment, buyer-intent scoring, exec reporting automation.",
+    "stack": ["Snowflake Cortex", "LLM APIs", "Sigma", "Slack"],
+    "partners": ["CMO", "COO", "CEO"],
+    "href": "/blog/replaced-gtm-saas"
+  },
+  {
+    "replaced": "REPLACED: Dependence on a single engineer",
+    "name": "Internal AI Frameworks + Playbooks",
+    "period": "2023",
+    "org": "Sigma Computing",
+    "tag": "INFRASTRUCTURE",
+    "description": "Built reusable AI app frameworks and API-driven automation pipelines. Then documented them so non-engineering teams could build AI workflows without buying new SaaS. The goal: make the internal AI capability compounding, not dependent on a single engineer.",
+    "stack": []
+  }
+]

@@ -3,28 +3,7 @@
 import Image from "next/image";
 import ScrollReveal from "../ScrollReveal";
 
-const countries = [
-  { name: "Japan", note: "Cherry blossoms & vending machine everything" },
-  { name: "India", note: "Where the chaos is the point" },
-  { name: "Thailand", note: "Best pad thai, no debate" },
-  { name: "South Korea", note: "K-beauty, K-food, K-everything" },
-  { name: "Singapore", note: "The most orderly city I've ever loved" },
-  { name: "Vietnam", note: "Hạ Long Bay at sunrise" },
-  { name: "UK", note: "London fog and the Tate Modern" },
-  { name: "Mexico", note: "Tacos and cenotes" },
-  { name: "China", note: "The Great Wall at dusk" },
-  { name: "Cambodia", note: "Angkor Wat at dawn" },
-  { name: "Myanmar", note: "Temples as far as the eye can see" },
-  { name: "Laos", note: "The slow life on the Mekong" },
-  { name: "Sri Lanka", note: "Tea country and train rides" },
-  { name: "Philippines", note: "Island-hopping paradise" },
-  { name: "Indonesia", note: "Bali sunsets and temple mornings" },
-  { name: "Nepal", note: "The Himalayas up close" },
-  { name: "Bhutan", note: "Happiness is a national policy" },
-  { name: "Malaysia", note: "Street food capital of the world" },
-  { name: "Hong Kong", note: "Neon skyline meets dim sum" },
-  { name: "USA", note: "Home base, Bay Area edition" },
-];
+import countries from "@/content/personal/countries.json";
 
 export default function EditorialFeature() {
   return (
@@ -181,7 +160,7 @@ export default function EditorialFeature() {
                       fontFamily: "var(--font-serif)",
                       fontStyle: "italic",
                       fontSize: "clamp(15px, 1.4vw, 18px)",
-                      fontWeight: 700,
+                      fontWeight: 400,
                       color: "var(--color-ink)",
                       minWidth: "120px",
                     }}

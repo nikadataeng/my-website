@@ -85,17 +85,17 @@ function MobileTimeline() {
               width: 12,
               height: 12,
               borderRadius: "50%",
-              background: "var(--color-accent, #9A8A90)",
+              background: "var(--color-accent, #2B4D8C)",
               border: "2px solid var(--color-bg, #FFFFFF)",
             }}
           />
-          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-accent, #9FB8C8)" }}>
+          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-accent, #2B4D8C)" }}>
             {m.year}
           </span>
-          <h3 style={{ fontFamily: "var(--font-serif, 'Cormorant Garamond'), Georgia, serif", fontSize: 22, fontWeight: 700, color: "var(--color-ink, #1A1917)", margin: "4px 0 2px", lineHeight: 1.2 }}>
+          <h3 style={{ fontFamily: "var(--font-serif, 'Cormorant Garamond'), Georgia, serif", fontSize: 22, fontWeight: 700, color: "var(--color-ink, #4A4440)", margin: "4px 0 2px", lineHeight: 1.2 }}>
             {m.title}
           </h3>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "var(--color-accent, #9A8A90)", margin: "0 0 6px" }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "var(--color-accent, #2B4D8C)", margin: "0 0 6px" }}>
             {m.company}
           </p>
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "var(--color-muted, #6B6862)", lineHeight: 1.5, margin: 0 }}>
@@ -231,7 +231,7 @@ export default function CareerMountain() {
 
       /* Highlight bubbles — all milestones, same pattern as cards */
       THRESHOLDS.forEach((threshold, i) => {
-        [0, 1].forEach((j) => {
+        [0, 1, 2].forEach((j) => {
           const el = containerRef.current!.querySelector(`.cm-hl-${i}-${j}`);
           if (!el) return;
           gsap.fromTo(
@@ -275,7 +275,7 @@ export default function CareerMountain() {
     return (
       <section id="journey" style={{ padding: "80px 24px", borderBottom: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <span className="text-label" style={{ color: "var(--color-muted)" }}>02 —</span>
+          <span className="text-label" style={{ color: "var(--color-muted)" }}>Journey</span>
           <h2 className="text-section" style={{ margin: "12px 0 48px" }}>The journey, so far.</h2>
           <MobileTimeline />
         </div>
@@ -288,7 +288,7 @@ export default function CareerMountain() {
       <section id="journey" style={{ borderBottom: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 0 0" }}>
           <div style={{ padding: "0 24px" }}>
-            <span className="text-label" style={{ color: "var(--color-muted)" }}>02 —</span>
+            <span className="text-label" style={{ color: "var(--color-muted)" }}>Journey</span>
             <div style={{ margin: "12px 0 16px" }}><AnimatedRule /></div>
             <h2 className="text-section" style={{ marginBottom: "2rem" }}>The journey, so far.</h2>
           </div>
@@ -334,7 +334,7 @@ export default function CareerMountain() {
           }}
         >
           <ScrollReveal>
-            <span className="text-label" style={{ color: "var(--color-muted)" }}>02 —</span>
+            <span className="text-label" style={{ color: "var(--color-muted)" }}>Journey</span>
           </ScrollReveal>
           <div style={{ margin: "6px 0 8px", maxWidth: 200 }}>
             <AnimatedRule />
@@ -362,16 +362,16 @@ export default function CareerMountain() {
           aria-hidden
         >
           <defs>
-            {/* Main mountain gradient — warm muted rose to cream */}
+            {/* Main mountain gradient — Shilajit to cream */}
             <linearGradient id="cm-main-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#9A8A90" stopOpacity="0.35" />
-              <stop offset="50%" stopColor="#B0A5A8" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="#FAF9F7" stopOpacity="0.08" />
+              <stop offset="0%" stopColor="#4A4440" stopOpacity="0.25" />
+              <stop offset="50%" stopColor="#6B6862" stopOpacity="0.12" />
+              <stop offset="100%" stopColor="#FAF9F7" stopOpacity="0.05" />
             </linearGradient>
             {/* Far ridge fill — warm gray, very subtle */}
             <linearGradient id="cm-far-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#E0DCD8" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="#EEECE8" stopOpacity="0.08" />
+              <stop offset="0%" stopColor="#4A4440" stopOpacity="0.1" />
+              <stop offset="100%" stopColor="#EEECE8" stopOpacity="0.05" />
             </linearGradient>
           </defs>
 
@@ -387,7 +387,7 @@ export default function CareerMountain() {
           <path
             d={RIDGE_LINE}
             fill="none"
-            stroke="#9A8A90"
+            stroke="#2B4D8C"
             strokeWidth="1.5"
             strokeLinecap="round"
             opacity={0.3}
@@ -403,7 +403,7 @@ export default function CareerMountain() {
                 cy={peak.y}
                 r={18}
                 fill="none"
-                stroke="#9A8A90"
+                stroke="#2B4D8C"
                 strokeWidth="1"
                 opacity={0}
                 style={{ transformOrigin: `${peak.x}px ${peak.y}px`, willChange: "transform, opacity" }}
@@ -414,7 +414,7 @@ export default function CareerMountain() {
                 cx={peak.x}
                 cy={peak.y}
                 r={6}
-                fill="#9A8A90"
+                fill="#2B4D8C"
                 stroke="var(--color-bg, #FAF9F7)"
                 strokeWidth="2"
                 opacity={0.3}
@@ -484,12 +484,13 @@ export default function CareerMountain() {
                 {hl("cm-hl-0-1", 0, 120, -120, 1.5, <TrendingUp size={13} />, "Built predictive ROAS models")}
 
                 {/* WITHIN (peak 1, card: below) */}
-                {hl("cm-hl-1-0", 1, -140, 140, 1.8, <MapPin size={13} />, "Moved to NYC")}
-                {hl("cm-hl-1-1", 1, 110, 195, -1.5, <HandCoins size={13} />, "Pitched Estée Lauder — $2M contract")}
+                {hl("cm-hl-1-0", 1, -170, 260, 1.8, <MapPin size={13} />, "Moved to NYC")}
+                {hl("cm-hl-1-1", 1, 140, 310, -1.5, <HandCoins size={13} />, "Pitched Est\u00e9e Lauder \u2014 $2M contract")}
 
                 {/* Sigma AE (peak 2, card: above) */}
                 {hl("cm-hl-2-0", 2, -130, -145, -1.5, <Users size={13} />, "Worked with the exec team")}
                 {hl("cm-hl-2-1", 2, 125, -120, 2, <Trophy size={13} />, "Sigma hackathon winner")}
+                {hl("cm-hl-2-2", 2, -160, -210, 1.2, <MapPin size={13} />, "Moved to San Francisco")}
 
                 {/* Sigma AI (peak 3, card: above) */}
                 {hl("cm-hl-3-0", 3, -140, -165, 1.5, <Wrench size={13} />, "Built CRM replacement from scratch")}

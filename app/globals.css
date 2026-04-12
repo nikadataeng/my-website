@@ -7,8 +7,8 @@
 :root,
 [data-view="career"] {
   --color-bg:      #FAF9F7;
-  --color-ink:     #1A1917;
-  --color-accent:  #944D5E;
+  --color-ink:     #4A4440;
+  --color-accent:  #2B4D8C;
   --color-muted:   #6B6862;
   --color-surface: #FFFFFF;
   --color-border:  #EEECE8;
@@ -17,7 +17,7 @@
   --font-serif: "Playfair Display", Georgia, serif;
   --font-sans:  var(--font-inter), Inter, sans-serif;
 
-  --text-hero:    clamp(36px, 5vw, 64px);
+  --text-hero:    clamp(48px, 8vw, 96px);
   --text-section: clamp(32px, 4.5vw, 58px);
   --text-heading: 26px;
   --text-body:    17px;
@@ -31,12 +31,12 @@
 ───────────────────────────────────────────────────────────── */
 [data-view="personal"] {
   --color-bg:      #FFFFFF;
-  --color-ink:     #0D0D0D;
-  --color-accent:  #9FB8C8;
-  --color-muted:   #6B6B6B;
-  --color-surface: #F7F5F0;
-  --color-border:  #E0DDD7;
-  --color-caption: #9A9490;
+  --color-ink:     #4A4440;
+  --color-accent:  #944D5E;
+  --color-muted:   #6B6862;
+  --color-surface: #F8F7F5;
+  --color-border:  #E8E6E0;
+  --color-caption: #A8A49E;
 
   /* Monet Water Lilies accent palette */
   --monet-lily-green: #89A89E;
@@ -46,14 +46,16 @@
   --monet-wheat:      #EAD992;
   --monet-sky:        #9FB8C8;
 
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+
   --section-gap:   clamp(80px, 10vw, 120px);
 }
 
 /* ─── Tailwind extension (career defaults) ──────────────────── */
 @theme inline {
   --color-bg:      #FAF9F7;
-  --color-ink:     #1A1917;
-  --color-accent:  #944D5E;
+  --color-ink:     #4A4440;
+  --color-accent:  #2B4D8C;
   --color-muted:   #6B6862;
   --color-surface: #FFFFFF;
   --color-border:  #EEECE8;
@@ -93,19 +95,19 @@ body {
    Cormorant Garamond for display, Inter for body
 ───────────────────────────────────────────────────────────── */
 [data-view="career"] .text-hero {
-  font-family: var(--font-display);
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   font-style: normal;
   font-size: var(--text-hero);
   font-weight: 400;
   letter-spacing: -0.02em;
-  line-height: 1.25;
+  line-height: 1.1;
 }
 
 [data-view="career"] .text-section {
-  font-family: var(--font-display);
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   font-style: normal;
   font-size: var(--text-section);
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.15;
   text-transform: none;
@@ -128,7 +130,7 @@ body {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: clamp(56px, 9vw, 130px);
-  font-weight: 700;
+  font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 0.9;
   color: var(--color-ink);
@@ -138,7 +140,7 @@ body {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: clamp(36px, 5vw, 72px);
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: -0.015em;
   line-height: 1.0;
   text-transform: none;
@@ -159,7 +161,7 @@ body {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: clamp(22px, 3vw, 34px);
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.4;
   color: var(--color-ink);
 }
@@ -172,11 +174,11 @@ body {
   margin: 2rem 0;
 }
 
-/* ── Drop cap — red, signature VF treatment ── */
+/* ── Drop cap — impressionist accent, editorial treatment ── */
 [data-view="personal"] .drop-cap::first-letter {
   font-family: var(--font-serif);
   font-size: clamp(56px, 6vw, 80px);
-  font-weight: 900;
+  font-weight: 600;
   float: left;
   line-height: 0.8;
   margin-right: 0.12em;
@@ -231,7 +233,7 @@ a {
 
 [data-view="career"] .card-lift:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 0 3px rgba(148, 77, 94, 0.10), 0 8px 24px rgba(0,0,0,0.06);
+  box-shadow: 0 0 0 3px rgba(43, 77, 140, 0.12), 0 8px 24px rgba(0,0,0,0.06);
 }
 
 [data-view="personal"] .card-lift:hover {
@@ -251,6 +253,16 @@ a {
 
 [data-view="personal"] .editorial-rule {
   border-top-color: var(--color-ink);
+}
+
+/* ── Gradient wash section — impressionist interlude ── */
+[data-view="personal"] .gradient-wash {
+  background: linear-gradient(160deg,
+    #FFFFFF 0%,
+    #F0EDF5 40%,
+    #E8EFF3 80%,
+    #FFFFFF 100%
+  );
 }
 
 /* ─── No grain overlay for editorial personal view ─────────── */

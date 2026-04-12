@@ -39,7 +39,7 @@ export default function HighlightBubble({ text, rotation, className, style }: Hi
           fontFamily: "'Inter', var(--font-sans), sans-serif",
           fontSize: 12,
           fontWeight: 500,
-          color: "var(--color-ink, #1A1917)",
+          color: "var(--color-ink, #4A4440)",
           lineHeight: 1.4,
           margin: 0,
           whiteSpace: "nowrap",

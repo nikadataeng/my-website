@@ -167,40 +167,6 @@ function SlackMessage() {
   );
 }
 
-/* ─── Rotating text circle ──────────────────────────────────── */
-function RotatingCircle() {
-  const text = "Building AI systems everyday · Building AI systems everyday · ";
-
-  return (
-    <motion.div
-      animate={{ rotate: 360 }}
-      transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-      className="absolute bottom-10 right-8 md:bottom-14 md:right-14 w-36 h-36 hidden sm:block"
-      aria-hidden="true"
-    >
-      <svg viewBox="0 0 160 160" className="w-full h-full">
-        <defs>
-          <path
-            id="circle-path"
-            d="M 80,80 m -60,0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0"
-          />
-        </defs>
-        <text
-          style={{
-            fontSize: "11px",
-            fontWeight: 300,
-            letterSpacing: "0.1em",
-            fill: "var(--color-muted)",
-            textTransform: "uppercase",
-          }}
-        >
-          <textPath href="#circle-path">{text}</textPath>
-        </text>
-      </svg>
-    </motion.div>
-  );
-}
-
 /* ─── Hero ──────────────────────────────────────────────────── */
 export default function Hero() {
   const springEase = [0.16, 1, 0.3, 1] as [number, number, number, number];
@@ -301,8 +267,6 @@ export default function Hero() {
         </motion.a>
       </div>
 
-      {/* Rotating text circle */}
-      <RotatingCircle />
     </section>
   );
 }

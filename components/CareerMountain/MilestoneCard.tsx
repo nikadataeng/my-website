@@ -64,7 +64,7 @@ export default function MilestoneCard({ milestone, position, index, style }: Mil
           fontFamily: "var(--font-display), sans-serif",
           fontSize: 18,
           fontWeight: 600,
-          color: "var(--color-ink, #1A1917)",
+          color: "var(--color-ink, #4A4440)",
           lineHeight: 1.2,
           margin: "5px 0 3px",
           opacity: 0,
@@ -82,7 +82,7 @@ export default function MilestoneCard({ milestone, position, index, style }: Mil
           fontFamily: "'Inter', sans-serif",
           fontSize: 12,
           fontWeight: 500,
-          color: "var(--color-accent, #944D5E)",
+          color: "var(--color-accent, #2B4D8C)",
           margin: "0 0 6px",
           opacity: 0,
           transform: "translateY(8px)",
@@ -145,20 +145,6 @@ export default function MilestoneCard({ milestone, position, index, style }: Mil
         </div>
       )}
 
-      {/* Connecting line to peak dot */}
-      <div
-        style={{
-          position: "absolute",
-          left: "50%",
-          [position === "above" ? "bottom" : "top"]: -24,
-          width: 1,
-          height: 24,
-          background: "var(--color-accent, rgba(137,168,158,0.35))",
-          opacity: 0,
-          transition: "opacity 0.4s cubic-bezier(.37,.01,0,.98) 0.02s",
-        }}
-        className="cm-card-line"
-      />
     </div>
   );
 }

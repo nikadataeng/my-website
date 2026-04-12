@@ -1,0 +1,23 @@
+[
+  {
+    "label": "Currently building",
+    "value": "Vantage \u2014 Sigma's internal AI-native CRM suite",
+    "sub": "Replacing legacy CRM, one app at a time"
+  },
+  {
+    "label": "Latest post",
+    "value": "I Replaced $100K of GTM SaaS with a Snowflake Schema and Some LLM Calls",
+    "href": "/blog/replaced-gtm-saas",
+    "isLink": true
+  },
+  {
+    "label": "Last shipped",
+    "value": "Deal Slack Ops",
+    "sub": "Auto-creates Slack channels per opportunity with full account + deal context"
+  },
+  {
+    "label": "Stack",
+    "value": "Snowflake \u00b7 Sigma \u00b7 LLM APIs",
+    "sub": "Cortex, OpenAI, Anthropic, Slack, Python"
+  }
+]

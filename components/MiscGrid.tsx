@@ -4,29 +4,7 @@ import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
 import AnimatedRule from "./AnimatedRule";
 
-const gridItems = [
-  {
-    label: "Currently building",
-    value: "Vantage — Sigma's internal AI-native CRM suite",
-    sub: "Replacing Salesforce, one app at a time",
-  },
-  {
-    label: "Latest post",
-    value: "I Replaced $100K of GTM SaaS with a Snowflake Schema and Some LLM Calls",
-    href: "/blog/replaced-gtm-saas",
-    isLink: true,
-  },
-  {
-    label: "Last shipped",
-    value: "Deal Slack Ops",
-    sub: "Auto-creates Slack channels per opportunity with full account + deal context",
-  },
-  {
-    label: "Stack",
-    value: "Snowflake · Sigma · LLM APIs",
-    sub: "Cortex, OpenAI, Anthropic, Slack, Python",
-  },
-];
+import gridItems from "@/content/career/misc.json";
 
 export default function MiscGrid() {
   return (

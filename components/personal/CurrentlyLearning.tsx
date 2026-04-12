@@ -27,8 +27,8 @@ export default function CurrentlyLearning() {
   return (
     <section
       id="dispatch"
+      className="gradient-wash"
       style={{
-        background: "var(--color-bg)",
         borderBottom: "1px solid var(--color-border)",
         paddingTop: "var(--section-gap, 100px)",
         paddingBottom: "var(--section-gap, 100px)",
@@ -88,7 +88,7 @@ export default function CurrentlyLearning() {
                     fontFamily: "var(--font-serif)",
                     fontStyle: "italic",
                     fontSize: "clamp(18px, 1.8vw, 24px)",
-                    fontWeight: 700,
+                    fontWeight: 400,
                     color: "var(--color-ink)",
                     lineHeight: 1.2,
                   }}

@@ -23,30 +23,14 @@ export default function IdentityBlock() {
   return (
     <section
       id="about"
-      className="relative py-24 md:py-36 px-6 md:px-12 lg:px-20 overflow-hidden"
+      className="py-24 md:py-36 px-6 md:px-12 lg:px-20"
       style={{ borderBottom: "1px solid var(--color-border)" }}
     >
-      {/* Decorative number */}
-      <div
-        aria-hidden="true"
-        className="absolute top-8 left-4 select-none pointer-events-none"
-        style={{
-          fontSize: "240px",
-          fontWeight: 900,
-          color: "var(--color-ink)",
-          opacity: 0.04,
-          lineHeight: 1,
-          userSelect: "none",
-        }}
-      >
-        01
-      </div>
-
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section label */}
         <ScrollReveal>
           <span className="text-label" style={{ color: "var(--color-muted)" }}>
-            01 —
+            About
           </span>
         </ScrollReveal>
 

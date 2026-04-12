@@ -3,19 +3,7 @@
 import Image from "next/image";
 import ScrollReveal from "../ScrollReveal";
 
-const book = {
-  title: "Project Hail Mary",
-  author: "Andy Weir",
-  year: "2021",
-  genre: "Science Fiction",
-  coverPlaceholder: "/images/book-cover.svg",
-  pullQuote:
-    '"I\'m pretty sure this is a one-way trip. But if I can save Earth, it\'s worth it."',
-  review: `If you loved The Martian, this is Andy Weir turning the dial up to interstellar. A lone astronaut wakes up with no memory, millions of miles from home, and the fate of humanity resting on his shoulders. It's funny, it's gripping, and the friendship at the heart of it is one of the best I've read in sci-fi. Perfect for the space nerd in me.`,
-  readingStatus: "Currently Reading",
-  month: "April 2026",
-  rating: 5,
-};
+import book from "@/content/personal/book.json";
 
 export default function BookOfTheMonth() {
   return (
@@ -121,7 +109,7 @@ export default function BookOfTheMonth() {
                 className="text-label mt-3"
                 style={{ color: "var(--color-muted)" }}
               >
-                , {book.title}
+                — Nika, on <em>{book.title}</em>
               </footer>
             </blockquote>
 

@@ -6,12 +6,10 @@ import { useView } from "@/context/ViewContext";
 // Career view
 import PageTransition from "@/components/PageTransition";
 import Hero from "@/components/Hero";
-import WhatIReplace from "@/components/WhatIReplace";
 import IdentityBlock from "@/components/IdentityBlock";
+import { CareerMountain } from "@/components/CareerMountain";
 import Projects from "@/components/Projects";
 import POV from "@/components/POV";
-import MiscGrid from "@/components/MiscGrid";
-import { CareerMountain } from "@/components/CareerMountain";
 import Footer from "@/components/Footer";
 
 // Personal view
@@ -36,12 +34,10 @@ export default function Home() {
         >
           <PageTransition>
             <Hero />
-            <WhatIReplace />
             <IdentityBlock />
             <CareerMountain />
             <Projects />
             <POV />
-            <MiscGrid />
             <Footer />
           </PageTransition>
         </motion.div>

@@ -77,7 +77,7 @@ export default function WorldMap() {
                 fontFamily: "var(--font-serif)",
                 fontStyle: "italic",
                 fontSize: "clamp(48px, 6vw, 72px)",
-                fontWeight: 700,
+                fontWeight: 300,
                 color: "var(--color-accent)",
                 lineHeight: 1,
                 letterSpacing: "-0.02em",
@@ -106,14 +106,14 @@ export default function WorldMap() {
                       <Geography
                         key={geo.rsmKey}
                         geography={geo}
-                        fill={visited ? "#7B1C2E" : "#D8D3CC"}
+                        fill={visited ? "#944D5E" : "#E8E6E0"}
                         stroke="#FAFAF8"
                         strokeWidth={0.5}
                         style={{
                           default: { outline: "none" },
                           hover: {
                             outline: "none",
-                            fill: visited ? "#A02540" : "#C0BAAF",
+                            fill: visited ? "#7B3D4E" : "#D5D2CC",
                           },
                           pressed: { outline: "none" },
                         }}

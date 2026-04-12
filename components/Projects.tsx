@@ -5,39 +5,9 @@ import { motion, useInView } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import AnimatedRule from "./AnimatedRule";
 
-const projects = [
-  {
-    replaced: "REPLACED: Salesforce (CRM + deal management)",
-    name: "Vantage — Deal Slack Ops",
-    period: "2024–Present",
-    org: "Sigma Computing",
-    tag: "ONGOING",
-    description:
-      "Salesforce is a $200B company. We're building the replacement internally. Vantage is Sigma's AI-native CRM suite — Deal Slack Ops is the first shipped app: Slack channels auto-created per opportunity, linked to account and deal context at creation.",
-    stack: ["Snowflake", "Sigma", "Slack API", "LLM APIs"],
-  },
-  {
-    replaced: "REPLACED: Rattle · Clari · Gong",
-    name: "GTM AI Stack — $100K SaaS Replacement",
-    period: "2023",
-    org: "Sigma Computing",
-    tag: "PRODUCTION",
-    description:
-      "Replaced external GTM SaaS platforms with warehouse-native AI systems built on Snowflake Cortex and LLM APIs. Outcome: $100K+ annual cost savings. Capabilities: pipeline intelligence, forecasting narratives, lead enrichment, buyer-intent scoring, exec reporting automation.",
-    stack: ["Snowflake Cortex", "LLM APIs", "Sigma", "Slack"],
-    partners: ["CMO", "COO", "CEO"],
-  },
-  {
-    replaced: "REPLACED: Dependence on a single engineer",
-    name: "Internal AI Frameworks + Playbooks",
-    period: "2023",
-    org: "Sigma Computing",
-    tag: "INFRASTRUCTURE",
-    description:
-      "Built reusable AI app frameworks and API-driven automation pipelines. Then documented them so non-engineering teams could build AI workflows without buying new SaaS. The goal: make the internal AI capability compounding, not dependent on a single engineer.",
-    stack: [],
-  },
-];
+import projectsData from "@/content/career/projects.json";
+
+const projects = projectsData;
 
 function ProjectRow({ project, index }: { project: (typeof projects)[0]; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -51,43 +21,48 @@ function ProjectRow({ project, index }: { project: (typeof projects)[0]; index: 
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.07 }}
         className="py-8 md:py-10"
       >
-        {/* Replaced label */}
-        <p className="mb-1 text-label" style={{ color: "var(--color-muted)" }}>
-          {project.replaced}
-        </p>
-
-        {/* Top row: name + tag + period */}
-        <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+        {/* Replaced → Built headline */}
+        <div className="mb-3">
           <h3
-            className="font-extrabold leading-tight"
-            style={{ fontSize: "clamp(20px, 3vw, 32px)", color: "var(--color-ink)" }}
+            style={{
+              fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif",
+              fontSize: "clamp(24px, 3.5vw, 40px)",
+              fontWeight: 400,
+              color: "var(--color-ink)",
+              lineHeight: 1.15,
+            }}
           >
-            {project.name}
+            <span style={{ color: "var(--color-muted)", fontWeight: 300 }}>
+              {project.replaced.replace("REPLACED: ", "")}
+            </span>
+            <span style={{ color: "var(--color-accent)", margin: "0 0.4em" }}>→</span>
+            <span style={{ color: "var(--color-ink)" }}>{project.name}</span>
           </h3>
-          <div className="flex items-center gap-4 pt-1 shrink-0">
-            <span
-              className="text-label"
-              style={{
-                color: "var(--color-muted)",
-                border: "1px solid var(--color-border)",
-                padding: "2px 8px",
-              }}
-            >
-              {project.tag}
-            </span>
-            <span className="text-label" style={{ color: "var(--color-muted)" }}>
-              {project.period}
-            </span>
-          </div>
         </div>
 
-        {/* Org */}
-        <p className="text-label mb-4" style={{ color: "var(--color-muted)" }}>
-          {project.org}
-          {project.partners && (
-            <> · Partners: {project.partners.join(" · ")}</>
-          )}
-        </p>
+        {/* Meta row: tag + period + org */}
+        <div className="flex flex-wrap items-center gap-4 mb-4">
+          <span
+            className="text-label"
+            style={{
+              color: "var(--color-accent)",
+              border: "1px solid var(--color-accent)",
+              padding: "2px 8px",
+              opacity: 0.8,
+            }}
+          >
+            {project.tag}
+          </span>
+          <span className="text-label" style={{ color: "var(--color-muted)" }}>
+            {project.period}
+          </span>
+          <span className="text-label" style={{ color: "var(--color-muted)" }}>
+            {project.org}
+            {project.partners && (
+              <> · {project.partners.join(" · ")}</>
+            )}
+          </span>
+        </div>
 
         {/* Description */}
         <p
@@ -112,18 +87,25 @@ function ProjectRow({ project, index }: { project: (typeof projects)[0]; index: 
           </div>
         )}
 
-        {/* Arrow */}
-        <div className="mt-5">
-          <motion.span
-            className="text-label font-bold"
-            style={{ color: "var(--color-accent)", display: "inline-block" }}
-            animate={inView ? {} : {}}
-            whileHover={{ x: 8 }}
-            transition={{ duration: 0.15 }}
-          >
-            →
-          </motion.span>
-        </div>
+        {/* CTA — only show if project has a link */}
+        {project.href && (
+          <div className="mt-5">
+            <a
+              href={project.href}
+              className="text-label font-bold inline-flex items-center gap-2 group/link"
+              style={{ color: "var(--color-accent)" }}
+            >
+              Read more
+              <motion.span
+                className="inline-block"
+                whileHover={{ x: 4 }}
+                transition={{ duration: 0.15 }}
+              >
+                →
+              </motion.span>
+            </a>
+          </div>
+        )}
       </motion.div>
 
       {/* Animated rule between projects */}
@@ -146,29 +128,14 @@ export default function Projects() {
   return (
     <section
       id="work"
-      className="py-24 md:py-36 px-6 md:px-12 lg:px-20 relative overflow-hidden"
+      className="py-24 md:py-36 px-6 md:px-12 lg:px-20"
       style={{ borderBottom: "1px solid var(--color-border)" }}
     >
-      {/* Decorative number */}
-      <div
-        aria-hidden="true"
-        className="absolute top-8 left-4 select-none pointer-events-none"
-        style={{
-          fontSize: "240px",
-          fontWeight: 900,
-          color: "var(--color-ink)",
-          opacity: 0.04,
-          lineHeight: 1,
-        }}
-      >
-        02
-      </div>
-
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section label */}
         <ScrollReveal>
           <span className="text-label" style={{ color: "var(--color-muted)" }}>
-            02 —
+            Work
           </span>
         </ScrollReveal>
 

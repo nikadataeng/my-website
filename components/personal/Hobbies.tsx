@@ -4,50 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import ScrollReveal from "../ScrollReveal";
 
-const obsessions = [
-  {
-    tag: "THE UNIVERSE",
-    title: "Space.",
-    desc: "Orbital mechanics. James Webb images. The cosmos is the original algorithm and I am obsessed.",
-    image: "/images/hobby-featured.svg",
-    wide: true,
-  },
-  {
-    tag: "HOME BASE",
-    title: "The Girls.",
-    desc: "Two cats. Zero respect for my sleep schedule. Absolute rulers of the apartment.",
-    image: null,
-    wide: false,
-  },
-  {
-    tag: "SLOW CRAFT",
-    title: "Ceramics.",
-    desc: "Making things with my hands while my brain runs inference. Clay therapy, essentially.",
-    image: null,
-    wide: false,
-  },
-  {
-    tag: "ARRANGEMENT",
-    title: "Ikebana.",
-    desc: "The Japanese art of flower arrangement. Minimalism, intention, and knowing when to stop.",
-    image: null,
-    wide: false,
-  },
-  {
-    tag: "IRL SPORT",
-    title: "Table Tennis.",
-    desc: "Yes it's a real sport. No I will not be taking questions at this time.",
-    image: null,
-    wide: false,
-  },
-  {
-    tag: "ALWAYS LOGGED ON",
-    title: "The Internet.",
-    desc: "TikTok rabbit holes. GitHub at 2am. Discord servers for niche things. Terminally, chronically, proudly online.",
-    image: null,
-    wide: false,
-  },
-];
+import obsessions from "@/content/personal/hobbies.json";
 
 export default function Hobbies() {
   return (
@@ -102,12 +59,14 @@ export default function Hobbies() {
                 overflow: "hidden",
               }}
             >
-              <Image
-                src="/images/hobby-featured.svg"
-                alt="Labubu collection"
-                fill
-                style={{ objectFit: "cover" }}
-              />
+              {obsessions[0].image && (
+                <Image
+                  src={obsessions[0].image}
+                  alt={obsessions[0].title}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              )}
             </div>
             {/* Text side */}
             <motion.div
@@ -127,7 +86,7 @@ export default function Hobbies() {
                   fontFamily: "var(--font-serif)",
                   fontStyle: "italic",
                   fontSize: "clamp(36px, 4.5vw, 64px)",
-                  fontWeight: 700,
+                  fontWeight: 300,
                   color: "var(--color-ink)",
                   lineHeight: 1.0,
                   letterSpacing: "-0.02em",
@@ -179,7 +138,7 @@ export default function Hobbies() {
                     fontFamily: "var(--font-serif)",
                     fontStyle: "italic",
                     fontSize: "clamp(20px, 2vw, 26px)",
-                    fontWeight: 700,
+                    fontWeight: 400,
                     color: "var(--color-ink)",
                     lineHeight: 1.1,
                     marginBottom: "0.75rem",

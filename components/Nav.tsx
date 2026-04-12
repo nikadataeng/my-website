@@ -68,7 +68,7 @@ export default function Nav() {
             </Link>
 
             <Link
-              href="mailto:hello@ayonika.dev"
+              href="mailto:ayonikabose99@gmail.com"
               className="text-sm font-medium"
               style={{ color: "var(--color-accent)" }}
             >
@@ -145,7 +145,7 @@ export default function Nav() {
                 transition={{ delay: links.length * 0.06 }}
               >
                 <Link
-                  href="mailto:hello@ayonika.dev"
+                  href="mailto:ayonikabose99@gmail.com"
                   onClick={() => setOpen(false)}
                   style={{
                     fontSize: "48px",

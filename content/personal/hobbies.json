@@ -1,0 +1,44 @@
+[
+  {
+    "tag": "THE UNIVERSE",
+    "title": "Space.",
+    "desc": "Nika ranks her favorite Artemis 2 images. The cosmos is the original algorithm and I am obsessed.",
+    "image": "/images/artemis2-earthset.jpg",
+    "wide": true
+  },
+  {
+    "tag": "HOME BASE",
+    "title": "The Girls.",
+    "desc": "Two cats. Zero respect for my sleep schedule. Absolute rulers of the apartment.",
+    "image": null,
+    "wide": false
+  },
+  {
+    "tag": "SLOW CRAFT",
+    "title": "Ceramics.",
+    "desc": "Making things with my hands while my brain runs inference. Clay therapy, essentially.",
+    "image": null,
+    "wide": false
+  },
+  {
+    "tag": "ARRANGEMENT",
+    "title": "Ikebana.",
+    "desc": "The Japanese art of flower arrangement. Minimalism, intention, and knowing when to stop.",
+    "image": null,
+    "wide": false
+  },
+  {
+    "tag": "IRL SPORT",
+    "title": "Table Tennis.",
+    "desc": "Yes it's a real sport. No I will not be taking questions at this time.",
+    "image": null,
+    "wide": false
+  },
+  {
+    "tag": "ALWAYS LOGGED ON",
+    "title": "The Internet.",
+    "desc": "TikTok rabbit holes. GitHub at 2am. Discord servers for niche things. Terminally, chronically, proudly online.",
+    "image": null,
+    "wide": false
+  }
+]
