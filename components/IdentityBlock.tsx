@@ -43,6 +43,23 @@ export default function IdentityBlock() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {/* Bio */}
           <ScrollReveal delay={0.05} className="md:col-span-1">
+            {/* Headshot */}
+            <div
+              style={{
+                width: "clamp(140px, 18vw, 180px)",
+                aspectRatio: "1 / 1",
+                borderRadius: "50%",
+                backgroundImage: "url(/images/headshot.png)",
+                backgroundSize: "145%",
+                backgroundPosition: "center 12%",
+                backgroundRepeat: "no-repeat",
+                boxShadow:
+                  "0 20px 50px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06)",
+                marginBottom: 24,
+              }}
+              aria-label="Photo of Ayonika Bose"
+              role="img"
+            />
             <p
               className="leading-relaxed"
               style={{ color: "var(--color-ink)", fontSize: "var(--text-body)" }}

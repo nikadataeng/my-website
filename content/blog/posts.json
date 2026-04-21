@@ -1,5 +1,14 @@
 [
   {
+    "title": "We Replaced a $15k Revenue Execution Platform with a Simple Sigma Workflow",
+    "description": "How we replaced a third-party SaaS revenue execution platform with an internal Sigma workflow that automates deal notifications and celebrations in Slack.",
+    "date": "Apr 15, 2026",
+    "author": "Ayonika Bose",
+    "url": "https://www.sigmacomputing.com/blog/replaced-revenue-execution-platform-sigma-workflow",
+    "image": "https://cdn.prod.website-files.com/666bbba4ff7240a20f4cccf8/69dd57c3c0c8c33930507d98_slack-boom-cover%20(1).png",
+    "source": "Sigma Computing Blog"
+  },
+  {
     "title": "How Snowflake's Connector for Google Analytics Centralizes Marketing Data",
     "description": "How Snowflake's connector for Google Analytics raw data solved the challenge of migrating from Universal Analytics to GA4 \u2014 addressing data sampling limitations with a unified approach to granular marketing data.",
     "date": "Feb 8, 2024",

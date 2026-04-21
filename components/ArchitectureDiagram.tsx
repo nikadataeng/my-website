@@ -12,10 +12,59 @@ import architectureData from "@/content/career/architecture.json";
 /* ------------------------------------------------------------------ */
 
 const CARD_W = 190;
-const CARD_H = 64;
+const CARD_H = 52;
 const JUNCTION_W = 220;
-const JUNCTION_H = 70;
+const JUNCTION_H = 58;
 const EASING: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
+/* ------------------------------------------------------------------ */
+/*  Arrow helpers                                                      */
+/* ------------------------------------------------------------------ */
+
+// Find where a line from (cx, cy) toward (tx, ty) exits a rect of size w×h
+// centered on (cx, cy). Adds buffer so arrow heads don't touch the bubble.
+function boxEdgePoint(
+  cx: number,
+  cy: number,
+  tx: number,
+  ty: number,
+  w: number,
+  h: number,
+  buffer = 6,
+) {
+  const dx = tx - cx;
+  const dy = ty - cy;
+  if (dx === 0 && dy === 0) return { x: cx, y: cy };
+  const halfW = w / 2 + buffer;
+  const halfH = h / 2 + buffer;
+  const tX = Math.abs(dx) / halfW;
+  const tY = Math.abs(dy) / halfH;
+  const t = Math.max(tX, tY);
+  if (t === 0) return { x: cx, y: cy };
+  return { x: cx + dx / t, y: cy + dy / t };
+}
+
+// Smooth cubic bezier between two points, biased along the dominant axis.
+function curvedPath(x1: number, y1: number, x2: number, y2: number) {
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const horizontal = Math.abs(dx) > Math.abs(dy);
+  let cx1: number, cy1: number, cx2: number, cy2: number;
+  if (horizontal) {
+    const pull = Math.abs(dx) * 0.45;
+    cx1 = x1 + Math.sign(dx) * pull;
+    cy1 = y1;
+    cx2 = x2 - Math.sign(dx) * pull;
+    cy2 = y2;
+  } else {
+    const pull = Math.abs(dy) * 0.45;
+    cx1 = x1;
+    cy1 = y1 + Math.sign(dy) * pull;
+    cx2 = x2;
+    cy2 = y2 - Math.sign(dy) * pull;
+  }
+  return `M ${x1},${y1} C ${cx1},${cy1} ${cx2},${cy2} ${x2},${y2}`;
+}
 
 /* Column x-centers as % of container width */
 const COL_X: Record<number, number> = {
@@ -368,23 +417,90 @@ export default function ArchitectureDiagram() {
               />
             </svg>
 
-            {/* Framework zone background */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={effectiveInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.8 }}
+            {/* Connection arrows (Obsidian-style mind map) */}
+            <svg
               style={{
                 position: "absolute",
-                left: "8%",
-                right: "8%",
-                top: 280,
-                bottom: -20,
-                background: "rgba(43, 77, 140, 0.015)",
-                borderRadius: 20,
-                border: "1px solid rgba(43, 77, 140, 0.04)",
+                inset: 0,
+                width: "100%",
+                height: "100%",
                 pointerEvents: "none",
+                zIndex: 4,
+                overflow: "visible",
               }}
-            />
+              aria-hidden
+            >
+              <defs>
+                <marker
+                  id="arch-arrow-tip"
+                  viewBox="0 0 10 10"
+                  refX="8"
+                  refY="5"
+                  markerWidth="5"
+                  markerHeight="5"
+                  orient="auto-start-reverse"
+                >
+                  <path
+                    d="M 0 1 L 9 5 L 0 9 z"
+                    fill="var(--color-muted)"
+                    fillOpacity="0.45"
+                  />
+                </marker>
+              </defs>
+              {architectureData.connections.map((conn, i) => {
+                const from = nodePositions[conn.from];
+                const to = nodePositions[conn.to];
+                if (!from || !to) return null;
+                const start = boxEdgePoint(
+                  from.x,
+                  from.y,
+                  to.x,
+                  to.y,
+                  from.w,
+                  from.h,
+                  4,
+                );
+                const end = boxEdgePoint(
+                  to.x,
+                  to.y,
+                  from.x,
+                  from.y,
+                  to.w,
+                  to.h,
+                  8,
+                );
+                const d = curvedPath(start.x, start.y, end.x, end.y);
+                const isCross = conn.zone === "crossdomain";
+                return (
+                  <motion.path
+                    key={`${conn.from}-${conn.to}`}
+                    d={d}
+                    stroke="var(--color-muted)"
+                    strokeOpacity={isCross ? 0.28 : 0.32}
+                    strokeWidth={1.2}
+                    strokeLinecap="round"
+                    fill="none"
+                    strokeDasharray={conn.dashed ? "4 5" : undefined}
+                    markerEnd="url(#arch-arrow-tip)"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={
+                      effectiveInView ? { pathLength: 1, opacity: 1 } : {}
+                    }
+                    transition={{
+                      pathLength: {
+                        duration: 1.1,
+                        delay: 0.35 + i * 0.04,
+                        ease: "easeOut",
+                      },
+                      opacity: {
+                        duration: 0.5,
+                        delay: 0.35 + i * 0.04,
+                      },
+                    }}
+                  />
+                );
+              })}
+            </svg>
 
             {/* Zone labels */}
             <motion.span
@@ -477,7 +593,7 @@ export default function ArchitectureDiagram() {
             )}
 
             {/* Node cards */}
-            {architectureData.nodes.map((node) => {
+            {architectureData.nodes.map((node, i) => {
               const pos = nodePositions[node.id];
               if (!pos) return null;
               return (
@@ -487,6 +603,7 @@ export default function ArchitectureDiagram() {
                     position: "absolute",
                     left: pos.x,
                     top: pos.y,
+                    transform: "translate(-50%, -50%)",
                     zIndex: node.zone === "junction" ? 15 : 10,
                   }}
                 >
@@ -495,6 +612,8 @@ export default function ArchitectureDiagram() {
                     delay={reducedMotion ? 0 : nodeDelay(node)}
                     inView={effectiveInView}
                     isJunction={node.zone === "junction"}
+                    floatDelay={reducedMotion ? 0 : (i % 5) * 0.35}
+                    floatAmplitude={reducedMotion ? 0 : 3}
                   />
                 </div>
               );

@@ -14,6 +14,8 @@ interface DiagramNodeProps {
   delay: number;
   inView: boolean;
   isJunction?: boolean;
+  floatDelay?: number;
+  floatAmplitude?: number;
 }
 
 const EASING = [0.16, 1, 0.3, 1] as const;
@@ -23,47 +25,51 @@ export default function DiagramNode({
   delay,
   inView,
   isJunction = false,
+  floatDelay = 0,
+  floatAmplitude = 3,
 }: DiagramNodeProps) {
-  const isProduction = node.zone === "production";
-  const borderColor = isProduction
-    ? "var(--color-accent)"
-    : "var(--color-muted)";
-
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={
-        inView
-          ? { opacity: 1, y: 0 }
-          : {}
-      }
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={inView ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 0.5, ease: EASING, delay }}
-      className="card-lift"
-      style={{
-        position: "absolute",
-        width: isJunction ? 220 : 190,
-        padding: isJunction ? "16px 20px" : "12px 16px",
-        background: isJunction
-          ? "rgba(43, 77, 140, 0.04)"
-          : node.zone === "framework"
-            ? "rgba(250, 249, 247, 0.85)"
-            : "rgba(255, 255, 255, 0.72)",
-        backdropFilter: "blur(16px) saturate(180%)",
-        WebkitBackdropFilter: "blur(16px) saturate(180%)",
-        border: isJunction
-          ? "1px solid rgba(43, 77, 140, 0.2)"
-          : "1px solid rgba(255, 255, 255, 0.4)",
-        borderLeft: `3px solid ${borderColor}`,
-        borderRadius: 14,
-        boxShadow: isJunction
-          ? "0 16px 48px rgba(43,77,140,0.08), 0 4px 12px rgba(0,0,0,0.04)"
-          : "0 8px 32px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.02)",
-        zIndex: isJunction ? 15 : 10,
-        cursor: "default",
-        transform: "translate(-50%, -50%)",
-      }}
+      style={{ width: isJunction ? 220 : 190 }}
     >
-      <div style={{ minWidth: 0 }}>
+      <motion.div
+        animate={
+          inView
+            ? {
+                y: [0, -floatAmplitude, 0, floatAmplitude * 0.7, 0],
+              }
+            : {}
+        }
+        transition={{
+          duration: 5.5 + floatDelay * 0.6,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: delay + 0.4 + floatDelay,
+        }}
+        className="card-lift"
+        style={{
+          padding: isJunction ? "14px 22px" : "12px 18px",
+          background: isJunction
+            ? "rgba(43, 77, 140, 0.06)"
+            : node.zone === "framework"
+              ? "rgba(250, 249, 247, 0.92)"
+              : "rgba(255, 255, 255, 0.85)",
+          backdropFilter: "blur(16px) saturate(180%)",
+          WebkitBackdropFilter: "blur(16px) saturate(180%)",
+          border: isJunction
+            ? "1px solid rgba(43, 77, 140, 0.22)"
+            : "1px solid var(--color-border)",
+          borderRadius: 24,
+          boxShadow: isJunction
+            ? "0 16px 48px rgba(43,77,140,0.1), 0 4px 12px rgba(0,0,0,0.04)"
+            : "0 10px 28px rgba(0,0,0,0.05), 0 2px 6px rgba(0,0,0,0.02)",
+          cursor: "default",
+          textAlign: "center",
+        }}
+      >
         <div
           style={{
             fontFamily: "'Inter', sans-serif",
@@ -89,7 +95,7 @@ export default function DiagramNode({
         >
           {node.sublabel}
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
