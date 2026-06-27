@@ -1,7 +1,23 @@
 "use client";
 
+/**
+ * IdentityBlock — About section.
+ *
+ * Enhanced with Chartmetric-inspired staggered list item reveals:
+ * each "What I build" and "Current stack" item fades+slides in
+ * with a per-item delay, creating the cascading data-list feel
+ * common in Chartmetric's stat sections.
+ *
+ * The headshot block now uses a "scale-up" ScrollReveal variant
+ * for a subtle Chartmetric-style entrance.
+ */
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import AnimatedRule from "./AnimatedRule";
+
+const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 const whatIBuild = [
   "GTM automation systems",
@@ -18,6 +34,42 @@ const currentStack = [
   "Slack API",
   "Python · SQL",
 ];
+
+/** Staggered list — each item fades+slides in on a cascade */
+function StaggeredList({
+  items,
+  parentDelay = 0,
+}: {
+  items: string[];
+  parentDelay?: number;
+}) {
+  const ref = useRef<HTMLUListElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  return (
+    <ul ref={ref} className="space-y-2">
+      {items.map((item, i) => (
+        <motion.li
+          key={item}
+          initial={{ opacity: 0, x: -16 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{
+            duration: 0.45,
+            ease: EASE,
+            delay: parentDelay + i * 0.07,
+          }}
+          style={{
+            fontSize: "var(--text-body)",
+            color: "var(--color-ink)",
+          }}
+        >
+          <span style={{ color: "var(--color-muted)" }}>//</span>{" "}
+          {item}
+        </motion.li>
+      ))}
+    </ul>
+  );
+}
 
 export default function IdentityBlock() {
   return (
@@ -41,8 +93,8 @@ export default function IdentityBlock() {
 
         {/* Three columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-          {/* Bio */}
-          <ScrollReveal delay={0.05} className="md:col-span-1">
+          {/* Bio — scale-up entrance for the headshot, then fade-up for text */}
+          <ScrollReveal delay={0.05} variant="scale-up" className="md:col-span-1">
             {/* Headshot */}
             <div
               style={{
@@ -85,53 +137,25 @@ export default function IdentityBlock() {
             </p>
           </ScrollReveal>
 
-          {/* What I build */}
-          <ScrollReveal delay={0.1}>
-            <p
-              className="text-label mb-5"
-              style={{ color: "var(--color-muted)" }}
-            >
-              What I build
-            </p>
-            <ul className="space-y-2">
-              {whatIBuild.map((item) => (
-                <li
-                  key={item}
-                  style={{
-                    fontSize: "var(--text-body)",
-                    color: "var(--color-ink)",
-                  }}
-                >
-                  <span style={{ color: "var(--color-muted)" }}>//</span>{" "}
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </ScrollReveal>
+          {/* What I build — staggered list */}
+          <div>
+            <ScrollReveal delay={0.08}>
+              <p className="text-label mb-5" style={{ color: "var(--color-muted)" }}>
+                What I build
+              </p>
+            </ScrollReveal>
+            <StaggeredList items={whatIBuild} parentDelay={0.12} />
+          </div>
 
-          {/* Current stack */}
-          <ScrollReveal delay={0.15}>
-            <p
-              className="text-label mb-5"
-              style={{ color: "var(--color-muted)" }}
-            >
-              Current stack
-            </p>
-            <ul className="space-y-2">
-              {currentStack.map((item) => (
-                <li
-                  key={item}
-                  style={{
-                    fontSize: "var(--text-body)",
-                    color: "var(--color-ink)",
-                  }}
-                >
-                  <span style={{ color: "var(--color-muted)" }}>//</span>{" "}
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </ScrollReveal>
+          {/* Current stack — staggered list */}
+          <div>
+            <ScrollReveal delay={0.1}>
+              <p className="text-label mb-5" style={{ color: "var(--color-muted)" }}>
+                Current stack
+              </p>
+            </ScrollReveal>
+            <StaggeredList items={currentStack} parentDelay={0.14} />
+          </div>
         </div>
       </div>
     </section>
