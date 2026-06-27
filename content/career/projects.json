@@ -1,11 +1,20 @@
 [
   {
+    "replaced": "REPLACED: Fragmented personal tools (Notion, Google Calendar, Gmail, LinkedIn, scattered AI prompts)",
+    "name": "Personal Multi-Agent Operating Company",
+    "period": "2026",
+    "org": "Independent",
+    "tag": "PRODUCTION",
+    "description": "Didn't just use AI tools. Built the company that runs my life. Three executive AI agents — Buttercup (Chief of Staff), Blossom (CFO), Bubbles (CBO) — each routing to 2-5 specialized staff agents. Buttercup is a live WhatsApp interface via Twilio webhook. Staff handles inbox triage, email drafting, calendar management, job scouting, AI signals, LinkedIn drafting, website updates, and financial tracking. Architecture: hub-and-spoke, max depth 2, least-privilege tool grants, fresh context per run. Built on Claude agents with MCP integrations across Gmail, Google Calendar, Indeed, and Vercel.",
+    "stack": ["Claude Agents", "MCP", "Twilio", "Gmail API", "Google Calendar API", "Vercel", "Next.js", "Python"]
+  },
+  {
     "replaced": "REPLACED: Legacy CRM (deal management)",
-    "name": "Internal AI CRM \u2014 Deal Slack Ops",
-    "period": "2024\u2013Present",
+    "name": "Internal AI CRM — Deal Slack Ops",
+    "period": "2024–Present",
     "org": "Sigma Computing",
     "tag": "ONGOING",
-    "description": "The legacy CRM is a $200B industry. We're building the replacement internally. This is Sigma's AI-native CRM suite \u2014 Deal Slack Ops is the first shipped app: Slack channels auto-created per opportunity, linked to account and deal context at creation.",
+    "description": "The legacy CRM is a $200B industry. We're building the replacement internally. This is Sigma's AI-native CRM suite — Deal Slack Ops is the first shipped app: Slack channels auto-created per opportunity, linked to account and deal context at creation.",
     "stack": ["Snowflake", "Sigma", "Slack API", "LLM APIs"]
   },
   {
