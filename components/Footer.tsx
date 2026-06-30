@@ -1,5 +1,4 @@
 import Link from "next/link";
-import CalendlyButton from "./CalendlyButton";
 
 const navLinks = [
   { href: "/#work",  label: "work"  },
@@ -55,7 +54,6 @@ export default function Footer() {
           >
             LinkedIn
           </Link>
-          <CalendlyButton />
         </div>
       </div>
 
