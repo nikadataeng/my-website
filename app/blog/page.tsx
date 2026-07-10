@@ -1,11 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Image from "next/image";
-import ScrollReveal from "@/components/ScrollReveal";
-import AnimatedRule from "@/components/AnimatedRule";
+/**
+ * Essays — issue-style table of contents. No cards: number, serif title,
+ * one-line deck, small-caps date. Each row links out to the published piece.
+ */
 
-const springEase = [0.16, 1, 0.3, 1] as [number, number, number, number];
+import { motion } from "framer-motion";
+import ScrollReveal from "@/components/ScrollReveal";
+
+const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 import postsData from "@/content/blog/posts.json";
 
@@ -32,140 +35,108 @@ export default function BlogPage() {
       }}
     >
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
+        {/* Header — section opener with 4px ink rule */}
         <ScrollReveal>
-          <span className="text-label" style={{ color: "var(--color-muted)" }}>Writing</span>
+          <div
+            style={{
+              borderTop: "4px solid var(--ink-display)",
+              paddingTop: "1rem",
+              display: "flex",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "0.5rem",
+            }}
+          >
+            <span className="text-label" style={{ color: "var(--color-accent)" }}>
+              Essays
+            </span>
+            <span className="text-label" style={{ color: "var(--color-muted)" }}>
+              Published elsewhere
+            </span>
+          </div>
         </ScrollReveal>
-        <div style={{ margin: "12px 0 16px", maxWidth: 200 }}>
-          <AnimatedRule />
-        </div>
         <ScrollReveal delay={0.1}>
-          <h1 className="text-section" style={{ marginBottom: "clamp(32px, 5vh, 56px)" }}>
+          <h1
+            style={{
+              fontFamily: "var(--font-serif)",
+              fontSize: "var(--text-hero)",
+              fontWeight: 400,
+              letterSpacing: "-0.02em",
+              lineHeight: 1.05,
+              color: "var(--ink-display)",
+              margin: "1.5rem 0 clamp(32px, 5vh, 56px)",
+            }}
+          >
             Things I&apos;ve written.
           </h1>
         </ScrollReveal>
 
-        {/* Blog posts */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+        {/* Index */}
+        <div>
           {posts.map((post, i) => (
             <motion.a
               key={post.url}
               href={post.url}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: springEase, delay: 0.2 + i * 0.1 }}
+              transition={{ duration: 0.9, ease: EASE, delay: 0.2 + i * 0.08 }}
+              className="group grid grid-cols-[3.5rem_1fr] md:grid-cols-[5rem_1fr] gap-x-4 md:gap-x-8 py-8"
               style={{
-                display: "block",
+                display: "grid",
                 textDecoration: "none",
                 color: "inherit",
-                background: "var(--color-surface)",
-                border: "1px solid var(--color-border)",
-                borderRadius: 16,
-                overflow: "hidden",
-                transition: "transform 200ms ease, box-shadow 200ms ease",
+                borderTop: "1px solid var(--color-border)",
               }}
-              className="card-lift"
             >
-              {/* Image */}
-              <div
+              <span
                 style={{
-                  position: "relative",
-                  width: "100%",
-                  height: 0,
-                  paddingBottom: "50%",
-                  overflow: "hidden",
-                  background: "var(--color-border)",
+                  fontFamily: "var(--font-serif)",
+                  fontSize: "clamp(28px, 3vw, 40px)",
+                  fontWeight: 300,
+                  color: "var(--color-accent)",
+                  lineHeight: 1,
                 }}
               >
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  style={{ objectFit: "cover" }}
-                  sizes="(max-width: 768px) 100vw, 800px"
-                  unoptimized
-                />
-              </div>
-
-              {/* Content */}
-              <div style={{ padding: "24px 28px" }}>
-                {/* Source + Date */}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                    marginBottom: 10,
-                  }}
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span>
+                <span
+                  className="text-label block"
+                  style={{ color: "var(--color-muted)", marginBottom: "0.4rem" }}
                 >
-                  <span
-                    style={{
-                      fontFamily: "'Inter', sans-serif",
-                      fontSize: 11,
-                      fontWeight: 600,
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                      color: "var(--color-accent)",
-                    }}
-                  >
-                    {post.source}
-                  </span>
-                  <span style={{ color: "var(--color-border)", fontSize: 11 }}>·</span>
-                  <span
-                    style={{
-                      fontFamily: "'Inter', sans-serif",
-                      fontSize: 11,
-                      fontWeight: 500,
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                      color: "var(--color-muted)",
-                    }}
-                  >
-                    {post.date}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <h2
+                  {post.source} · {post.date}
+                </span>
+                <span
+                  className="link-underline"
                   style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: "clamp(20px, 3vw, 28px)",
+                    fontFamily: "var(--font-serif)",
+                    fontSize: "clamp(22px, 2.6vw, 32px)",
                     fontWeight: 500,
-                    color: "var(--color-ink)",
-                    lineHeight: 1.25,
-                    margin: "0 0 10px",
+                    color: "var(--ink-display)",
+                    lineHeight: 1.2,
+                    display: "inline",
                   }}
                 >
                   {post.title}
-                </h2>
-
-                {/* Description */}
-                <p
+                </span>
+                <span
                   style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: 14,
+                    display: "block",
+                    fontFamily: "var(--font-serif)",
+                    fontStyle: "italic",
+                    fontSize: "clamp(15px, 1.5vw, 18px)",
                     color: "var(--color-muted)",
                     lineHeight: 1.6,
-                    margin: "0 0 14px",
+                    marginTop: "0.5rem",
+                    maxWidth: "60ch",
                   }}
                 >
                   {post.description}
-                </p>
-
-                {/* Read link */}
-                <span
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: 13,
-                    fontWeight: 500,
-                    color: "var(--color-accent)",
-                  }}
-                >
-                  Read on {post.source} →
                 </span>
-              </div>
+              </span>
             </motion.a>
           ))}
         </div>

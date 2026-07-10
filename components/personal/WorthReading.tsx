@@ -9,6 +9,7 @@ export default function WorthReading() {
   return (
     <section
       id="reading"
+      data-screen-label="07 Reading"
       style={{
         background: "var(--color-surface)",
         borderBottom: "1px solid var(--color-border)",

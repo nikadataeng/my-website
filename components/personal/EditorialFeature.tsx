@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import ScrollReveal from "../ScrollReveal";
+import EditorialImage from "../EditorialImage";
 
 import countries from "@/content/personal/countries.json";
 
@@ -9,6 +9,7 @@ export default function EditorialFeature() {
   return (
     <section
       id="travel"
+      data-screen-label="04 Feature"
       style={{
         background: "var(--color-bg)",
         borderBottom: "1px solid var(--color-border)",
@@ -45,30 +46,16 @@ export default function EditorialFeature() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-16">
 
           {/* Big photo */}
-          <ScrollReveal className="lg:col-span-7">
-            <div
-              style={{
-                position: "relative",
-                width: "100%",
-                aspectRatio: "3 / 4",
-                background: "var(--color-surface)",
-                overflow: "hidden",
-              }}
-            >
-              <Image
-                src="/images/mom and me in nyc.jpg"
-                alt="Travel photography"
-                fill
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-            <p
-              className="text-label mt-2"
-              style={{ color: "var(--color-muted)" }}
-            >
-              Above: Twenty countries across four continents
-            </p>
-          </ScrollReveal>
+          <div className="lg:col-span-7">
+            <EditorialImage
+              src="/images/mom and me in nyc.jpg"
+              alt="Nika and her mom in New York City"
+              ratio="portrait"
+              caption="Mom and me, New York City — twenty countries across four continents"
+              credit="Family archive"
+              sizes="(max-width: 1024px) 100vw, 58vw"
+            />
+          </div>
 
           {/* Text column */}
           <ScrollReveal className="lg:col-span-5" delay={0.1}>

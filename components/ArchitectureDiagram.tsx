@@ -147,7 +147,7 @@ function MobileArchitecture() {
       <ScrollReveal>
         <span
           style={{
-            fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
+            fontFamily: "var(--font-serif)",
             fontSize: 16,
             fontWeight: 500,
             fontStyle: "italic",
@@ -235,7 +235,7 @@ function MobileArchitecture() {
       <ScrollReveal delay={0.4}>
         <span
           style={{
-            fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
+            fontFamily: "var(--font-serif)",
             fontSize: 16,
             fontWeight: 500,
             fontStyle: "italic",
@@ -512,7 +512,7 @@ export default function ArchitectureDiagram() {
                 top: -8,
                 left: 0,
                 fontFamily:
-                  "var(--font-cormorant), 'Cormorant Garamond', serif",
+                  "var(--font-serif)",
                 fontSize: 15,
                 fontWeight: 500,
                 fontStyle: "italic",
@@ -532,7 +532,7 @@ export default function ArchitectureDiagram() {
                 left: "50%",
                 transform: "translateX(-50%)",
                 fontFamily:
-                  "var(--font-cormorant), 'Cormorant Garamond', serif",
+                  "var(--font-serif)",
                 fontSize: 15,
                 fontWeight: 500,
                 fontStyle: "italic",

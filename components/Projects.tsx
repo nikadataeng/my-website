@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-import AnimatedRule from "./AnimatedRule";
 
 import projectsData from "@/content/career/projects.json";
 
@@ -18,14 +17,22 @@ function ProjectRow({ project, index }: { project: (typeof projects)[0]; index: 
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.07 }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
         className="py-8 md:py-10"
       >
+        {/* Article number */}
+        <span
+          className="text-label block mb-2"
+          style={{ color: "var(--color-accent)", letterSpacing: "0.18em" }}
+        >
+          No. {String(index + 1).padStart(2, "0")}
+        </span>
+
         {/* Replaced → Built headline */}
         <div className="mb-3">
           <h3
             style={{
-              fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif",
+              fontFamily: "var(--font-serif)",
               fontSize: "clamp(24px, 3.5vw, 40px)",
               fontWeight: 400,
               color: "var(--color-ink)",
@@ -132,16 +139,27 @@ export default function Projects() {
       style={{ borderBottom: "1px solid var(--color-border)" }}
     >
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section label */}
+        {/* Section opener — 4px ink rule, Atlantic style */}
         <ScrollReveal>
-          <span className="text-label" style={{ color: "var(--color-muted)" }}>
-            Work
-          </span>
+          <div
+            style={{
+              borderTop: "4px solid var(--ink-display)",
+              paddingTop: "1rem",
+              display: "flex",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "0.5rem",
+            }}
+          >
+            <span className="text-label" style={{ color: "var(--color-accent)" }}>
+              Features
+            </span>
+            <span className="text-label" style={{ color: "var(--color-muted)" }}>
+              Built · Shipped · Replaced
+            </span>
+          </div>
         </ScrollReveal>
-
-        <div className="mt-4 mb-2">
-          <AnimatedRule />
-        </div>
 
         {/* Projects list */}
         {projects.map((project, i) => (

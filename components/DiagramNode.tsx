@@ -25,8 +25,6 @@ export default function DiagramNode({
   delay,
   inView,
   isJunction = false,
-  floatDelay = 0,
-  floatAmplitude = 3,
 }: DiagramNodeProps) {
   return (
     <motion.div
@@ -35,22 +33,8 @@ export default function DiagramNode({
       transition={{ duration: 0.5, ease: EASING, delay }}
       style={{ width: isJunction ? 220 : 190 }}
     >
-      <motion.div
-        animate={
-          inView
-            ? {
-                y: [0, -floatAmplitude, 0, floatAmplitude * 0.7, 0],
-              }
-            : {}
-        }
-        transition={{
-          duration: 5.5 + floatDelay * 0.6,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: delay + 0.4 + floatDelay,
-        }}
-        className="card-lift"
-        style={{
+      <div
+                style={{
           padding: isJunction ? "14px 22px" : "12px 18px",
           background: isJunction
             ? "rgba(43, 77, 140, 0.06)"
@@ -95,7 +79,7 @@ export default function DiagramNode({
         >
           {node.sublabel}
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 }

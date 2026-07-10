@@ -1,307 +1,158 @@
 "use client";
 
 /**
- * Hero — main landing section.
- *
- * Enhanced with Chartmetric-inspired depth effects:
- * - Subtle parallax on the sublines (scroll down, they drift upward slightly)
- *   achieved via Framer Motion useScroll + useTransform — the same technique
- *   Chartmetric uses to create layered depth on their year-in-review sections.
- * - The name/role intro now fades in with the same spring curve used throughout.
- * - Existing clipPath wipe and SlackMessage animations are preserved unchanged.
+ * Hero — career cover, "The Profile Issue."
+ * Editorial cover treatment shared with the personal view (ed-cover classes);
+ * same masthead logic, navy accent, career cover lines.
  */
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
-/* ─── Slack emoji reactions ─────────────────────────────────── */
-const REACTIONS = [
-  { emoji: "👀", count: 12 },
-  { emoji: "🔥", count: 8 },
-  { emoji: "💯", count: 6 },
-  { emoji: "🙌", count: 5 },
-  { emoji: "👆", count: 4 },
-  { emoji: "🐸", count: 3 },
+const COVER_LINES = [
+  { roman: "I",   kicker: "Profile",  href: "#about",   title: "The Engineer Who Replaces Software" },
+  { roman: "II",  kicker: "Ascent",   href: "#journey", title: "Minneapolis to San Francisco, in Five Peaks" },
+  { roman: "III", kicker: "Systems",  href: "#systems", title: "Anatomy of a Multi-Agent Stack" },
+  { roman: "IV",  kicker: "Features", href: "#work",    title: "The Work: Built, Shipped, Replaced" },
+  { roman: "V",   kicker: "Opinion",  href: "#pov",     title: "You're Just Renting the Logic" },
 ];
 
-/**
- * Inline Slack message — built from actual Slack design specs:
- * - Font: Lato / system fallback (Slack uses Slack-Lato)
- * - Avatar: 36×36, border-radius 4px (Slack's signature rounded square)
- * - Username: 15px, weight 900
- * - Timestamp: 12px, weight 400, color #616061
- * - Body: 15px, weight 400, color #1d1c1d, line-height 1.46668
- * - Reactions: 24px tall pills, border-radius 24px, 12px count text
- * - Layout: 8px gap between avatar and text column
- */
-function SlackMessage() {
-  const slackFont = "Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-
-  return (
-    <motion.span
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: EASE, delay: 0.5 }}
-      style={{
-        display: "inline-block",
-        transform: "rotate(-1.5deg)",
-      }}
-    >
-      <span
-        style={{
-          display: "flex",
-          gap: 12,
-          background: "#FFFFFF",
-          border: "1px solid rgba(29,28,29,0.13)",
-          borderRadius: 10,
-          padding: "16px 20px 14px",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.04)",
-          /* Reset the hero text styles so they don't bleed in */
-          fontFamily: slackFont,
-          fontStyle: "normal",
-          fontWeight: 400,
-          fontSize: 16,
-          letterSpacing: "0em",
-          lineHeight: 1.46668,
-          color: "#1d1c1d",
-          textTransform: "none" as const,
-        }}
-      >
-        {/* Avatar — Slack's signature rounded square */}
-        <span
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: 46,
-            height: 46,
-            minWidth: 46,
-            borderRadius: 6,
-            background: "#2B4D8C",
-            color: "#FFFFFF",
-            fontSize: 20,
-            fontWeight: 700,
-            fontFamily: slackFont,
-            lineHeight: 1,
-            flexShrink: 0,
-          }}
-        >
-          J
-        </span>
-
-        {/* Text column */}
-        <span style={{ display: "flex", flexDirection: "column", minWidth: 0 }}>
-          {/* Name + timestamp row */}
-          <span style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-            <span
-              style={{
-                fontFamily: slackFont,
-                fontSize: 17,
-                fontWeight: 900,
-                color: "#1d1c1d",
-                lineHeight: 1.46668,
-                whiteSpace: "nowrap",
-              }}
-            >
-              James
-            </span>
-            <span
-              style={{
-                fontFamily: slackFont,
-                fontSize: 14,
-                fontWeight: 400,
-                color: "#616061",
-                lineHeight: 1.46668,
-                whiteSpace: "nowrap",
-              }}
-            >
-              10:13 AM
-            </span>
-          </span>
-
-          {/* Message body */}
-          <span
-            style={{
-              fontFamily: slackFont,
-              fontSize: 17,
-              fontWeight: 400,
-              color: "#1d1c1d",
-              lineHeight: 1.46668,
-              marginTop: 2,
-            }}
-          >
-            we should use AI
-          </span>
-
-          {/* Emoji reactions */}
-          <span style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 8 }}>
-            {REACTIONS.map((r, i) => (
-              <motion.span
-                key={r.emoji}
-                initial={{ opacity: 0, scale: 0.7 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                  duration: 0.3,
-                  ease: EASE,
-                  delay: 0.9 + i * 0.08,
-                }}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 5,
-                  background: "rgba(29,28,29,0.04)",
-                  border: "1px solid rgba(29,28,29,0.13)",
-                  borderRadius: 24,
-                  padding: "2px 10px",
-                  height: 28,
-                  cursor: "default",
-                }}
-              >
-                <span style={{ fontSize: 16, lineHeight: 1 }}>{r.emoji}</span>
-                <span
-                  style={{
-                    fontFamily: slackFont,
-                    fontSize: 13.5,
-                    fontWeight: 400,
-                    color: "#616061",
-                    lineHeight: 1,
-                  }}
-                >
-                  {r.count}
-                </span>
-              </motion.span>
-            ))}
-          </span>
-        </span>
-      </span>
-    </motion.span>
-  );
+function scrollToHash(hash: string) {
+  if (typeof window === "undefined") return;
+  const el = document.querySelector(hash);
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY - 56;
+  window.scrollTo({ top, behavior: "smooth" });
 }
 
-/* ─── Hero ──────────────────────────────────────────────────── */
 export default function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  /**
-   * Parallax depth effect (Chartmetric pattern):
-   * As the user scrolls down past the hero, the sublines drift upward
-   * slightly faster than the page, creating a sense of layered depth.
-   * Range is intentionally small (0–-30px) to stay subtle.
-   */
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-  const sublineY = useTransform(scrollYProgress, [0, 1], [0, -30]);
-  const sublineOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative px-6 md:px-12 lg:px-20"
-      style={{
-        borderBottom: "1px solid var(--color-border)",
-        paddingTop: "clamp(48px, 8vh, 100px)",
-        paddingBottom: "clamp(48px, 8vh, 100px)",
-      }}
-    >
-      <div className="max-w-6xl w-full mx-auto">
-        {/* Name + role intro */}
-        <motion.p
-          style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: 15,
-            fontWeight: 500,
-            color: "var(--color-muted)",
-            margin: "0 0 clamp(24px, 4vh, 48px)",
-          }}
-          initial={{ opacity: 0, y: 12 }}
+    <section className="ed-page ed-page--bleed ed-cover" data-screen-label="01 Cover">
+      {/* ── LEFT PANE ── */}
+      <div className="ed-cover__left">
+        {/* Masthead */}
+        <motion.div
+          className="ed-cover__masthead"
+          initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: EASE }}
+          transition={{ duration: 0.8, ease: EASE }}
         >
-          Ayonika Bose — AI Applications Engineer
-        </motion.p>
+          <span className="ed-cover__masthead-title">The Profile Issue</span>
+          <div className="ed-cover__masthead-meta">
+            <span>Vol. I · Issue 01</span>
+            <span>Spring 2026</span>
+            <span>San Francisco</span>
+          </div>
+        </motion.div>
 
-        {/* "I turn" */}
-        <motion.h1
-          className="text-hero"
-          style={{ margin: 0 }}
-          initial={{ clipPath: "inset(-10% 100% -10% 0)" }}
-          animate={{ clipPath: "inset(-10% 0% -10% 0)" }}
-          transition={{ duration: 0.7, ease: EASE }}
-        >
-          I turn
-        </motion.h1>
+        {/* Cover-story stack */}
+        <div className="ed-cover__stack">
+          <motion.div
+            className="ed-cover__kicker"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: EASE, delay: 0.15 }}
+          >
+            <span className="ed-cover__kicker-mark">¶</span>
+            <span>Cover Story</span>
+          </motion.div>
 
-        {/* Slack message — its own row, slightly indented */}
-        <div style={{ paddingLeft: "clamp(16px, 2.5vw, 36px)", margin: "12px 0" }}>
-          <SlackMessage />
+          <motion.h1
+            className="ed-cover__name"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, ease: EASE, delay: 0.25 }}
+          >
+            <span className="ed-cover__name-first">Ayonika</span>
+            <span className="ed-cover__name-last">Bose.</span>
+          </motion.h1>
+
+          <motion.p
+            className="ed-cover__alias"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.55 }}
+          >
+            AI Applications Engineer
+          </motion.p>
+
+          <motion.p
+            className="ed-cover__deck"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.65 }}
+          >
+            Builds AI systems that replace software — multi-agent applications
+            on the modern data stack, at Sigma Computing.
+          </motion.p>
         </div>
 
-        {/* "into systems" */}
-        <motion.h1
-          className="text-hero"
-          style={{ margin: 0 }}
-          initial={{ clipPath: "inset(-10% 100% -10% 0)" }}
-          animate={{ clipPath: "inset(-10% 0% -10% 0)" }}
-          transition={{ duration: 0.7, ease: EASE, delay: 0.08 }}
+        {/* Cover lines */}
+        <motion.nav
+          className="ed-cover__lines"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.8 }}
+          aria-label="In this issue"
         >
-          into systems
-        </motion.h1>
-
-        {/* "people use every day." */}
-        <motion.h1
-          className="text-hero"
-          style={{ marginTop: "0.15em", marginBottom: 0 }}
-          initial={{ clipPath: "inset(-10% 100% -10% 0)" }}
-          animate={{ clipPath: "inset(-10% 0% -10% 0)" }}
-          transition={{ duration: 0.7, ease: EASE, delay: 0.14 }}
-        >
-          <span style={{ color: "#4A4440" }}>people use every day</span>
-          <span style={{ color: "#4A4440" }}>.</span>
-        </motion.h1>
-
-        {/* Sublines — wrapped in parallax container (Chartmetric depth layer) */}
-        <motion.div
-          style={{ y: sublineY, opacity: sublineOpacity }}
-        >
-          {/* Subline 1 */}
-          <motion.p
-            className="text-label"
-            style={{ color: "var(--color-muted)", marginTop: "clamp(24px, 4vh, 40px)" }}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: EASE, delay: 0.5 }}
-          >
-            AI Applications Engineer at Sigma Computing · San Francisco
-          </motion.p>
-
-          {/* Subline 2 */}
-          <motion.p
-            className="text-label mt-1"
-            style={{ color: "var(--color-muted)" }}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: EASE, delay: 0.6 }}
-          >
-            Shipped: CRM Replacement · Multi-Agent Deal Intelligence · Automated GTM Workflows
-          </motion.p>
-
-          {/* CTA link */}
-          <motion.a
-            href="#work"
-            className="text-sm font-medium"
-            style={{ color: "var(--color-accent)", display: "inline-block", marginTop: "1.5rem" }}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: EASE, delay: 0.7 }}
-          >
-            see what I&apos;ve built →
-          </motion.a>
-        </motion.div>
+          {COVER_LINES.map(({ roman, kicker, href, title }) => (
+            <a
+              key={href}
+              href={href}
+              className="ed-cover__line"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToHash(href);
+              }}
+            >
+              <span className="ed-cover__line-roman">{roman}</span>
+              <span className="ed-cover__line-kicker">{kicker}</span>
+              <span className="ed-cover__line-title">{title}</span>
+              <span className="ed-cover__line-arrow" aria-hidden>→</span>
+            </a>
+          ))}
+        </motion.nav>
       </div>
+
+      {/* ── RIGHT PANE ── */}
+      <motion.div
+        className="ed-cover__right"
+        initial={{ opacity: 0, scale: 0.99 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}
+      >
+        <Image
+          src="/images/headshot.png"
+          alt="Editorial portrait of Ayonika Bose"
+          fill
+          priority
+          sizes="(max-width: 900px) 100vw, 50vw"
+          style={{ objectFit: "cover", objectPosition: "50% 20%" }}
+        />
+        <div className="ed-cover__overlay" aria-hidden />
+
+        {/* Faux barcode */}
+        <div className="ed-cover__barcode" aria-hidden>
+          <div className="ed-cover__barcode-bars">
+            {Array.from({ length: 18 }).map((_, i) => (
+              <span key={i} />
+            ))}
+          </div>
+          <div className="ed-cover__barcode-label">PR · 26 · 01</div>
+        </div>
+
+        {/* Caption */}
+        <div className="ed-cover__caption">
+          <p className="ed-cover__caption-quote">
+            &ldquo;👀 ×12, the week this shipped internally.&rdquo;
+          </p>
+          <p className="ed-cover__caption-meta">
+            As seen on Slack · Sigma Computing · 2026
+          </p>
+        </div>
+      </motion.div>
     </section>
   );
 }

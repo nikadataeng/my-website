@@ -212,14 +212,15 @@ export default function CareerMountain() {
             },
             onComplete: () => {
               /* Trigger staggered child reveals via CSS class */
-              const children = card.querySelectorAll(".cm-card-child, .cm-card-line");
+              /* FIX (Spring 2026): removed dead `.cm-card-line` selector — no element uses it. */
+              const children = card.querySelectorAll(".cm-card-child");
               children.forEach((child) => {
                 (child as HTMLElement).style.opacity = "1";
                 (child as HTMLElement).style.transform = "translateY(0)";
               });
             },
             onReverseComplete: () => {
-              const children = card.querySelectorAll(".cm-card-child, .cm-card-line");
+              const children = card.querySelectorAll(".cm-card-child");
               children.forEach((child) => {
                 (child as HTMLElement).style.opacity = "0";
                 (child as HTMLElement).style.transform = "translateY(8px)";
@@ -251,6 +252,29 @@ export default function CareerMountain() {
             },
           );
         });
+      });
+
+      /* FIX (Spring 2026): progress indicator dots — fill burgundy/blue and widen
+         as you cross each milestone threshold. Previously the markup existed but
+         no timeline ever touched them. */
+      THRESHOLDS.forEach((threshold, i) => {
+        const dot = containerRef.current!.querySelector(`.cm-progress-${i}`);
+        if (!dot) return;
+        gsap.fromTo(
+          dot,
+          { width: 6, backgroundColor: "rgba(0,0,0,0.1)" },
+          {
+            width: 18,
+            backgroundColor: "var(--color-accent)",
+            duration: 0.4,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: sectionRef.current!,
+              start: () => `top+=${threshold * 100}% top`,
+              toggleActions: "play none none reverse",
+            },
+          },
+        );
       });
 
       /* Scroll hint — fade out */
@@ -397,6 +421,10 @@ export default function CareerMountain() {
           {PEAKS.map((peak, i) => (
             <g key={i}>
               {/* Glow ring — starts invisible, GSAP reveals */}
+              {/* FIX (Spring 2026): transformBox: "fill-box" + transformOrigin: "center"
+                  scales each circle around its own geometric center regardless of how
+                  the SVG is fit to the viewport (preserveAspectRatio="xMidYMax slice"
+                  makes viewBox-pixel transformOrigin drift off-center). */}
               <circle
                 className={`cm-glow-${i}`}
                 cx={peak.x}
@@ -406,7 +434,7 @@ export default function CareerMountain() {
                 stroke="#2B4D8C"
                 strokeWidth="1"
                 opacity={0}
-                style={{ transformOrigin: `${peak.x}px ${peak.y}px`, willChange: "transform, opacity" }}
+                style={{ transformBox: "fill-box", transformOrigin: "center", willChange: "transform, opacity" }}
               />
               {/* Dot — starts small/dim, GSAP scales up */}
               <circle
@@ -418,7 +446,7 @@ export default function CareerMountain() {
                 stroke="var(--color-bg, #FAF9F7)"
                 strokeWidth="2"
                 opacity={0.3}
-                style={{ transformOrigin: `${peak.x}px ${peak.y}px`, willChange: "transform, opacity" }}
+                style={{ transformBox: "fill-box", transformOrigin: "center", willChange: "transform, opacity" }}
               />
             </g>
           ))}

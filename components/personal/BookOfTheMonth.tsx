@@ -9,6 +9,7 @@ export default function BookOfTheMonth() {
   return (
     <section
       id="culture"
+      data-screen-label="05 Book"
       style={{
         background: "var(--color-surface)",
         borderBottom: "1px solid var(--color-border)",
@@ -59,7 +60,18 @@ export default function BookOfTheMonth() {
                 src={book.coverPlaceholder}
                 alt={`Cover of ${book.title}`}
                 fill
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", filter: "contrast(1.02) saturate(0.96)" }}
+              />
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "var(--color-accent)",
+                  mixBlendMode: "multiply",
+                  opacity: 0.12,
+                  pointerEvents: "none",
+                }}
               />
             </div>
             {/* Rating */}
@@ -114,6 +126,7 @@ export default function BookOfTheMonth() {
             </blockquote>
 
             <p
+              className="drop-cap"
               style={{
                 fontFamily: "var(--font-serif)",
                 fontSize: "clamp(15px, 1.4vw, 18px)",

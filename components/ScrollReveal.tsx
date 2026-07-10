@@ -38,26 +38,26 @@ function getVariantProps(variant: ScrollRevealVariant, distance: number) {
       return {
         initial: { opacity: 0, x: distance },
         animate: { opacity: 1, x: 0 },
-        transition: { duration: 0.6, ease: EASE },
+        transition: { duration: 0.9, ease: EASE },
       };
     case "clip-wipe":
       return {
         initial: { clipPath: "inset(-10% 100% -10% 0)", opacity: 1 },
         animate: { clipPath: "inset(-10% 0% -10% 0)", opacity: 1 },
-        transition: { duration: 0.65, ease: EASE },
+        transition: { duration: 1.0, ease: EASE },
       };
     case "scale-up":
       return {
         initial: { opacity: 0, scale: 0.96 },
         animate: { opacity: 1, scale: 1 },
-        transition: { duration: 0.55, ease: EASE },
+        transition: { duration: 0.9, ease: EASE },
       };
     case "fade-up":
     default:
       return {
         initial: { opacity: 0, y: distance },
         animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.5, ease: EASE },
+        transition: { duration: 0.9, ease: EASE },
       };
   }
 }

@@ -18,7 +18,7 @@ export default function Footer() {
       >
         <h2
           style={{
-            fontFamily: "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif",
+            fontFamily: "var(--font-serif)",
             fontSize: "clamp(36px, 6vw, 72px)",
             fontWeight: 400,
             color: "var(--color-ink)",

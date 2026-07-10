@@ -38,7 +38,7 @@ export default function AboutPage() {
           <h1
             style={{
               fontFamily:
-                "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif",
+                "var(--font-serif)",
               fontSize: "clamp(48px, 8vw, 96px)",
               fontWeight: 400,
               color: "var(--color-ink)",
@@ -126,7 +126,7 @@ export default function AboutPage() {
             <h2
               style={{
                 fontFamily:
-                  "var(--font-cormorant), 'Cormorant Garamond', Georgia, serif",
+                  "var(--font-serif)",
                 fontSize: "clamp(28px, 4vw, 44px)",
                 fontWeight: 400,
                 color: "var(--color-ink)",

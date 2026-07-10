@@ -12,7 +12,6 @@ import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import Projects from "@/components/Projects";
 import POV from "@/components/POV";
 import Footer from "@/components/Footer";
-import GradientDivider from "@/components/GradientDivider";
 
 // Personal view (Spring 2026 issue)
 import PersonalHero from "@/components/personal/PersonalHero";
@@ -39,13 +38,10 @@ export default function Home() {
         >
           <PageTransition>
             <Hero />
-            {/* Chartmetric-style gradient section break */}
-            <GradientDivider />
+
             <IdentityBlock />
-            <GradientDivider />
             <CareerMountain />
             <ArchitectureDiagram />
-            <GradientDivider />
             <Projects />
             <POV />
             <Footer />

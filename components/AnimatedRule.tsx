@@ -8,12 +8,12 @@ export default function AnimatedRule({ color = "var(--color-border)" }: { color?
   const inView = useInView(ref, { once: true, margin: "-40px" });
 
   return (
-    <div ref={ref} style={{ width: "100%", height: "1px", background: "var(--color-border)", overflow: "hidden" }}>
+    <div ref={ref} style={{ width: "100%", height: "1px", background: "transparent", overflow: "hidden" }}>
       <motion.div
-        initial={{ scaleX: 0, originX: 0 }}
+        initial={{ scaleX: 0 }}
         animate={inView ? { scaleX: 1 } : {}}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-        style={{ height: "100%", background: color, transformOrigin: "left" }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        style={{ height: "100%", background: color, transformOrigin: "left center" }}
       />
     </div>
   );

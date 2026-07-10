@@ -10,6 +10,7 @@ export default function Hobbies() {
   return (
     <section
       id="life"
+      data-screen-label="06 Hobbies"
       style={{
         background: "var(--color-bg)",
         borderBottom: "1px solid var(--color-border)",
@@ -110,28 +111,32 @@ export default function Hobbies() {
           </div>
         </ScrollReveal>
 
-        {/* ── Regular grid — 3 cols ── */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-3"
-          style={{ border: "1px solid var(--color-border)", borderTop: "none" }}
-        >
+        {/* ── In Rotation — magazine list with hanging numerals ── */}
+        <div className="mt-16">
+          <ScrollReveal>
+            <p
+              className="text-label"
+              style={{ color: "var(--color-muted)", marginBottom: "1rem" }}
+            >
+              In Rotation
+            </p>
+          </ScrollReveal>
           {obsessions.slice(1).map(({ tag, title, desc }, i) => (
-            <ScrollReveal key={tag} delay={i * 0.06}>
-              <motion.div
-                className="p-7 md:p-8 h-full"
-                style={{
-                  background: "var(--color-bg)",
-                  borderRight: i % 3 !== 2 ? "1px solid var(--color-border)" : undefined,
-                  borderBottom: i < 3 ? "1px solid var(--color-border)" : undefined,
-                }}
-                whileHover={{ background: "var(--color-surface)" }}
-                transition={{ duration: 0.2 }}
+            <ScrollReveal key={tag} delay={i * 0.05}>
+              <div
+                className="grid grid-cols-[3.5rem_1fr] md:grid-cols-[5rem_16rem_1fr] gap-x-4 md:gap-x-8 items-baseline py-6"
+                style={{ borderTop: "1px solid var(--color-border)" }}
               >
                 <span
-                  className="text-label block mb-4"
-                  style={{ color: "var(--color-accent)" }}
+                  style={{
+                    fontFamily: "var(--font-serif)",
+                    fontSize: "clamp(28px, 3vw, 40px)",
+                    fontWeight: 300,
+                    color: "var(--color-accent)",
+                    lineHeight: 1,
+                  }}
                 >
-                  {tag}
+                  {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3
                   style={{
@@ -139,23 +144,31 @@ export default function Hobbies() {
                     fontStyle: "italic",
                     fontSize: "clamp(20px, 2vw, 26px)",
                     fontWeight: 400,
-                    color: "var(--color-ink)",
-                    lineHeight: 1.1,
-                    marginBottom: "0.75rem",
+                    color: "var(--ink-display)",
+                    lineHeight: 1.15,
                   }}
                 >
                   {title}
                 </h3>
-                <p
-                  style={{
-                    fontSize: "14px",
-                    color: "var(--color-muted)",
-                    lineHeight: 1.75,
-                  }}
-                >
-                  {desc}
-                </p>
-              </motion.div>
+                <div className="col-start-2 md:col-start-3">
+                  <span
+                    className="text-label block mb-1"
+                    style={{ color: "var(--color-muted)" }}
+                  >
+                    {tag}
+                  </span>
+                  <p
+                    style={{
+                      fontSize: "14px",
+                      color: "var(--color-muted)",
+                      lineHeight: 1.75,
+                      maxWidth: "60ch",
+                    }}
+                  >
+                    {desc}
+                  </p>
+                </div>
+              </div>
             </ScrollReveal>
           ))}
         </div>
