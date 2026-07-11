@@ -22,6 +22,7 @@ interface ScrollRevealProps {
   children: React.ReactNode;
   delay?: number;
   className?: string;
+  style?: React.CSSProperties;
   /** Animation variant. Default: "fade-up". */
   variant?: ScrollRevealVariant;
   /** Distance for fade-up/fade-left (px). Default: 24. */
@@ -66,6 +67,7 @@ export default function ScrollReveal({
   children,
   delay = 0,
   className,
+  style,
   variant = "fade-up",
   distance = 24,
   margin = "-80px",
@@ -83,6 +85,7 @@ export default function ScrollReveal({
       animate={inView ? animate : {}}
       transition={{ ...transition, delay }}
       className={className}
+      style={style}
     >
       {children}
     </motion.div>

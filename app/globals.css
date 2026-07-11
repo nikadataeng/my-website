@@ -32,14 +32,15 @@
 
 /* ─────────────────────────────────────────────────────────────
    PERSONAL THEME — Vanity Fair Editorial
-   Near-white background, deep ink, burgundy accent, serif-forward
+   Near-white background, deep ink, Casa Azul cobalt accent (Summer 2026), serif-forward
 ───────────────────────────────────────────────────────────── */
 [data-view="personal"] {
   --color-bg:      #FFFFFF;
   --color-ink:     #3E3A36;
   --ink-display:   #1A1815;
   --ink-body:      #3E3A36;
-  --color-accent:  #944D5E;
+  --color-accent:  #1D3F8C;
+  --color-accent-warm: #A8432E;
   --color-muted:   #6B6862;
   --color-surface: #F8F7F5;
   --color-border:  #E8E6E0;

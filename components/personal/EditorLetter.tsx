@@ -11,32 +11,33 @@ export default function EditorLetter() {
     >
       <div className="ed-folio">
         <span>From the editor</span>
-        <span>¶ Spring 2026</span>
+        <span>¶ Summer 2026</span>
       </div>
 
       <div className="ed-letter__grid">
         {/* Main column */}
         <ScrollReveal className="ed-letter__main">
           <p className="ed-letter__kicker">¶ A letter, between issues</p>
-          <h2 className="ed-letter__title">Welcome to spring.</h2>
+          <h2 className="ed-letter__title">Welcome to summer.</h2>
           <p className="ed-letter__lede">
-            I started writing this issue the way I&apos;ve been living the year —
-            in fragments, then on purpose.
+            This issue starts in San Francisco fog, spends a week in Mexico
+            City sun, and lands back in New York — which feels about right
+            for the season.
           </p>
 
           <div className="ed-letter__body">
             <p className="first">
-              Most of my work is the kind that doesn&apos;t leave a trail.
-              Internal tools, dashboards a few people see, agents that quietly
-              save someone an afternoon. I wanted a place that doesn&apos;t apologize
-              for being slow, or earnest, or fond of long sentences — a
-              counterweight to the rest of it. So I made one.
+              I wrote most of this one on the other side of a very good trip.
+              Z and I spent the first week of July in Mexico City, arrived to
+              a country mid-FIFA-fever, and came home with a blue vase, sore
+              feet, and more opinions about guava rolls than I expected to
+              have. That story leads this issue.
             </p>
             <p>
-              The first issue collects the things I keep coming back to: places
-              I&apos;ve been, books that stayed with me, hobbies I won&apos;t shut up
-              about, essays I keep re-sending to friends. None of it is news.
-              Some of it is years old. All of it is still on my mind.
+              The rest of the season collects the usual: what&apos;s on the
+              nightstand, hobbies I won&apos;t shut up about, essays I keep
+              re-sending to friends. None of it is news. All of it is still
+              on my mind.
             </p>
             <p>
               If you&apos;re here because you know me — welcome, you&apos;re in

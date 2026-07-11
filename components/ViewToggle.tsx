@@ -34,7 +34,7 @@ export default function ViewToggle() {
           width: "calc(50% - 3px)",
           height: "calc(100% - 6px)",
           borderRadius: "9999px",
-          background: isPersonal ? "#944D5E" : "#FFFFFF",
+          background: isPersonal ? "#1D3F8C" : "#FFFFFF",
           boxShadow: isPersonal ? "none" : "0 1px 3px rgba(0,0,0,0.12)",
           zIndex: 0,
         }}

@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import FridaMotif from "./FridaMotif";
 
 const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 const COVER_LINES = [
   { roman: "¶",   kicker: "Letter",  href: "#letter",  title: "A letter, between issues" },
-  { roman: "I",   kicker: "Travel",  href: "#travel",  title: "Twenty Countries, One Passport" },
+  { roman: "I",   kicker: "Travel",  href: "#travel",  title: "Soccer Interrupted Our Shopping Weekend" },
   { roman: "II",  kicker: "Culture", href: "#culture", title: "What She's Reading This Month" },
   { roman: "III", kicker: "Life",    href: "#life",    title: "Currently Obsessing Over" },
   { roman: "IV",  kicker: "Reading", href: "#reading", title: "Worth Your Time" },
@@ -25,7 +26,9 @@ export default function PersonalHero() {
   return (
     <section className="ed-page ed-page--bleed ed-cover" data-screen-label="01 Cover">
       {/* ── LEFT PANE ── */}
-      <div className="ed-cover__left">
+      <div className="ed-cover__left" style={{ position: "relative" }}>
+        <FridaMotif style={{ bottom: "1rem", left: "-1rem" }} />
+
         {/* Masthead */}
         <motion.div
           className="ed-cover__masthead"
@@ -35,9 +38,9 @@ export default function PersonalHero() {
         >
           <span className="ed-cover__masthead-title">The Life of Nika</span>
           <div className="ed-cover__masthead-meta">
-            <span>Vol. I · Issue 01</span>
-            <span>Spring 2026</span>
-            <span>SF / NYC</span>
+            <span>Vol. I · Issue 02</span>
+            <span>Summer 2026</span>
+            <span>San Francisco Fog · Mexico City Sun · New York City</span>
           </div>
         </motion.div>
 
@@ -79,7 +82,8 @@ export default function PersonalHero() {
             transition={{ duration: 0.6, ease: EASE, delay: 0.5 }}
           >
             An applied AI engineer, a space nerd, a cat mom of two, and a
-            chronically online twenty-country traveler — caught between issues.
+            chronically online twenty-country traveler, fresh off a week of
+            FIFA fever and Frida Kahlo in Mexico City.
           </motion.p>
         </div>
 
@@ -118,12 +122,12 @@ export default function PersonalHero() {
         transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
       >
         <Image
-          src="/images/hero photo.jpeg"
-          alt="Editorial portrait of Nika"
+          src="/images/frida-casa-azul-hires.jpeg"
+          alt="Nika at Frida Kahlo's Casa Azul, Coyoacán, Mexico City"
           fill
           priority
           sizes="(max-width: 900px) 100vw, 50vw"
-          style={{ objectFit: "cover", objectPosition: "32% 26%" }}
+          style={{ objectFit: "cover", objectPosition: "50% 30%" }}
         />
         <div className="ed-cover__overlay" aria-hidden />
 
@@ -134,17 +138,17 @@ export default function PersonalHero() {
               <span key={i} />
             ))}
           </div>
-          <div className="ed-cover__barcode-label">SP · 26 · 01</div>
+          <div className="ed-cover__barcode-label">SU · 26 · 02</div>
         </div>
 
         {/* Caption */}
         <div className="ed-cover__caption">
           <p className="ed-cover__caption-quote">
-            &ldquo;The cover story this season is one I&apos;ve been writing
-            quietly all year.&rdquo;
+            &ldquo;I recognized her writing, her dolls, the mirror on her
+            bedpost — a middle school history lesson, in the flesh.&rdquo;
           </p>
           <p className="ed-cover__caption-meta">
-            Photographed in San Francisco · Spring 2026
+            Photographed at Casa Azul, Coyoacán · Summer 2026
           </p>
         </div>
       </motion.div>

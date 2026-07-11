@@ -16,8 +16,8 @@ const ENTRIES = [
     roman:     "I",
     ornament:  "¶",
     kicker:    "Travel",
-    title:     "Twenty Countries, One Passport",
-    deck:      "Boarding passes, juice-box flights, and the long way home.",
+    title:     "Soccer Interrupted Our Shopping Weekend",
+    deck:      "FIFA fever, Casa Azul, and a Pujol tasting menu — five days in Mexico City.",
     page:      "10",
     href:      "#travel",
   },
@@ -67,7 +67,7 @@ export default function Contents() {
     >
       <div className="ed-folio">
         <span>The Life of Nika · Contents</span>
-        <span>¶ Spring 2026</span>
+        <span>¶ Summer 2026</span>
       </div>
 
       <ScrollReveal>

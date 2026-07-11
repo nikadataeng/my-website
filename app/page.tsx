@@ -13,7 +13,7 @@ import Projects from "@/components/Projects";
 import POV from "@/components/POV";
 import Footer from "@/components/Footer";
 
-// Personal view (Spring 2026 issue)
+// Personal view (Summer 2026 issue)
 import PersonalHero from "@/components/personal/PersonalHero";
 import Contents from "@/components/personal/Contents";
 import EditorLetter from "@/components/personal/EditorLetter";

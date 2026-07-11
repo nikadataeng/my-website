@@ -41,8 +41,8 @@ export default function Hero() {
         >
           <span className="ed-cover__masthead-title">The Profile Issue</span>
           <div className="ed-cover__masthead-meta">
-            <span>Vol. I · Issue 01</span>
-            <span>Spring 2026</span>
+            <span>Vol. I · Issue 02</span>
+            <span>Summer 2026</span>
             <span>San Francisco</span>
           </div>
         </motion.div>
