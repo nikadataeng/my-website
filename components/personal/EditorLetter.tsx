@@ -56,7 +56,7 @@ export default function EditorLetter() {
         <ScrollReveal className="ed-letter__aside" delay={0.1}>
           <div className="ed-letter__portrait" aria-hidden />
           <p className="ed-letter__caption">
-            Filed from a sunny corner of San Francisco, cat-adjacent, mid-coffee.
+            Checked in at the Marquis, Mexico City — first stop before the fever set in.
           </p>
         </ScrollReveal>
       </div>

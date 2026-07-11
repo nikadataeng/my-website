@@ -932,9 +932,9 @@ a {
 .ed-letter__portrait {
   width: 100%;
   aspect-ratio: 4 / 5;
-  background-image: url('/images/headshot.png');
+  background-image: url('/images/marquis-reception.jpeg');
   background-size: cover;
-  background-position: 50% 30%;
+  background-position: 50% 40%;
   background-repeat: no-repeat;
   background-color: var(--color-surface);
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
