@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import FridaMotif from "./FridaMotif";
 
 const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
@@ -23,16 +23,17 @@ function scrollToHash(hash: string) {
 }
 
 export default function PersonalHero() {
+  const reduce = useReducedMotion();
   return (
     <section className="ed-page ed-page--bleed ed-cover" data-screen-label="01 Cover">
       {/* ── LEFT PANE ── */}
       <div className="ed-cover__left" style={{ position: "relative" }}>
-        <FridaMotif style={{ bottom: "1rem", left: "-1rem" }} />
+        <FridaMotif className="ed-cover__motif" style={{ bottom: "1rem", left: "-1rem" }} />
 
         {/* Masthead */}
         <motion.div
           className="ed-cover__masthead"
-          initial={{ opacity: 0, y: -8 }}
+          initial={reduce ? false : { opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE }}
         >
@@ -48,7 +49,7 @@ export default function PersonalHero() {
         <div className="ed-cover__stack">
           <motion.div
             className="ed-cover__kicker"
-            initial={{ opacity: 0, y: 8 }}
+            initial={reduce ? false : { opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: EASE, delay: 0.1 }}
           >
@@ -58,7 +59,7 @@ export default function PersonalHero() {
 
           <motion.h1
             className="ed-cover__name"
-            initial={{ opacity: 0, y: 16 }}
+            initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE, delay: 0.18 }}
           >
@@ -68,7 +69,7 @@ export default function PersonalHero() {
 
           <motion.p
             className="ed-cover__alias"
-            initial={{ opacity: 0 }}
+            initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.42 }}
           >
@@ -77,7 +78,7 @@ export default function PersonalHero() {
 
           <motion.p
             className="ed-cover__deck"
-            initial={{ opacity: 0, y: 8 }}
+            initial={reduce ? false : { opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE, delay: 0.5 }}
           >
@@ -90,7 +91,7 @@ export default function PersonalHero() {
         {/* Cover lines */}
         <motion.nav
           className="ed-cover__lines"
-          initial={{ opacity: 0, y: 8 }}
+          initial={reduce ? false : { opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE, delay: 0.6 }}
           aria-label="In this issue"
@@ -117,7 +118,7 @@ export default function PersonalHero() {
       {/* ── RIGHT PANE ── */}
       <motion.div
         className="ed-cover__right"
-        initial={{ opacity: 0, scale: 0.99 }}
+        initial={reduce ? false : { opacity: 0, scale: 0.99 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
       >

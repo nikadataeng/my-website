@@ -129,7 +129,7 @@ export default function Nav() {
                     href={l.href}
                     onClick={() => setOpen(false)}
                     style={{
-                      fontSize: "48px",
+                      fontSize: "clamp(32px, 9vw, 48px)",
                       fontWeight: 800,
                       color: "var(--color-ink)",
                     }}
@@ -148,7 +148,7 @@ export default function Nav() {
                   href="mailto:ayonikabose99@gmail.com"
                   onClick={() => setOpen(false)}
                   style={{
-                    fontSize: "48px",
+                    fontSize: "clamp(32px, 9vw, 48px)",
                     fontWeight: 800,
                     color: "var(--color-accent)",
                   }}
