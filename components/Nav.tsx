@@ -49,8 +49,8 @@ export default function Nav() {
               </Link>
             ))}
 
-            {/* View toggle */}
-            <ViewToggle />
+            {/* View toggle (personal view only) */}
+            {isPersonal && <ViewToggle />}
 
             {/* LinkedIn */}
             <Link
@@ -113,9 +113,11 @@ export default function Nav() {
             className="fixed inset-0 z-40 flex flex-col justify-center px-8"
             style={{ background: "var(--color-bg)" }}
           >
-            <div className="mb-8">
-              <ViewToggle />
-            </div>
+            {isPersonal && (
+              <div className="mb-8">
+                <ViewToggle />
+              </div>
+            )}
             <nav className="flex flex-col gap-8">
               {links.map((l, i) => (
                 <motion.div
