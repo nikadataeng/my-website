@@ -128,15 +128,12 @@ export default function Projects() {
     <section
       id="work"
       className="py-24 md:py-36 px-6 md:px-12 lg:px-20"
-      style={{ borderBottom: "1px solid var(--color-border)" }}
     >
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section opener — 4px ink rule, Atlantic style */}
+        {/* Section opener */}
         <ScrollReveal>
           <div
             style={{
-              borderTop: "4px solid var(--ink-display)",
-              paddingTop: "1rem",
               display: "flex",
               alignItems: "baseline",
               justifyContent: "space-between",

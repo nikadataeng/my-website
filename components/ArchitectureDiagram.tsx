@@ -3,7 +3,6 @@
 import { useRef, useState, useEffect, useMemo } from "react";
 import { motion, useInView } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-import AnimatedRule from "./AnimatedRule";
 import DiagramNode from "./DiagramNode";
 import architectureData from "@/content/career/architecture.json";
 
@@ -342,7 +341,6 @@ export default function ArchitectureDiagram() {
     <section
       id="systems"
       className="py-24 md:py-36 px-6 md:px-12 lg:px-20"
-      style={{ borderBottom: "1px solid var(--color-border)" }}
     >
       <div className="max-w-6xl mx-auto" ref={sectionRef}>
         {/* Section heading */}
@@ -354,13 +352,10 @@ export default function ArchitectureDiagram() {
             Systems
           </span>
         </ScrollReveal>
-        <div className="mt-4 mb-8">
-          <AnimatedRule />
-        </div>
         <ScrollReveal delay={0.1}>
           <h2
             className="text-section"
-            style={{ marginBottom: isMobile ? 32 : 48 }}
+            style={{ marginTop: 8, marginBottom: isMobile ? 32 : 48 }}
           >
             How the systems connect.
           </h2>

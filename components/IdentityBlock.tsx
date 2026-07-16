@@ -7,7 +7,6 @@
  */
 
 import ScrollReveal from "./ScrollReveal";
-import AnimatedRule from "./AnimatedRule";
 import identity from "@/content/career/identity.json";
 
 export default function IdentityBlock() {
@@ -15,7 +14,6 @@ export default function IdentityBlock() {
     <section
       id="about"
       className="py-24 md:py-36 px-6 md:px-12 lg:px-20"
-      style={{ borderBottom: "1px solid var(--color-border)" }}
     >
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section label */}
@@ -24,10 +22,6 @@ export default function IdentityBlock() {
             About
           </span>
         </ScrollReveal>
-
-        <div className="mt-4 mb-12">
-          <AnimatedRule />
-        </div>
 
         {/* Statement */}
         <ScrollReveal delay={0.05}>
@@ -40,6 +34,7 @@ export default function IdentityBlock() {
               letterSpacing: "-0.01em",
               color: "var(--ink-display)",
               maxWidth: "820px",
+              marginTop: "1.5rem",
             }}
           >
             {identity.statement}
@@ -75,12 +70,17 @@ export default function IdentityBlock() {
                 What I build
               </p>
             </ScrollReveal>
-            <div style={{ borderTop: "1px solid var(--color-border)" }}>
+            <div>
               {identity.whatIBuild.map((item, i) => (
                 <ScrollReveal key={item.title} delay={0.12 + i * 0.03}>
                   <div
                     className="py-4"
-                    style={{ borderBottom: "1px solid var(--color-border)" }}
+                    style={{
+                      borderBottom:
+                        i < identity.whatIBuild.length - 1
+                          ? "1px solid var(--color-border)"
+                          : "none",
+                    }}
                   >
                     <div className="flex items-baseline gap-3">
                       <span className="text-label" style={{ color: "var(--color-muted)" }}>

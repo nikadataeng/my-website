@@ -5,7 +5,6 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollReveal from "../ScrollReveal";
-import AnimatedRule from "../AnimatedRule";
 import MilestoneCard from "./MilestoneCard";
 import { milestones } from "./milestones";
 import { GraduationCap, TrendingUp, MapPin, HandCoins, Users, Trophy, Wrench, Briefcase } from "lucide-react";
@@ -297,7 +296,7 @@ export default function CareerMountain() {
   /* --- Reduced motion: static layout --- */
   if (reducedMotion) {
     return (
-      <section id="journey" style={{ padding: "80px 24px", borderBottom: "1px solid var(--color-border)" }}>
+      <section id="journey" style={{ padding: "80px 24px" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <span className="text-label" style={{ color: "var(--color-muted)" }}>Journey</span>
           <h2 className="text-section" style={{ margin: "12px 0 48px" }}>The journey, so far.</h2>
@@ -309,12 +308,11 @@ export default function CareerMountain() {
 
   if (isMobile) {
     return (
-      <section id="journey" style={{ borderBottom: "1px solid var(--color-border)" }}>
+      <section id="journey">
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 0 0" }}>
           <div style={{ padding: "0 24px" }}>
             <span className="text-label" style={{ color: "var(--color-muted)" }}>Journey</span>
-            <div style={{ margin: "12px 0 16px" }}><AnimatedRule /></div>
-            <h2 className="text-section" style={{ marginBottom: "2rem" }}>The journey, so far.</h2>
+            <h2 className="text-section" style={{ margin: "12px 0 2rem" }}>The journey, so far.</h2>
           </div>
           <MobileTimeline />
         </div>
@@ -329,7 +327,6 @@ export default function CareerMountain() {
       style={{
         position: "relative",
         height: "700vh", /* scroll runway — last card at 50%, leaves 350vh of reading buffer */
-        borderBottom: "1px solid var(--color-border)",
       }}
     >
       {/* Sticky viewport */}
@@ -360,13 +357,10 @@ export default function CareerMountain() {
           <ScrollReveal>
             <span className="text-label" style={{ color: "var(--color-muted)" }}>Journey</span>
           </ScrollReveal>
-          <div style={{ margin: "6px 0 8px", maxWidth: 200 }}>
-            <AnimatedRule />
-          </div>
           <ScrollReveal delay={0.1}>
             <h2
               className="text-section"
-              style={{ margin: 0, fontSize: "clamp(24px, 3.5vw, 38px)" }}
+              style={{ margin: "8px 0 0", fontSize: "clamp(24px, 3.5vw, 38px)" }}
             >
               The journey, so far.
             </h2>

@@ -20,7 +20,7 @@
   --font-sans:  var(--font-inter-tight), "Inter Tight", "Helvetica Neue", Arial, sans-serif;
 
   --text-masthead: clamp(64px, 10vw, 160px);
-  --text-hero:    clamp(40px, 5.5vw, 76px);
+  --text-hero:    clamp(32px, 4vw, 56px);
   --text-section: clamp(32px, 4.5vw, 58px);
   --text-deck:    clamp(20px, 2.2vw, 28px);
   --text-heading: 26px;

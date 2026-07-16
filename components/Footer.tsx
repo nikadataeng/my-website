@@ -58,10 +58,7 @@ export default function Footer() {
       </div>
 
       {/* Minimal footer line */}
-      <div
-        className="max-w-6xl mx-auto pb-8"
-        style={{ borderTop: "1px solid var(--color-border)", paddingTop: "1.5rem" }}
-      >
+      <div className="max-w-6xl mx-auto pb-8">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <span className="text-label" style={{ color: "var(--color-muted)" }}>
             ayonika · {year}

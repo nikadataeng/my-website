@@ -40,7 +40,6 @@ export default function Writing({
     <section
       id="writing"
       className="px-6 md:px-12 lg:px-20 py-24 md:py-36"
-      style={{ borderBottom: "1px solid var(--color-border)" }}
     >
       <div className="max-w-5xl mx-auto">
         {/* Header */}
@@ -52,8 +51,6 @@ export default function Writing({
               justifyContent: "space-between",
               flexWrap: "wrap",
               gap: "0.5rem",
-              borderBottom: "1px solid var(--color-border)",
-              paddingBottom: "1.5rem",
               marginBottom: "clamp(32px, 5vh, 56px)",
             }}
           >
