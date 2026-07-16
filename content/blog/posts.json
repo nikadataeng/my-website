@@ -18,6 +18,15 @@
     "source": "Sigma Computing Blog"
   },
   {
+    "title": "When Does Talking About a Dog Increase Your Sales Win Rate?",
+    "description": "A Sigma Labs analysis of our own sales team's Gong recordings, examining how discussing animals during sales calls impacts win rates and deal closure.",
+    "date": "Mar 27, 2024",
+    "author": "Ayonika Bose",
+    "url": "https://www.sigmacomputing.com/blog/a-sigma-labs-analysis-of-gong-data",
+    "image": "",
+    "source": "Sigma Computing Blog"
+  },
+  {
     "title": "How Snowflake's Connector for Google Analytics Centralizes Marketing Data",
     "description": "How Snowflake's connector for Google Analytics raw data solved the challenge of migrating from Universal Analytics to GA4 \u2014 addressing data sampling limitations with a unified approach to granular marketing data.",
     "date": "Feb 8, 2024",
