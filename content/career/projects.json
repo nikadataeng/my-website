@@ -1,11 +1,11 @@
 [
   {
-    "replaced": "REPLACED: Fragmented personal tools (Notion, Google Calendar, Gmail, LinkedIn, scattered AI prompts)",
-    "name": "Personal Multi-Agent Operating Company",
+    "replaced": "REPLACED: Fragmented personal tools",
+    "name": "Agent Hub",
     "period": "2026",
     "org": "Independent",
     "tag": "PRODUCTION",
-    "description": "Didn't just use AI tools. Built the company that runs my life. Three executive AI agents — Buttercup (Chief of Staff), Blossom (CFO), Bubbles (CBO) — each routing to 2-5 specialized staff agents. Buttercup is a live WhatsApp interface via Twilio webhook. Staff handles inbox triage, email drafting, calendar management, job scouting, AI signals, LinkedIn drafting, website updates, and financial tracking. Architecture: hub-and-spoke, max depth 2, least-privilege tool grants, fresh context per run. Built on Claude agents with MCP integrations across Gmail, Google Calendar, Indeed, and Vercel.",
+    "description": "Built a multi-agent orchestration system named after the Powerpuff Girls. Public repo coming soon.",
     "stack": ["Claude Agents", "MCP", "Twilio", "Gmail API", "Google Calendar API", "Vercel", "Next.js", "Python"]
   },
   {

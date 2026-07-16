@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Inter, Fraunces, Source_Serif_4, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import Nav from "@/components/Nav";
@@ -17,6 +17,23 @@ const fraunces = Fraunces({
   axes: ["opsz", "SOFT", "WONK"],
   style: ["normal", "italic"],
   variable: "--font-fraunces",
+  display: "swap",
+});
+
+/* Career view — OpenAI-style type: plain editorial serif for headlines,
+   neutral grotesk for UI/body (closer to OpenAI Sans than Inter). */
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-source-serif",
+  display: "swap",
+});
+
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter-tight",
   display: "swap",
 });
 
@@ -95,17 +112,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable} h-full`} data-view="career">
+    <html lang="en" className={`${inter.variable} ${fraunces.variable} ${sourceSerif.variable} ${interTight.variable} h-full`} data-view="career">
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body
-        className="min-h-full flex flex-col"
-        style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
-      >
+      <body className="min-h-full flex flex-col" style={{ fontFamily: "var(--font-sans)" }}>
         <ViewProvider>
           <Nav />
           <main className="flex-1 pt-14">{children}</main>

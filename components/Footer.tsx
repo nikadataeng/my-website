@@ -20,7 +20,7 @@ export default function Footer() {
           style={{
             fontFamily: "var(--font-serif)",
             fontSize: "clamp(36px, 6vw, 72px)",
-            fontWeight: 400,
+            fontWeight: 700,
             color: "var(--color-ink)",
             lineHeight: 1.1,
             letterSpacing: "-0.02em",

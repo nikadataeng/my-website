@@ -1,0 +1,15 @@
+{
+  "statement": "I build AI systems that make GTM and RevOps teams independent of the SaaS vendors they used to pay for.",
+  "bio": [
+    "At Sigma Computing, I work directly with the CMO, COO, and CEO to replace external tools — pipeline intelligence platforms, deal management software, reporting automation — with warehouse-native AI built on Snowflake and Sigma. My systems don't supplement the existing stack. They replace it.",
+    "I build systems that ship."
+  ],
+  "whatIBuild": [
+    { "title": "GTM automation systems", "outcome": "Replaced 3 SaaS tools at Sigma" },
+    { "title": "Pipeline & forecast intelligence", "outcome": "Live forecasts pulled straight from the warehouse" },
+    { "title": "Slack-native AI agents", "outcome": "Deal ops that run inside Slack, not another tab" },
+    { "title": "Warehouse-native CRM tooling", "outcome": "CRM logic that lives where the data already is" },
+    { "title": "Internal AI frameworks", "outcome": "Reusable playbooks so AI work compounds, not repeats" }
+  ],
+  "stack": ["Snowflake Cortex", "LLM APIs (OpenAI, Anthropic)", "Sigma Computing", "Slack API", "Python", "SQL"]
+}

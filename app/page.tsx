@@ -10,7 +10,7 @@ import IdentityBlock from "@/components/IdentityBlock";
 import { CareerMountain } from "@/components/CareerMountain";
 import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import Projects from "@/components/Projects";
-import POV from "@/components/POV";
+import Writing from "@/components/Writing";
 import Footer from "@/components/Footer";
 
 // Personal view (Summer 2026 issue)
@@ -40,10 +40,10 @@ export default function Home() {
             <Hero />
 
             <IdentityBlock />
+            <Writing limit={4} showViewAll />
             <CareerMountain />
             <ArchitectureDiagram />
             <Projects />
-            <POV />
             <Footer />
           </PageTransition>
         </motion.div>

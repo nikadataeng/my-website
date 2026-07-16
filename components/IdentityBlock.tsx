@@ -1,75 +1,14 @@
 "use client";
 
 /**
- * IdentityBlock — About section.
- *
- * Enhanced with Chartmetric-inspired staggered list item reveals:
- * each "What I build" and "Current stack" item fades+slides in
- * with a per-item delay, creating the cascading data-list feel
- * common in Chartmetric's stat sections.
- *
- * The headshot block now uses a "scale-up" ScrollReveal variant
- * for a subtle Chartmetric-style entrance.
+ * IdentityBlock — About section, OpenAI mission-statement style.
+ * Large serif statement, plain bio, capabilities as numbered ruled rows.
+ * No photo (Hero already has one), no decorative bullets.
  */
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import AnimatedRule from "./AnimatedRule";
-
-const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
-
-const whatIBuild = [
-  "GTM automation systems",
-  "Pipeline & forecast intelligence",
-  "Slack-native AI agents",
-  "Warehouse-native CRM tooling",
-  "Internal AI frameworks",
-];
-
-const currentStack = [
-  "Snowflake Cortex",
-  "LLM APIs (OpenAI, Anthropic)",
-  "Sigma Computing",
-  "Slack API",
-  "Python · SQL",
-];
-
-/** Staggered list — each item fades+slides in on a cascade */
-function StaggeredList({
-  items,
-  parentDelay = 0,
-}: {
-  items: string[];
-  parentDelay?: number;
-}) {
-  const ref = useRef<HTMLUListElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
-  return (
-    <ul ref={ref} className="space-y-2">
-      {items.map((item, i) => (
-        <motion.li
-          key={item}
-          initial={{ opacity: 0, x: -16 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{
-            duration: 0.45,
-            ease: EASE,
-            delay: parentDelay + i * 0.07,
-          }}
-          style={{
-            fontSize: "var(--text-body)",
-            color: "var(--color-ink)",
-          }}
-        >
-          <span style={{ color: "var(--color-muted)" }}>//</span>{" "}
-          {item}
-        </motion.li>
-      ))}
-    </ul>
-  );
-}
+import identity from "@/content/career/identity.json";
 
 export default function IdentityBlock() {
   return (
@@ -86,75 +25,98 @@ export default function IdentityBlock() {
           </span>
         </ScrollReveal>
 
-        {/* Animated rule */}
         <div className="mt-4 mb-12">
           <AnimatedRule />
         </div>
 
-        {/* Three columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-          {/* Bio — scale-up entrance for the headshot, then fade-up for text */}
-          <ScrollReveal delay={0.05} variant="scale-up" className="md:col-span-1">
-            {/* Headshot */}
-            <div
-              style={{
-                width: "clamp(140px, 18vw, 180px)",
-                aspectRatio: "1 / 1",
-                borderRadius: "50%",
-                backgroundImage: "url(/images/headshot.png)",
-                backgroundSize: "145%",
-                backgroundPosition: "center 12%",
-                backgroundRepeat: "no-repeat",
-                boxShadow:
-                  "0 20px 50px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06)",
-                marginBottom: 24,
-              }}
-              aria-label="Photo of Ayonika Bose"
-              role="img"
-            />
-            <p
-              className="leading-relaxed"
-              style={{ color: "var(--color-ink)", fontSize: "var(--text-body)" }}
-            >
-              I build AI systems that make GTM and RevOps teams independent of
-              the SaaS vendors they used to pay for.
-            </p>
-            <p
-              className="mt-4 leading-relaxed"
-              style={{ color: "var(--color-ink)", fontSize: "var(--text-body)" }}
-            >
-              At Sigma Computing, I work directly with the CMO, COO, and CEO to
-              replace external tools — pipeline intelligence platforms, deal
-              management software, reporting automation — with warehouse-native
-              AI built on Snowflake and Sigma. My systems don&apos;t supplement
-              the existing stack. They replace it.
-            </p>
-            <p
-              className="mt-6 font-bold"
-              style={{ color: "var(--color-ink)", fontSize: "var(--text-body)" }}
-            >
-              I build systems that ship.
-            </p>
+        {/* Statement */}
+        <ScrollReveal delay={0.05}>
+          <p
+            style={{
+              fontFamily: "var(--font-serif)",
+              fontSize: "clamp(28px, 4vw, 48px)",
+              fontWeight: 600,
+              lineHeight: 1.25,
+              letterSpacing: "-0.01em",
+              color: "var(--ink-display)",
+              maxWidth: "820px",
+            }}
+          >
+            {identity.statement}
+          </p>
+        </ScrollReveal>
+
+        {/* Bio + capabilities */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mt-16">
+          {/* Bio */}
+          <ScrollReveal delay={0.1}>
+            <div>
+              {identity.bio.map((p, i) => (
+                <p
+                  key={i}
+                  className={i > 0 ? "mt-4" : ""}
+                  style={{
+                    color: "var(--color-ink)",
+                    fontSize: "var(--text-body)",
+                    lineHeight: 1.7,
+                    fontWeight: i === identity.bio.length - 1 ? 600 : 400,
+                  }}
+                >
+                  {p}
+                </p>
+              ))}
+            </div>
           </ScrollReveal>
 
-          {/* What I build — staggered list */}
+          {/* What I build — numbered ruled rows */}
           <div>
-            <ScrollReveal delay={0.08}>
-              <p className="text-label mb-5" style={{ color: "var(--color-muted)" }}>
+            <ScrollReveal delay={0.1}>
+              <p className="text-label mb-4" style={{ color: "var(--color-muted)" }}>
                 What I build
               </p>
             </ScrollReveal>
-            <StaggeredList items={whatIBuild} parentDelay={0.12} />
-          </div>
+            <div style={{ borderTop: "1px solid var(--color-border)" }}>
+              {identity.whatIBuild.map((item, i) => (
+                <ScrollReveal key={item.title} delay={0.12 + i * 0.03}>
+                  <div
+                    className="py-4"
+                    style={{ borderBottom: "1px solid var(--color-border)" }}
+                  >
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-label" style={{ color: "var(--color-muted)" }}>
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "var(--text-body)",
+                          fontWeight: 500,
+                          color: "var(--color-ink)",
+                        }}
+                      >
+                        {item.title}
+                      </span>
+                    </div>
+                    <p
+                      className="mt-1"
+                      style={{
+                        fontSize: "14px",
+                        color: "var(--color-muted)",
+                        paddingLeft: "calc(11px + 0.75rem)",
+                      }}
+                    >
+                      {item.outcome}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
 
-          {/* Current stack — staggered list */}
-          <div>
-            <ScrollReveal delay={0.1}>
-              <p className="text-label mb-5" style={{ color: "var(--color-muted)" }}>
-                Current stack
+            {/* Current stack — quiet line beneath */}
+            <ScrollReveal delay={0.3}>
+              <p className="mt-6 text-label" style={{ color: "var(--color-muted)" }}>
+                Stack — {identity.stack.join(" · ")}
               </p>
             </ScrollReveal>
-            <StaggeredList items={currentStack} parentDelay={0.14} />
           </div>
         </div>
       </div>

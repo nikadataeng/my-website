@@ -1,5 +1,14 @@
 [
   {
+    "title": "What Is the Modern Data Stack? Layers, Benefits and Best Practices",
+    "description": "The modern data stack comprises cloud-native, modular tools that centralize data in a warehouse, transform it reliably, and enable analysis and action. It replaces legacy on-premise systems with scalable, governed alternatives.",
+    "date": "Jul 14, 2026",
+    "author": "Ayonika Bose",
+    "url": "https://www.sigmacomputing.com/blog/modern-data-stack",
+    "image": "",
+    "source": "Sigma Computing Blog"
+  },
+  {
     "title": "We Replaced a $15k Revenue Execution Platform with a Simple Sigma Workflow",
     "description": "How we replaced a third-party SaaS revenue execution platform with an internal Sigma workflow that automates deal notifications and celebrations in Slack.",
     "date": "Apr 15, 2026",

@@ -17,7 +17,7 @@ export default function Nav() {
   const { view } = useView();
   const isPersonal = view === "personal";
 
-  const navBg = isPersonal ? "rgba(250,250,248,0.93)" : "rgba(247,244,238,0.93)";
+  const navBg = isPersonal ? "rgba(250,250,248,0.93)" : "rgba(255,255,255,0.93)";
   const borderColor = isPersonal ? "rgba(255,255,255,0.10)" : "var(--color-border)";
 
   return (

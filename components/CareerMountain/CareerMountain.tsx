@@ -388,14 +388,14 @@ export default function CareerMountain() {
           <defs>
             {/* Main mountain gradient — Shilajit to cream */}
             <linearGradient id="cm-main-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#4A4440" stopOpacity="0.25" />
-              <stop offset="50%" stopColor="#6B6862" stopOpacity="0.12" />
-              <stop offset="100%" stopColor="#FAF9F7" stopOpacity="0.05" />
+              <stop offset="0%" stopColor="#0D0D0D" stopOpacity="0.25" />
+              <stop offset="50%" stopColor="#6E6E6E" stopOpacity="0.12" />
+              <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.05" />
             </linearGradient>
-            {/* Far ridge fill — warm gray, very subtle */}
+            {/* Far ridge fill — neutral gray, very subtle */}
             <linearGradient id="cm-far-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#4A4440" stopOpacity="0.1" />
-              <stop offset="100%" stopColor="#EEECE8" stopOpacity="0.05" />
+              <stop offset="0%" stopColor="#0D0D0D" stopOpacity="0.1" />
+              <stop offset="100%" stopColor="#ECECEC" stopOpacity="0.05" />
             </linearGradient>
           </defs>
 
@@ -411,7 +411,7 @@ export default function CareerMountain() {
           <path
             d={RIDGE_LINE}
             fill="none"
-            stroke="#2B4D8C"
+            stroke="var(--color-accent)"
             strokeWidth="1.5"
             strokeLinecap="round"
             opacity={0.3}
@@ -431,7 +431,7 @@ export default function CareerMountain() {
                 cy={peak.y}
                 r={18}
                 fill="none"
-                stroke="#2B4D8C"
+                stroke="var(--color-accent)"
                 strokeWidth="1"
                 opacity={0}
                 style={{ transformBox: "fill-box", transformOrigin: "center", willChange: "transform, opacity" }}
@@ -442,8 +442,8 @@ export default function CareerMountain() {
                 cx={peak.x}
                 cy={peak.y}
                 r={6}
-                fill="#2B4D8C"
-                stroke="var(--color-bg, #FAF9F7)"
+                fill="var(--color-accent)"
+                stroke="var(--color-bg)"
                 strokeWidth="2"
                 opacity={0.3}
                 style={{ transformBox: "fill-box", transformOrigin: "center", willChange: "transform, opacity" }}

@@ -6,21 +6,21 @@
 ───────────────────────────────────────────────────────────── */
 :root,
 [data-view="career"] {
-  --color-bg:      #FAF9F7;
-  --color-ink:     #3E3A36;
-  --ink-display:   #1A1815;
-  --ink-body:      #3E3A36;
-  --color-accent:  #2B4D8C;
-  --color-muted:   #6B6862;
-  --color-surface: #FFFFFF;
-  --color-border:  #EEECE8;
+  --color-bg:      #FFFFFF;
+  --color-ink:     #262626;
+  --ink-display:   #0D0D0D;
+  --ink-body:      #262626;
+  --color-accent:  #0D0D0D;
+  --color-muted:   #6E6E6E;
+  --color-surface: #F7F7F8;
+  --color-border:  #ECECEC;
 
-  --font-display: var(--font-fraunces), "Fraunces", Georgia, serif;
-  --font-serif: var(--font-fraunces), "Fraunces", Georgia, serif;
-  --font-sans:  var(--font-inter), Inter, sans-serif;
+  --font-display: var(--font-inter-tight), "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-inter-tight), "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-sans:  var(--font-inter-tight), "Inter Tight", "Helvetica Neue", Arial, sans-serif;
 
   --text-masthead: clamp(64px, 10vw, 160px);
-  --text-hero:    clamp(40px, 6vw, 84px);
+  --text-hero:    clamp(40px, 5.5vw, 76px);
   --text-section: clamp(32px, 4.5vw, 58px);
   --text-deck:    clamp(20px, 2.2vw, 28px);
   --text-heading: 26px;
@@ -55,18 +55,19 @@
   --monet-sky:        #9FB8C8;
 
   --font-serif: var(--font-fraunces), "Fraunces", Georgia, serif;
+  --font-sans:  var(--font-inter), Inter, sans-serif;
 
   --section-gap:   clamp(80px, 10vw, 120px);
 }
 
 /* ─── Tailwind extension (career defaults) ──────────────────── */
 @theme inline {
-  --color-bg:      #FAF9F7;
-  --color-ink:     #4A4440;
-  --color-accent:  #2B4D8C;
-  --color-muted:   #6B6862;
-  --color-surface: #FFFFFF;
-  --color-border:  #EEECE8;
+  --color-bg:      #FFFFFF;
+  --color-ink:     #262626;
+  --color-accent:  #0D0D0D;
+  --color-muted:   #6E6E6E;
+  --color-surface: #F7F7F8;
+  --color-border:  #ECECEC;
 }
 
 /* ─── Base ──────────────────────────────────────────────────── */
@@ -108,7 +109,7 @@ html {
   .cm-reveal { will-change: auto; }
 }
 
-/* ── Career body: warm cream, no texture ── */
+/* ── Career body: white, OpenAI-style ── */
 [data-view="career"] body {
   background-color: var(--color-bg);
   background-image: none;
@@ -135,20 +136,20 @@ body {
 ───────────────────────────────────────────────────────────── */
 [data-view="career"] .text-hero {
   color: var(--ink-display);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-style: normal;
   font-size: var(--text-hero);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1.05;
 }
 
 [data-view="career"] .text-section {
   color: var(--ink-display);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-style: normal;
   font-size: var(--text-section);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.15;
   text-transform: none;
@@ -234,6 +235,20 @@ body {
   font-family: var(--font-display, var(--font-serif));
 }
 
+/* ── Soft gradient thumbnails — OpenAI news-grid placeholders ── */
+.news-thumb {
+  border-radius: 8px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.news-thumb--g1 { background: linear-gradient(140deg, #BFD5F0 0%, #7FA8DE 55%, #A5C4EA 100%); }
+.news-thumb--g2 { background: linear-gradient(150deg, #CDE3C4 0%, #8FBF7F 60%, #D8E9CE 100%); }
+.news-thumb--g3 { background: linear-gradient(135deg, #F3D9C0 0%, #E5A9A0 50%, #C9B7D9 100%); }
+.news-thumb--g4 { background: linear-gradient(145deg, #F7F0C8 0%, #EAD992 60%, #F5EBC0 100%); }
+
 /* ─── Link reset ────────────────────────────────────────────── */
 a {
   color: inherit;
@@ -273,8 +288,9 @@ a {
 }
 
 [data-view="career"] .card-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 0 3px rgba(43, 77, 140, 0.12), 0 8px 24px rgba(0,0,0,0.06);
+  transform: none;
+  box-shadow: none;
+  opacity: 0.7;
 }
 
 [data-view="personal"] .card-lift:hover {

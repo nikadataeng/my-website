@@ -2,7 +2,7 @@
 
 # Ayonika's Portfolio Website
 
-Dual-themed portfolio site: **career** (warm cream, navy accent) and **personal** (white, burgundy accent). Built with Next.js 16 App Router, React 19, Tailwind 4, Framer Motion + GSAP.
+Dual-themed portfolio site: **career** (white, black-and-white, OpenAI-inspired) and **personal** (white, burgundy accent). Built with Next.js 16 App Router, React 19, Tailwind 4, Framer Motion + GSAP.
 
 ## How to Run
 ```bash
@@ -17,7 +17,7 @@ The site renders two completely different views from a single `app/page.tsx`. Vi
 
 | View | URL | Accent | Display Font | Personality |
 |------|-----|--------|-------------|-------------|
-| Career | `/` or `/career` | Rajput blue `#2B4D8C` | Noto Sans Display | Professional, heritage |
+| Career | `/` or `/career` | Near-black `#0D0D0D` | Newsreader | OpenAI-style, minimal |
 | Personal | `/personal` | Burgundy `#944D5E` | Cormorant Garamond | Editorial, warm |
 
 Theme switching happens via `data-view="career|personal"` on `<html>`. CSS custom properties swap accordingly.
@@ -37,7 +37,7 @@ Theme switching happens via `data-view="career|personal"` on `<html>`. CSS custo
 ```
 app/
   globals.css          # All design tokens + utility classes
-  layout.tsx           # Font loading (Inter, Playfair, Cormorant, Noto Sans Display)
+  layout.tsx           # Font loading (Inter, Fraunces, Newsreader)
   page.tsx             # Career/personal view switch
   blog/page.tsx        # Blog listing
 
@@ -79,6 +79,7 @@ content/               # ALL display data lives here as JSON
     milestones.json    # Mountain timeline (company, title, year, skills, highlights)
     projects.json      # Work section (replaced, name, stack, description)
     misc.json          # MiscGrid items
+    identity.json       # About section: statement, bio, what-I-build rows, stack
   personal/
     book.json          # Book of the month
     countries.json     # Countries visited
@@ -97,12 +98,12 @@ context/
 
 | Token | Career | Personal | What it's for |
 |-------|--------|----------|---------------|
-| `--color-bg` | `#FAF9F7` | `#FFFFFF` | Page background |
-| `--color-ink` | `#4A4440` | `#4A4440` | Primary text (a.k.a. "shilajit") |
-| `--color-accent` | `#2B4D8C` | `#944D5E` | Links, highlights, accent |
-| `--color-muted` | `#6B6862` | `#6B6862` | Secondary text, faded states |
-| `--color-surface` | `#FFFFFF` | `#F8F7F5` | Card backgrounds |
-| `--color-border` | `#EEECE8` | `#E8E6E0` | Borders, dividers |
+| `--color-bg` | `#FFFFFF` | `#FFFFFF` | Page background |
+| `--color-ink` | `#262626` | `#4A4440` | Primary text |
+| `--color-accent` | `#0D0D0D` | `#944D5E` | Links, highlights, accent |
+| `--color-muted` | `#6E6E6E` | `#6B6862` | Secondary text, faded states |
+| `--color-surface` | `#F7F7F8` | `#F8F7F5` | Card backgrounds |
+| `--color-border` | `#ECECEC` | `#E8E6E0` | Borders, dividers |
 
 **Personal-only Monet palette:** `--monet-lily-green`, `--monet-mauve`, `--monet-blush`, `--monet-sage`, `--monet-wheat`, `--monet-sky`
 

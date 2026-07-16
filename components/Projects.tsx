@@ -23,7 +23,7 @@ function ProjectRow({ project, index }: { project: (typeof projects)[0]; index: 
         {/* Article number */}
         <span
           className="text-label block mb-2"
-          style={{ color: "var(--color-accent)", letterSpacing: "0.18em" }}
+          style={{ color: "var(--color-muted)", letterSpacing: "0.18em" }}
         >
           No. {String(index + 1).padStart(2, "0")}
         </span>
@@ -34,15 +34,15 @@ function ProjectRow({ project, index }: { project: (typeof projects)[0]; index: 
             style={{
               fontFamily: "var(--font-serif)",
               fontSize: "clamp(24px, 3.5vw, 40px)",
-              fontWeight: 400,
+              fontWeight: 600,
               color: "var(--color-ink)",
               lineHeight: 1.15,
             }}
           >
-            <span style={{ color: "var(--color-muted)", fontWeight: 300 }}>
+            <span style={{ color: "var(--color-muted)", fontWeight: 400 }}>
               {project.replaced.replace("REPLACED: ", "")}
             </span>
-            <span style={{ color: "var(--color-accent)", margin: "0 0.4em" }}>→</span>
+            <span style={{ color: "var(--color-muted)", margin: "0 0.4em" }}>→</span>
             <span style={{ color: "var(--color-ink)" }}>{project.name}</span>
           </h3>
         </div>
@@ -52,10 +52,9 @@ function ProjectRow({ project, index }: { project: (typeof projects)[0]; index: 
           <span
             className="text-label"
             style={{
-              color: "var(--color-accent)",
-              border: "1px solid var(--color-accent)",
+              color: "var(--color-muted)",
+              border: "1px solid var(--color-border)",
               padding: "2px 8px",
-              opacity: 0.8,
             }}
           >
             {project.tag}
@@ -99,17 +98,10 @@ function ProjectRow({ project, index }: { project: (typeof projects)[0]; index: 
           <div className="mt-5">
             <a
               href={project.href}
-              className="text-label font-bold inline-flex items-center gap-2 group/link"
-              style={{ color: "var(--color-accent)" }}
+              className="text-label font-medium link-underline inline-flex items-center gap-2 group/link"
+              style={{ color: "var(--color-ink)" }}
             >
-              Read more
-              <motion.span
-                className="inline-block"
-                whileHover={{ x: 4 }}
-                transition={{ duration: 0.15 }}
-              >
-                →
-              </motion.span>
+              Read more ›
             </a>
           </div>
         )}
@@ -125,7 +117,7 @@ function ProjectRow({ project, index }: { project: (typeof projects)[0]; index: 
           background: "var(--color-border)",
           transformOrigin: "left",
         }}
-        className="group-hover:[background:var(--color-accent)] transition-colors duration-150"
+        className="group-hover:[background:var(--color-ink)] transition-colors duration-150"
       />
     </div>
   );

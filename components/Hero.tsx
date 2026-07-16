@@ -11,8 +11,7 @@
  * - Existing clipPath wipe and SlackMessage animations are preserved unchanged.
  */
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
@@ -182,24 +181,8 @@ function SlackMessage() {
 
 /* ─── Hero ──────────────────────────────────────────────────── */
 export default function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  /**
-   * Parallax depth effect (Chartmetric pattern):
-   * As the user scrolls down past the hero, the sublines drift upward
-   * slightly faster than the page, creating a sense of layered depth.
-   * Range is intentionally small (0–-30px) to stay subtle.
-   */
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-  const sublineY = useTransform(scrollYProgress, [0, 1], [0, -30]);
-  const sublineOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-
   return (
     <section
-      ref={sectionRef}
       className="relative px-6 md:px-12 lg:px-20"
       style={{
         borderBottom: "1px solid var(--color-border)",
@@ -250,9 +233,9 @@ export default function Hero() {
         <motion.h1
           className="text-hero"
           style={{ margin: 0 }}
-          initial={{ clipPath: "inset(-10% 100% -10% 0)" }}
-          animate={{ clipPath: "inset(-10% 0% -10% 0)" }}
-          transition={{ duration: 0.7, ease: EASE }}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: EASE }}
         >
           I turn
         </motion.h1>
@@ -266,9 +249,9 @@ export default function Hero() {
         <motion.h1
           className="text-hero"
           style={{ margin: 0 }}
-          initial={{ clipPath: "inset(-10% 100% -10% 0)" }}
-          animate={{ clipPath: "inset(-10% 0% -10% 0)" }}
-          transition={{ duration: 0.7, ease: EASE, delay: 0.08 }}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: EASE, delay: 0.06 }}
         >
           into systems
         </motion.h1>
@@ -277,52 +260,36 @@ export default function Hero() {
         <motion.h1
           className="text-hero"
           style={{ marginTop: "0.15em", marginBottom: 0 }}
-          initial={{ clipPath: "inset(-10% 100% -10% 0)" }}
-          animate={{ clipPath: "inset(-10% 0% -10% 0)" }}
-          transition={{ duration: 0.7, ease: EASE, delay: 0.14 }}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: EASE, delay: 0.12 }}
         >
-          <span style={{ color: "#4A4440" }}>people use every day</span>
-          <span style={{ color: "#4A4440" }}>.</span>
+          <span style={{ color: "var(--ink-display)" }}>people use every day</span>
+          <span style={{ color: "var(--ink-display)" }}>.</span>
         </motion.h1>
 
-        {/* Sublines — wrapped in parallax container (Chartmetric depth layer) */}
-        <motion.div
-          style={{ y: sublineY, opacity: sublineOpacity }}
+        {/* Subline */}
+        <motion.p
+          className="text-label"
+          style={{ color: "var(--color-muted)", marginTop: "clamp(24px, 4vh, 40px)" }}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: EASE, delay: 0.3 }}
         >
-          {/* Subline 1 */}
-          <motion.p
-            className="text-label"
-            style={{ color: "var(--color-muted)", marginTop: "clamp(24px, 4vh, 40px)" }}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: EASE, delay: 0.5 }}
-          >
-            AI Applications Engineer at Sigma Computing · San Francisco
-          </motion.p>
+          AI Applications Engineer at Sigma Computing · San Francisco
+        </motion.p>
 
-          {/* Subline 2 */}
-          <motion.p
-            className="text-label mt-1"
-            style={{ color: "var(--color-muted)" }}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: EASE, delay: 0.6 }}
-          >
-            Shipped: CRM Replacement · Multi-Agent Deal Intelligence · Automated GTM Workflows
-          </motion.p>
-
-          {/* CTA link */}
-          <motion.a
-            href="#work"
-            className="text-sm font-medium"
-            style={{ color: "var(--color-accent)", display: "inline-block", marginTop: "1.5rem" }}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: EASE, delay: 0.7 }}
-          >
-            see what I&apos;ve built →
-          </motion.a>
-        </motion.div>
+        {/* CTA link */}
+        <motion.a
+          href="#work"
+          className="text-sm font-medium link-underline"
+          style={{ color: "var(--color-accent)", display: "inline-block", marginTop: "1.5rem" }}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: EASE, delay: 0.38 }}
+        >
+          See what I&apos;ve built ›
+        </motion.a>
       </div>
     </section>
   );
