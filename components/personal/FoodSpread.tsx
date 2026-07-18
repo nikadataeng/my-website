@@ -132,7 +132,7 @@ export default function FoodSpread({ courses, lead, kicker, headline }: Props) {
 
         {/* ── Hero row: the OOTD and the pre-app, both run big ── */}
         <ScrollReveal>
-          <div style={{ display: "flex", gap: "1rem", marginBottom: "1rem" }}>
+          <div className="flex flex-col sm:flex-row" style={{ gap: "1rem", marginBottom: "1rem" }}>
             {lead && <Tile src={lead.src} alt={lead.alt} flex={1} priority />}
             {heroCourse && (
               <Tile src={heroCourse.src} alt={heroCourse.alt} number={heroCourse.number} flex={1} priority />
@@ -142,7 +142,7 @@ export default function FoodSpread({ courses, lead, kicker, headline }: Props) {
 
         {/* ── Supporting row: the rest of the courses, smaller ── */}
         <ScrollReveal delay={0.1}>
-          <div style={{ display: "flex", gap: "0.85rem" }}>
+          <div className="flex flex-col sm:flex-row" style={{ gap: "0.85rem" }}>
             {restCourses.map((course) => (
               <Tile key={course.src} src={course.src} alt={course.alt} number={course.number} flex={0.72} />
             ))}

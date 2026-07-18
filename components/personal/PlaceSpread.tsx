@@ -98,7 +98,7 @@ export default function PlaceSpread({ hero, supporting, kicker, headline }: Prop
         )}
 
         <ScrollReveal>
-          <div style={{ display: "flex", gap: "1rem", marginBottom: "1.5rem" }}>
+          <div className="flex flex-col sm:flex-row" style={{ gap: "1rem", marginBottom: "1.5rem" }}>
             {hero.map((photo, i) => (
               <Tile key={photo.src} photo={photo} flex={1} priority={i === 0} />
             ))}
@@ -106,7 +106,7 @@ export default function PlaceSpread({ hero, supporting, kicker, headline }: Prop
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <div style={{ display: "flex", gap: "0.85rem" }}>
+          <div className="flex flex-col sm:flex-row" style={{ gap: "0.85rem" }}>
             {supporting.map((photo) => (
               <Tile key={photo.src} photo={photo} flex={0.72} />
             ))}

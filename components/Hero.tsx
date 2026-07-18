@@ -21,10 +21,8 @@ export default function Hero() {
       <div className="max-w-6xl w-full mx-auto relative">
         {/* Headshot — corner accent */}
         <motion.div
+          className="static md:absolute md:top-0 md:right-0 mb-8 md:mb-0"
           style={{
-            position: "absolute",
-            top: 0,
-            right: 0,
             width: "clamp(160px, 14vw, 210px)",
             aspectRatio: "1 / 1",
             borderRadius: "50%",
@@ -41,55 +39,57 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
         />
 
-        {/* Name + role intro */}
-        <motion.p
-          style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: 15,
-            fontWeight: 500,
-            color: "var(--color-muted)",
-            margin: "0 0 clamp(24px, 4vh, 48px)",
-          }}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: EASE }}
-        >
-          Ayonika Bose — AI Applications Engineer
-        </motion.p>
+        <div className="md:pr-[240px]">
+          {/* Name + role intro */}
+          <motion.p
+            style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: 15,
+              fontWeight: 500,
+              color: "var(--color-muted)",
+              margin: "0 0 clamp(24px, 4vh, 48px)",
+            }}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: EASE }}
+          >
+            Ayonika Bose — AI Applications Engineer
+          </motion.p>
 
-        {/* Headline */}
-        <motion.h1
-          className="text-hero"
-          style={{ margin: 0 }}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: EASE }}
-        >
-          I build the AI that runs GTM.
-        </motion.h1>
+          {/* Headline */}
+          <motion.h1
+            className="text-hero"
+            style={{ margin: 0 }}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: EASE }}
+          >
+            I build the AI that runs GTM.
+          </motion.h1>
 
-        {/* Subline */}
-        <motion.p
-          className="text-label"
-          style={{ color: "var(--color-muted)", marginTop: "clamp(24px, 4vh, 40px)" }}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: EASE, delay: 0.3 }}
-        >
-          AI Applications Engineer at Sigma Computing · San Francisco
-        </motion.p>
+          {/* Subline */}
+          <motion.p
+            className="text-label"
+            style={{ color: "var(--color-muted)", marginTop: "clamp(24px, 4vh, 40px)" }}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: EASE, delay: 0.3 }}
+          >
+            AI Applications Engineer at Sigma Computing · San Francisco
+          </motion.p>
 
-        {/* CTA link */}
-        <motion.a
-          href="#work"
-          className="text-sm font-medium link-underline"
-          style={{ color: "var(--color-accent)", display: "inline-block", marginTop: "1.5rem" }}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: EASE, delay: 0.38 }}
-        >
-          See what I&apos;ve built ›
-        </motion.a>
+          {/* CTA link */}
+          <motion.a
+            href="#work"
+            className="text-sm font-medium link-underline"
+            style={{ color: "var(--color-accent)", display: "inline-block", marginTop: "1.5rem" }}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: EASE, delay: 0.38 }}
+          >
+            See what I&apos;ve built ›
+          </motion.a>
+        </div>
       </div>
     </section>
   );
